@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  thumbnail: MyString
+  banner: MyString
+  currency: MyString
+  delivery_minimum: 1.5
+  delivery_fee: 1.5
+  opens_sunday_at: 2012-11-07 13:35:57
+  closes_sunday_at: 2012-11-07 13:35:57
+  checkin_at: 2012-11-07 13:35:57
+  checkout_at: 2012-11-07 13:35:57
+  is_active: false
+  opens_monday_at: 2012-11-07 13:35:57
+  closes_monday_at: 2012-11-07 13:35:57
+  opens_tuesday_at: 2012-11-07 13:35:57
+  closes_tuesday_at: 2012-11-07 13:35:57
+  opens_wednesday_at: 2012-11-07 13:35:57
+  closes_wednesday_at: 2012-11-07 13:35:57
+  opens_thursday_at: 2012-11-07 13:35:57
+  closes_thursday_at: 2012-11-07 13:35:57
+  opens_friday_at: 2012-11-07 13:35:57
+  closes_friday_at: 2012-11-07 13:35:57
+  opens_saturday_at: 2012-11-07 13:35:57
+  closes_saturday_at: 2012-11-07 13:35:57
+
+two:
+  user: 
+  thumbnail: MyString
+  banner: MyString
+  currency: MyString
+  delivery_minimum: 1.5
+  delivery_fee: 1.5
+  opens_sunday_at: 2012-11-07 13:35:57
+  closes_sunday_at: 2012-11-07 13:35:57
+  checkin_at: 2012-11-07 13:35:57
+  checkout_at: 2012-11-07 13:35:57
+  is_active: false
+  opens_monday_at: 2012-11-07 13:35:57
+  closes_monday_at: 2012-11-07 13:35:57
+  opens_tuesday_at: 2012-11-07 13:35:57
+  closes_tuesday_at: 2012-11-07 13:35:57
+  opens_wednesday_at: 2012-11-07 13:35:57
+  closes_wednesday_at: 2012-11-07 13:35:57
+  opens_thursday_at: 2012-11-07 13:35:57
+  closes_thursday_at: 2012-11-07 13:35:57
+  opens_friday_at: 2012-11-07 13:35:57
+  closes_friday_at: 2012-11-07 13:35:57
+  opens_saturday_at: 2012-11-07 13:35:57
+  closes_saturday_at: 2012-11-07 13:35:57

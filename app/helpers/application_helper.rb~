@@ -1,0 +1,5 @@
+module ApplicationHelper
+  def language_locales
+    CONFIG[:language_locales]
+  end
+end

@@ -1,0 +1,19 @@
+class PagesController < ApplicationController
+  def index
+  end
+
+  def about
+  end
+
+  def security
+  end
+
+  def feedback
+  end
+
+  def help
+  end
+
+  def legal
+  end
+end

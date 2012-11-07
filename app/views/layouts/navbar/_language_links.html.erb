@@ -1,0 +1,12 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">
+								<%= t "navbar.language_selector" %>
+								<b class="caret"></b>
+	</a>
+  <ul class="dropdown-menu">
+    <% language_locales.each do |lang, loc| %>
+      <li><%= link_to lang, url_for({locale: loc}) %></li>
+    <% end %>
+  </ul>
+</li>

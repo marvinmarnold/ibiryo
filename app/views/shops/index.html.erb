@@ -1,0 +1,67 @@
+<h1>Listing shops</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Thumbnail</th>
+    <th>Banner</th>
+    <th>Currency</th>
+    <th>Delivery minimum</th>
+    <th>Delivery fee</th>
+    <th>Opens sunday at</th>
+    <th>Closes sunday at</th>
+    <th>Checkin at</th>
+    <th>Checkout at</th>
+    <th>Is active</th>
+    <th>Opens monday at</th>
+    <th>Closes monday at</th>
+    <th>Opens tuesday at</th>
+    <th>Closes tuesday at</th>
+    <th>Opens wednesday at</th>
+    <th>Closes wednesday at</th>
+    <th>Opens thursday at</th>
+    <th>Closes thursday at</th>
+    <th>Opens friday at</th>
+    <th>Closes friday at</th>
+    <th>Opens saturday at</th>
+    <th>Closes saturday at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shops.each do |shop| %>
+  <tr>
+    <td><%= shop.user %></td>
+    <td><%= shop.thumbnail %></td>
+    <td><%= shop.banner %></td>
+    <td><%= shop.currency %></td>
+    <td><%= shop.delivery_minimum %></td>
+    <td><%= shop.delivery_fee %></td>
+    <td><%= shop.opens_sunday_at %></td>
+    <td><%= shop.closes_sunday_at %></td>
+    <td><%= shop.checkin_at %></td>
+    <td><%= shop.checkout_at %></td>
+    <td><%= shop.is_active %></td>
+    <td><%= shop.opens_monday_at %></td>
+    <td><%= shop.closes_monday_at %></td>
+    <td><%= shop.opens_tuesday_at %></td>
+    <td><%= shop.closes_tuesday_at %></td>
+    <td><%= shop.opens_wednesday_at %></td>
+    <td><%= shop.closes_wednesday_at %></td>
+    <td><%= shop.opens_thursday_at %></td>
+    <td><%= shop.closes_thursday_at %></td>
+    <td><%= shop.opens_friday_at %></td>
+    <td><%= shop.closes_friday_at %></td>
+    <td><%= shop.opens_saturday_at %></td>
+    <td><%= shop.closes_saturday_at %></td>
+    <td><%= link_to 'Show', shop %></td>
+    <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+    <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop', new_shop_path %>

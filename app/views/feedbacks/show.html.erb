@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @feedback.user %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @feedback.body %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @feedback.email %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @feedback.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @feedback.last_name %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @feedback.subject %>
+</p>
+
+<p>
+  <b>Ip:</b>
+  <%= @feedback.ip %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>

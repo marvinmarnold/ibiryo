@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  brand:
+    title: "Company.com"
+    company_name: "Company"
+    tld: "company.com"
+  navbar:
+    search:
+      placeholder: "What do you want?"
+    sign_in: "Sign in"
+    about_link: "About"
+    security_link: "Security"
+    help_link: "Help"
+    contact_link: "Contact us"
+    language_selector: "Language"

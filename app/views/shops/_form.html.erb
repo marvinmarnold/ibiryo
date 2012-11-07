@@ -1,0 +1,33 @@
+<%= simple_form_for(@shop) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.input :thumbnail %>
+    <%= f.input :banner %>
+    <%= f.input :currency %>
+    <%= f.input :delivery_minimum %>
+    <%= f.input :delivery_fee %>
+    <%= f.input :opens_sunday_at %>
+    <%= f.input :closes_sunday_at %>
+    <%= f.input :checkin_at %>
+    <%= f.input :checkout_at %>
+    <%= f.input :is_active %>
+    <%= f.input :opens_monday_at %>
+    <%= f.input :closes_monday_at %>
+    <%= f.input :opens_tuesday_at %>
+    <%= f.input :closes_tuesday_at %>
+    <%= f.input :opens_wednesday_at %>
+    <%= f.input :closes_wednesday_at %>
+    <%= f.input :opens_thursday_at %>
+    <%= f.input :closes_thursday_at %>
+    <%= f.input :opens_friday_at %>
+    <%= f.input :closes_friday_at %>
+    <%= f.input :opens_saturday_at %>
+    <%= f.input :closes_saturday_at %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
