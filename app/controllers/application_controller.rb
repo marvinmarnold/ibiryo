@@ -23,7 +23,7 @@ private
   def set_shopper
     @shopper = current_user if user_signed_in?
     @shopper ||= User.where(temp_session_id: session_id).first_or_create do |u|
-      u.role = "guest"
+      u.role_id = Role.find_by_name("guest")
       u.email = "#{session_id}@#{(t "brand.tld")}"
       u.password = CONFIG[:guest_user][:default_password]
       u.default_locale = I18n.locale

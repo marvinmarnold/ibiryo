@@ -5,6 +5,10 @@ class Ability
 
     user ||= User.new
     can :create, Feedback
+
+    if user.role? :vendor
+      can :manage, Shop
+    end
     #   if user.admin?
     #     can :manage, :all
     #   else

@@ -15,3 +15,8 @@ en:
     help_link: "Help"
     contact_link: "Contact us"
     language_selector: "Language"
+    account_links:
+      account_settings: "Account settings"
+      account_history: "Account history"
+      sign_out: "Sign out"
+      manage_shops: "Manage your shops"
