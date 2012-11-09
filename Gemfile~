@@ -6,7 +6,7 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem "thin"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +24,10 @@ group :development do
   gem 'therubyracer'
   gem 'execjs'
   gem 'faker'
+end
+
+group :production do
+  gem 'therubyracer'
 end
 
 gem "less-rails"
