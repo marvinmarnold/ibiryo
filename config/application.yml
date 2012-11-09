@@ -1,0 +1,14 @@
+secret_token: "29a07fe62531263e072cd05e8f0921010e3edb614e4c717a7eabbeaf785cf594f5ac28e2db06603b79f75160a204ffabb439574227bea2d1d882a8dd94fbf477"
+development:
+  host: "localhost:3000"
+test:
+  host: "test.local"
+production:
+  host: "blog.example.com"
+guest_user:
+  default_locale: "en"
+  default_password: "password"
+language_locales:
+  Português: "pt"
+  English: "en"
+  Changana: "cg"

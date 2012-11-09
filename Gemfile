@@ -26,6 +26,10 @@ group :development do
   gem 'faker'
 end
 
+group :production do
+  gem 'therubyracer'
+end
+
 gem "less-rails"
 gem 'jquery-rails'
 gem 'simple_form'
