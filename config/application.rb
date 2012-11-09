@@ -68,6 +68,7 @@ module Ibiryo
     config.assets.version = '1.0'
 
     config.action_mailer.default_url_options = {host: CONFIG[:host]}
+    config.assets.initialize_on_precompile = false
 
   end
 end
