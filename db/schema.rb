@@ -11,7 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109103453) do
+ActiveRecord::Schema.define(:version => 20121109180003) do
+
+  create_table "contacts", :force => true do |t|
+    t.string   "type"
+    t.integer  "contactable_id"
+    t.string   "contactable_type"
+    t.string   "nickname"
+    t.string   "street"
+    t.string   "room"
+    t.string   "province"
+    t.string   "district"
+    t.string   "city"
+    t.string   "primary_phone"
+    t.string   "secondary_phone"
+    t.text     "directions"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "contacts", ["contactable_id", "contactable_type"], :name => "index_contacts_on_contactable_id_and_contactable_type"
+
+  create_table "descriptions", :force => true do |t|
+    t.integer  "locale_id"
+    t.string   "name"
+    t.integer  "describable_id"
+    t.string   "describable_type"
+    t.text     "body"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "descriptions", ["describable_id", "describable_type"], :name => "index_descriptions_on_describable_id_and_describable_type"
+  add_index "descriptions", ["locale_id"], :name => "index_descriptions_on_locale_id"
 
   create_table "feedbacks", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +59,14 @@ ActiveRecord::Schema.define(:version => 20121109103453) do
 
   add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
 
+  create_table "locales", :force => true do |t|
+    t.string   "language"
+    t.string   "abbr"
+    t.boolean  "is_default", :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "managements", :force => true do |t|
     t.integer  "user_id"
     t.integer  "shop_id"
@@ -38,41 +78,49 @@ ActiveRecord::Schema.define(:version => 20121109103453) do
   add_index "managements", ["shop_id"], :name => "index_managements_on_shop_id"
   add_index "managements", ["user_id"], :name => "index_managements_on_user_id"
 
-  create_table "roles", :force => true do |t|
+  create_table "marketing_strategies", :force => true do |t|
     t.string   "name"
+    t.boolean  "is_active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  create_table "participations", :force => true do |t|
+    t.integer  "shop_id"
+    t.integer  "marketing_strategy_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "participations", ["marketing_strategy_id"], :name => "index_participations_on_marketing_strategy_id"
+  add_index "participations", ["shop_id"], :name => "index_participations_on_shop_id"
+
   create_table "shops", :force => true do |t|
-    t.integer  "user_id"
     t.string   "thumbnail"
     t.string   "banner"
     t.string   "currency"
     t.float    "delivery_minimum"
     t.float    "delivery_fee"
-    t.datetime "opens_sunday_at"
-    t.datetime "closes_sunday_at"
-    t.datetime "checkin_at"
-    t.datetime "checkout_at"
+    t.time     "opens_sunday_at"
+    t.time     "closes_sunday_at"
+    t.time     "checkin_at"
+    t.time     "checkout_at"
     t.boolean  "is_active"
-    t.datetime "opens_monday_at"
-    t.datetime "closes_monday_at"
-    t.datetime "opens_tuesday_at"
-    t.datetime "closes_tuesday_at"
-    t.datetime "opens_wednesday_at"
-    t.datetime "closes_wednesday_at"
-    t.datetime "opens_thursday_at"
-    t.datetime "closes_thursday_at"
-    t.datetime "opens_friday_at"
-    t.datetime "closes_friday_at"
-    t.datetime "opens_saturday_at"
-    t.datetime "closes_saturday_at"
+    t.time     "opens_monday_at"
+    t.time     "closes_monday_at"
+    t.time     "opens_tuesday_at"
+    t.time     "closes_tuesday_at"
+    t.time     "opens_wednesday_at"
+    t.time     "closes_wednesday_at"
+    t.time     "opens_thursday_at"
+    t.time     "closes_thursday_at"
+    t.time     "opens_friday_at"
+    t.time     "closes_friday_at"
+    t.time     "opens_saturday_at"
+    t.time     "closes_saturday_at"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
-
-  add_index "shops", ["user_id"], :name => "index_shops_on_user_id"
 
   create_table "supervisions", :force => true do |t|
     t.integer  "salesmanager_id"
@@ -83,6 +131,30 @@ ActiveRecord::Schema.define(:version => 20121109103453) do
 
   add_index "supervisions", ["salesmanager_id"], :name => "index_supervisions_on_salesmanager_id"
   add_index "supervisions", ["salesperson_id"], :name => "index_supervisions_on_salesperson_id"
+
+  create_table "synonyms", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "shop_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "taggings", ["shop_id"], :name => "index_taggings_on_shop_id"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "synonym_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["synonym_id"], :name => "index_tags_on_synonym_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -95,13 +167,14 @@ ActiveRecord::Schema.define(:version => 20121109103453) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "default_locale"
+    t.integer  "default_locale_id"
     t.string   "type"
     t.string   "temp_session_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "users", ["default_locale_id"], :name => "index_users_on_default_locale_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

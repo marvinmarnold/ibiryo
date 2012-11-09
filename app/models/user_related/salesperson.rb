@@ -1,8 +1,14 @@
 class Salesperson < User
-  has_one :supervision, foreign_key: :salesperson_id
-  has_one :salesmanager, through: :supervision
+  has_one         :supervision, foreign_key: :salesperson_id
+  has_one         :salesmanager, through: :supervision
+  has_many        :accountabilities
+  has_many        :shops, through: :accountabilities
 
-  validate :has_manager?
+  validate        :has_manager?
+
+  def managing?(shop)
+    shops.include?(shop)
+  end
 
 private
 

@@ -2,6 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  general:
+    authorization_login_required: "Please login and try again"
+    yes: "Yes"
+    no: "No"
   brand:
     title: "Company.com"
     company_name: "Company"
@@ -24,4 +28,89 @@ en:
     index:
       title: "Your shops"
     new:
-      titile: "Create new shop"
+      title: "Create new shop"
+    create:
+      notice_success: 'Shop was successfully created.'
+    update:
+      notice_success: 'Shop was successfully updated.'
+    form:
+      errors:
+        is_active: "Shop activation must be set"
+      hours:
+        title: "Hours of operation"
+        hotel: "Hotel"
+        restaurant: "Restaurant"
+      financial:
+        title: "Financial information"
+      branding:
+        title: "Branding"
+        descriptions:
+          title: "Name & description"
+          add: "Customize for another language"
+          title_each: "Shop description"
+          remove_each: "Remove this description"
+        logos: "Logos"
+        marketing:
+          title: "Marketing strategies"
+          add: "Add new marketing strategy"
+          remove: "Remove marketing strategy"
+      contact:
+        title: "Contact information"
+  descriptions:
+    form:
+      errors:
+        duplicate_language: "You have already provided a description with this language"
+        atleast_one: "You must provide at least one description"
+  marketing_strategies:
+    index:
+      title: "Marketing strategies"
+    new:
+      title: "Create new strategy"
+    edit:
+      title: "Edit new strategy"
+    create:
+      notice_success: 'Strategy was successfully created.'
+    update:
+      notice_success: 'Strategy was successfully updated.'
+
+  simple_form:
+    labels:
+      shop:
+        tag_list: 'Tags'
+        thumbnail: "Thumbnail"
+        banner: "Banner"
+        currency: "Currency"
+        delivery_minimum: "Delivery minimum"
+        delivery_fee: "Delivery fee"
+        checkin_at: "Check-in time"
+        checkout_at: "Check-out time"
+        opens_monday_at: "Monday opening time"
+        closes_monday_at: "Monday closing time"
+        opens_tuesday_at: "Tuesday opening time"
+        closes_tuesday_at: "Tuesday closing time"
+        opens_wednesday_at: "Wednesday opening time"
+        closes_wednesday_at: "Wednesday closing time"
+        opens_thursday_at: "Thursday opening time"
+        closes_thursday_at: "Thursday closing time"
+        opens_friday_at: "Friday opening time"
+        closes_friday_at: "Friday closing time"
+        opens_saturday_at: "Saturday opening time"
+        closes_saturday_at: "Saturday closing time"
+        opens_sunday_at: "Sunday opening time"
+        closes_sunday_at: "Sunday closing time"
+        contact:
+          street: "Street"
+          room: "Room/floor/etc"
+          province: "Province"
+          district: "District"
+          city: "City"
+          primary_phone: "Primary phone number"
+          secondary_phone: "Secondary phone number"
+          directions: "Directions"
+    hints:
+      shop:
+        tag_list: "For example: chinese, pizza, hotel, etc."
+        contact:
+          directions: "Be as specific as possible. Especially if street signs are not reliable, try to give other landmarks."
+    placeholders:
+      shop:

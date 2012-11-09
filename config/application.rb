@@ -12,9 +12,6 @@ end
 
 CONFIG = YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
 CONFIG.merge! CONFIG.fetch(Rails.env, {})
-CONFIG.symbolize_keys!
-
-
 
 module Ibiryo
   class Application < Rails::Application
@@ -69,7 +66,7 @@ module Ibiryo
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.action_mailer.default_url_options = {host: CONFIG[:host]}
+    config.action_mailer.default_url_options = {host: CONFIG["host"]}
     config.assets.initialize_on_precompile = false
 
   end

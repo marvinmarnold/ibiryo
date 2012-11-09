@@ -1,4 +1,6 @@
 Ibiryo::Application.routes.draw do
+  resources :marketing_strategies
+
   resources :feedbacks
 
   resources :shops

@@ -5,8 +5,8 @@
 								<b class="caret"></b>
 	</a>
   <ul class="dropdown-menu">
-    <% language_locales.each do |lang, loc| %>
-      <li><%= link_to lang, url_for({locale: loc}) %></li>
+    <% Locale.all.each do |locale| %>
+      <li><%= link_to locale.language, url_for({locale: locale.abbr}) %></li>
     <% end %>
   </ul>
 </li>

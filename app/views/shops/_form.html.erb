@@ -1,22 +1,63 @@
-<%= simple_form_for(@shop) do |f| %>
+<%= simple_nested_form_for(@shop) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <% if current_user.administrator?(@shop) %>
-      <%= f.input :is_active, as: :radio_buttons %>
+    <% if current_user.can_administrate?(@shop) %>
+      <%= f.input :is_active, as: :radio_buttons, :required => true  %>
     <% end %>
 
-    <%= f.association :user %>
-    <%= f.input :thumbnail %>
-    <%= f.input :banner %>
-    <%= f.input :currency %>
+    <h2><%= "1. #{t("shops.form.branding.title")}" %></h2>
+    <% if current_user.role? :salesperson %>
+      <%= f.input :tag_list %>
+    <% end %>
+    <h3><%= t("shops.form.branding.descriptions.title") %></h3>
+    <%= render "layouts/custom_errors", errors: @shop.errors[:descriptions] %>
+    <%= f.simple_fields_for :descriptions do |description_form| %>
+      <%= render "descriptions/form", f: description_form,
+                                      title: t("shops.form.branding.descriptions.title_each"),
+                                      remove: t("shops.form.branding.descriptions.remove_each"),
+                                      skip_body: false %>
+    <% end %>
+    <p>
+    <%= f.link_to_add t("shops.form.branding.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-info' %></p>
+    <h3><%= t("shops.form.branding.logos") %></h3>
+    <%= image_tag(@shop.thumbnail.usable.url) if @shop.thumbnail? %>
+    <%= f.input :thumbnail, as: :file %>
+    <%= f.hidden_field :thumbnail_cache %>
+    <%= image_tag(@shop.banner.usable.url) if @shop.banner? %>
+    <%= f.input :banner, as: :file %>
+    <%= f.hidden_field :banner_cache %>
+    <% if current_user.role? :salesperson %>
+      <h3><%= t("shops.form.branding.marketing.title") %></h3>
+      <%= f.simple_fields_for :participations do |participation_f| %>
+        <div class="well">
+        <%= participation_f.input :marketing_strategy_id, as: :select,
+                                  collection: MarketingStrategy.all.map { |l| [l.name, l.id]} %>
+        <%= participation_f.link_to_remove t("shops.form.branding.marketing.remove"),
+                                            :class => 'btn btn-mini btn-danger' %>
+        </div>
+      <% end %>
+      <%= f.link_to_add t("shops.form.branding.marketing.add"), :participations, :class => 'btn btn-mini btn-info' %>
+    <% end %>
+
+    <h2><%= "2. #{t("shops.form.contact.title")}" %></h2>
+    <%= f.simple_fields_for :contact do |contact_f| %>
+      <%= render "contacts/standard_fields", f: contact_f %>
+    <% end %>
+
+    <h2><%= "3. #{t("shops.form.financial.title")}" %></h2>
+    <%= f.input :currency, as: :select, collection: CONFIG["currencies"].values %>
     <%= f.input :delivery_minimum %>
     <%= f.input :delivery_fee %>
-    <%= f.input :opens_sunday_at %>
-    <%= f.input :closes_sunday_at %>
+
+    <h2><%= "4. #{t("shops.form.hours.title")}" %></h2>
+    <h3><%= t("shops.form.hours.hotel") %></h3>
     <%= f.input :checkin_at %>
     <%= f.input :checkout_at %>
-    <%= f.input :is_active %>
+
+    <h3><%= t("shops.form.hours.restaurant") %></h3>
+    <%= f.input :opens_sunday_at %>
+    <%= f.input :closes_sunday_at %>
     <%= f.input :opens_monday_at %>
     <%= f.input :closes_monday_at %>
     <%= f.input :opens_tuesday_at %>
@@ -29,6 +70,8 @@
     <%= f.input :closes_friday_at %>
     <%= f.input :opens_saturday_at %>
     <%= f.input :closes_saturday_at %>
+
+
   </div>
 
   <div class="form-actions">

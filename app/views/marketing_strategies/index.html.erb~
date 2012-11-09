@@ -1,0 +1,26 @@
+<h1><%= t "marketing_strategies.index.title" %></h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Active?</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @marketing_strategies.each do |marketing_strategy| %>
+  <tr>
+    <td><%= marketing_strategy.name %></td>
+    <td><%= marketing_strategy.is_active %></td>
+    <td><%= link_to 'Edit', edit_marketing_strategy_path(marketing_strategy), class: "btn" %></td>
+    <td><%= link_to 'Destroy', marketing_strategy, method: :delete,
+                                data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div class="pager">
+<%= link_to 'New Marketing strategy', new_marketing_strategy_path, class: "btn" %>
+</div>

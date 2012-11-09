@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  load_and_authorize_resource
   before_filter :set_shops
   # GET /shops
   # GET /shops.json
@@ -25,6 +26,8 @@ class ShopsController < ApplicationController
   # GET /shops/new.json
   def new
     @shop = Shop.new
+    @shop.build_ownership if @shop.ownership.blank?
+    @shop.build_contact if @shop.contact.blank?
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,10 +44,11 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = @shops.new(params[:shop])
+    filter_is_active
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
+        format.html { redirect_to @shop, notice: t("shops.create.notice_success") }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
@@ -57,10 +61,11 @@ class ShopsController < ApplicationController
   # PUT /shops/1.json
   def update
     @shop = @shops.find(params[:id])
+    filter_is_active
 
     respond_to do |format|
       if @shop.update_attributes(params[:shop])
-        format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to @shop, notice: t("shops.update.notice_success") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -85,5 +90,9 @@ private
 
   def set_shops
     scoped_for_shopper(Shop)
+  end
+
+  def filter_is_active
+    params[:shop].try(:delete, :is_active) unless current_user.can_administrate?(@shop)
   end
 end

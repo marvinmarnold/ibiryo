@@ -13,6 +13,11 @@
         <%= link_to t("navbar.account_links.manage_shops"), shops_path %>
       </li>
     <% end %>
+    <% if can? :manage, MarketingStrategy %>
+      <li>
+        <%= link_to t("navbar.account_links.marketing_strategies"), marketing_strategies_path %>
+      </li>
+    <% end %>
 <%
 =begin
 %>

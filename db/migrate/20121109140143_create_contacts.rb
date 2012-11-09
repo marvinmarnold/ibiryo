@@ -1,0 +1,20 @@
+class CreateContacts < ActiveRecord::Migration
+  def change
+    create_table :contacts do |t|
+      t.string :type
+      t.belongs_to :contactable, polymorphic: true
+      t.string :nickname
+      t.string :street
+      t.string :room
+      t.string :province
+      t.string :district
+      t.string :city
+      t.string :primary_phone
+      t.string :secondary_phone
+      t.text :directions
+
+      t.timestamps
+    end
+    add_index :contacts, [:contactable_id, :contactable_type]
+  end
+end

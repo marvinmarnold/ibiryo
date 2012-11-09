@@ -1,0 +1,3 @@
+class Ownership < Management
+
+end

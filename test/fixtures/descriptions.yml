@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  locale: 
+  name: MyString
+  describable: 
+  body: MyString
+
+two:
+  locale: 
+  name: MyString
+  describable: 
+  body: MyString

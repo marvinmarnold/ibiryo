@@ -22,11 +22,10 @@ private
 
   def set_shopper
     @shopper = current_user if user_signed_in?
-    @shopper ||= User.where(temp_session_id: session_id).first_or_create do |u|
-      u.role_id = Role.find_by_name("guest")
+    @shopper ||= Guest.where(temp_session_id: session_id).first_or_create do |u|
       u.email = "#{session_id}@#{(t "brand.tld")}"
-      u.password = CONFIG[:guest_user][:default_password]
-      u.default_locale = I18n.locale
+      u.password = CONFIG["guest_user"]["default_password"]
+      u.default_locale_id = Locale.find_by_is_default(true).id
     end
   end
 
@@ -36,7 +35,7 @@ private
     elsif params[:locale].present?
       desired_locale = params[:locale]
     else
-      desired_locale = CONFIG[:guest_user][:default_locale]
+      desired_locale = Locale.find_by_is_default(true).abbr
     end
     I18n.locale = desired_locale
   end
@@ -48,4 +47,14 @@ private
   def session_id
     request.session_options[:id]
   end
+
+  #=begin
+  rescue_from CanCan::AccessDenied do |exception|
+    if user_signed_in?
+      redirect_to root_url
+    else
+      redirect_to root_url, notice: t("general.authorization_login_required")
+    end
+  end
+  #=end
 end

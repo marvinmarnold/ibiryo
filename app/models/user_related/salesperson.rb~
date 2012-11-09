@@ -4,9 +4,13 @@ class Salesperson < User
 
   validate :has_manager?
 
+  def managing?(shop)
+    shops.include?(shop)
+  end
+
 private
 
   def has_manager?
-    errors.add(:salesmanager, "not defined") unless self.salesmanager
+    errors.add(:salesmanager, "not defined") unless self.supervision
   end
 end

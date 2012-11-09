@@ -1,0 +1,7 @@
+<h4><%= t(title) %></h4>
+<div class="form-inputs well">
+  <%= f.input :name %>
+  <%= f.input :body, :input_html => { rows: 10 } unless skip_body %>
+  <%= f.input :locale_id, as: :select, collection: Locale.all.map { |l| [l.id, l.language]} %>
+  <%= f.link_to_remove t(remove), :class => 'btn btn-mini btn-danger' %>
+</div>

@@ -6,9 +6,20 @@ test:
 production:
   host: "blog.example.com"
 guest_user:
-  default_locale: "en"
   default_password: "password"
-languague_locales:
-  Português: "pt"
-  English: "en"
-  Changana: "cg"
+locales:
+  languages:
+    portuguese:
+      language: "Português"
+      abbr: "pt"
+    english:
+      language: "English"
+      abbr: "en"
+    changana:
+      language: "Changana"
+      abbr: "cg"
+  default_abbr: "en"
+currencies:
+  mozambique: "MTN"
+  south_africa: "ZAR"
+  usa: "USD"

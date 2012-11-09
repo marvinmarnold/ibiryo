@@ -3,11 +3,15 @@ class Ability
 
   def initialize(user)
 
-    user ||= User.new
+    user ||= Guest.new
     can :create, Feedback
 
     if user.role? :vendor
       can :manage, Shop
+    end
+
+    if user.role? :marvin
+      can :manage, :all
     end
     #   if user.admin?
     #     can :manage, :all

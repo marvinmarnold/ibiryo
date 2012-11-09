@@ -14,7 +14,7 @@
         <% if user_signed_in? %>
           <%= render "layouts/navbar/account_links" %>
         <% else %>
-          <li><%= render "layouts/navbar/language_links", language_locales: guest_language_locales %></li>
+          <li><%= render "layouts/navbar/language_links" %></li>
           <li class="divider-vertical"></li>
           <li><%= link_to t("navbar.sign_in"), new_user_session_path %></li>
         <% end %>
