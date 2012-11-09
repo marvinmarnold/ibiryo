@@ -11,15 +11,15 @@ class Shop < Describable
   has_many        :marketing_strategies, through: :participations
   mount_uploader  :banner, RestaurantBannerUploader
   mount_uploader  :thumbnail, RestaurantThumbnailUploader
-  attr_accessible :banner,              :checkin_at,          :checkout_at,         :closes_friday_at,
-                  :closes_monday_at,    :closes_saturday_at,  :closes_sunday_at,    :closes_thursday_at,
-                  :closes_tuesday_at,   :closes_wednesday_at, :currency,            :delivery_fee,
-                  :delivery_minimum,    :is_active,           :opens_friday_at,     :opens_monday_at,
-                  :opens_saturday_at,   :opens_sunday_at,     :opens_thursday_at,   :opens_tuesday_at,
-                  :opens_wednesday_at,  :thumbnail,           :tag_list,            :banner_cache,
-                  :thumbnail_cache,     :contact_attributes,            :participations_attributes
+  attr_accessible :banner,              :checkin_at,          :checkout_at,           :closes_friday_at,
+                  :closes_monday_at,    :closes_saturday_at,  :closes_sunday_at,      :closes_thursday_at,
+                  :closes_tuesday_at,   :closes_wednesday_at, :currency,              :delivery_fee,
+                  :delivery_minimum,    :is_active,           :opens_friday_at,       :opens_monday_at,
+                  :opens_saturday_at,   :opens_sunday_at,     :opens_thursday_at,     :opens_tuesday_at,
+                  :opens_wednesday_at,  :thumbnail,           :tag_list,              :banner_cache,
+                  :thumbnail_cache,     :contact_attributes,  :ownership_attributes,  :participations_attributes
 
-  accepts_nested_attributes_for :participations, :contact
+  accepts_nested_attributes_for :participations, :contact, :ownership
 
   validates       :banner,              :closes_friday_at,    :closes_monday_at,    :closes_saturday_at,
                   :closes_sunday_at,    :closes_thursday_at,  :closes_tuesday_at,   :closes_wednesday_at,

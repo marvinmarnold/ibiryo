@@ -24,6 +24,9 @@ en:
       account_history: "Account history"
       sign_out: "Sign out"
       manage_shops: "Manage your shops"
+  feedbacks:
+    new:
+      title: "Contact us"
   shops:
     index:
       title: "Your shops"
@@ -36,6 +39,8 @@ en:
     form:
       errors:
         is_active: "Shop activation must be set"
+      ownership:
+        title: "Ownership"
       hours:
         title: "Hours of operation"
         hotel: "Hotel"

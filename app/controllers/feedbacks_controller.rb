@@ -1,11 +1,11 @@
 class FeedbacksController < ApplicationController
 
   load_and_authorize_resource
+  before_filter :set_feedbacks
 
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1
   # GET /feedbacks/1.json
   def show
-    @feedback = Feedback.find(params[:id])
+    @feedback = @feedbacks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,13 +37,13 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/1/edit
   def edit
-    @feedback = Feedback.find(params[:id])
+    @feedback = @feedbacks.find(params[:id])
   end
 
   # POST /feedbacks
   # POST /feedbacks.json
   def create
-    @feedback = Feedback.new(params[:feedback])
+    @feedback = @feedbacks.new(params[:feedback])
 
     respond_to do |format|
       if @feedback.save
@@ -59,7 +59,7 @@ class FeedbacksController < ApplicationController
   # PUT /feedbacks/1
   # PUT /feedbacks/1.json
   def update
-    @feedback = Feedback.find(params[:id])
+    @feedback = @feedbacks.find(params[:id])
 
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
@@ -75,12 +75,17 @@ class FeedbacksController < ApplicationController
   # DELETE /feedbacks/1
   # DELETE /feedbacks/1.json
   def destroy
-    @feedback = Feedback.find(params[:id])
+    @feedback = @feedbacks.find(params[:id])
     @feedback.destroy
 
     respond_to do |format|
       format.html { redirect_to feedbacks_url }
       format.json { head :no_content }
     end
+  end
+private
+
+  def set_feedbacks
+    scoped_for_shopper(Feedback)
   end
 end

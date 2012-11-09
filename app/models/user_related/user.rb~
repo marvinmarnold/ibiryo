@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   belongs_to      :default_locale, class_name: "Locale"
+  has_many        :feedbacks
   devise          :database_authenticatable, :registerable,
                   :recoverable,              :rememberable, :trackable,             :validatable
-
 
   attr_accessible :email,                     :password,    :password_confirmation, :remember_me,
                   :default_locale_id
