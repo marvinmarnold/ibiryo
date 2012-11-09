@@ -8,14 +8,15 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :default_locale
 
-  validates :default_locale, :role_id, presence: true
-  validates :role_id, inclusion: {in: 1..5}
+  validates :default_locale, :type, presence: true
+
+  ROLES = %w[marvin admin salesmanager salesperson vendor customer guest]
 
   def role?(base_role)
-    Role.find_by_name(base_role.to_s).id >= safe_role_id
+    ROLES.index(base_role.to_s) >= ROLES.index(self.type)
   end
 
-  def safe_role_id
-    (self.role_id.present?) ? self.role_id : Role.find_by_name("guest").id
+  def can_administrate?(shop)
+    false
   end
 end

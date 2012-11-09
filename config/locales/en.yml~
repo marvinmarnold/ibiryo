@@ -19,3 +19,9 @@ en:
       account_settings: "Account settings"
       account_history: "Account history"
       sign_out: "Sign out"
+      manage_shops: "Manage your shops"
+  shops:
+    index:
+      title: "Your shops"
+    new:
+      titile: "Create new shop"

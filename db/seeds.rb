@@ -1,21 +1,18 @@
 Rake::Task['db:reset'].invoke
 default_locale = "en"
 
-marvin = Role.create(name: "marvin")
-admin = Role.create(name: "admin")
-salesperson = Role.create(name: "salesperson")
-vendor = Role.create(name: "vendor")
-customer = Role.create(name: "customer")
-Role.create(name: "guest")
-
-u = marvin.users.create(email: "marvinmarnold@gmail.com", password: "marvin", default_locale: default_locale)
+u = Marvin.create(email: "marvinmarnold@gmail.com", password: "marvin", default_locale: default_locale)
 u.save!
 
-u = salesperson.users.create(email: "salesperson@gmail.com", password: "salesperson", default_locale: default_locale)
+m = Salesmanager.create(email: "salesmanager@gmail.com", password: "salesmanager", default_locale: default_locale)
+m.save!
+
+u = Salesperson.new(email: "salesperson@gmail.com", password: "salesperson", default_locale: default_locale)
+u.build_supervision(salesmanager_id: m.id)
 u.save!
 
-u = customer.users.create(email: "customer@gmail.com", password: "customer", default_locale: default_locale)
+u = Customer.create(email: "customer@gmail.com", password: "customer", default_locale: default_locale)
 u.save!
 
-u = vendor.users.create(email: "marvinsshop@gmail.com", password: "marvinshop", default_locale: default_locale)
+u = Vendor.create(email: "marvinsshop@gmail.com", password: "marvinshop", default_locale: default_locale)
 u.save!

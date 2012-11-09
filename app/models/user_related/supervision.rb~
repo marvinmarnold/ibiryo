@@ -1,0 +1,5 @@
+class Supervision < ActiveRecord::Base
+  belongs_to :salesmanager
+  belongs_to :salesperson
+  # attr_accessible :title, :body
+end
