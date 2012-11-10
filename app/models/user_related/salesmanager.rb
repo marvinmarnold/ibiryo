@@ -9,8 +9,9 @@ class Salesmanager < User
 private
   def can_administrate_through?(shop)
     salespersons.each do |s|
-      can_administrate = s.managing?(shop)
-      return can_administrate if can_administrate
+      if s.managing?(shop)
+        return true
+      end
     end
     return false
   end

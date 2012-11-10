@@ -7,6 +7,8 @@
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
+    <% yes = I18n.t("general.yes") %>
+    <%= f.input :wants_to_be_vendor, as: :check_boxes, collection: [yes] %>
   </div>
 
   <div class="form-actions">

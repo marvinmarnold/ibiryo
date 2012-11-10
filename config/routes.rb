@@ -11,7 +11,7 @@ Ibiryo::Application.routes.draw do
   match 'help' => 'pages#help'
   match 'legal' => 'pages#legal'
 
-  devise_for :users
+  devise_for :users, :customers, :controllers => { :registrations => "registrations" }
 
   root to: "pages#index"
 

@@ -6,16 +6,6 @@
       <%= f.input :is_active, as: :radio_buttons, :required => true  %>
     <% end %>
 
-
-    <% if current_user.role? :salesperson %>
-      <h2><%= "0. #{t("shops.form.ownership.title")}" %></h2>
-      <%= f.simple_fields_for :ownership do |ownership_form| %>
-          <%= ownership_form.input :user_id, as: :select, collection: Vendor.all.map {
-            |u| [u.email, u.id]
-          } %>
-      <% end %>
-    <% end %>
-
     <h2><%= "1. #{t("shops.form.branding.title")}" %></h2>
     <% if current_user.role? :salesperson %>
       <%= f.input :tag_list %>
