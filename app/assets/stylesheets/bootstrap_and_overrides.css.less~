@@ -34,3 +34,7 @@ body {
 //
 // Example:
 // @linkColor: #ff0000;
+.clickable-shop:hover {
+  background-color: @darkGrey;
+  cursor: pointer;
+}

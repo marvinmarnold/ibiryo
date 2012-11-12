@@ -34,8 +34,6 @@ private
       desired_locale = current_user.default_locale
     elsif params[:locale].present?
       desired_locale = params[:locale]
-    else
-      desired_locale = Locale.find_by_is_default(true).abbr
     end
     I18n.locale = desired_locale
   end

@@ -2,6 +2,6 @@
 
 <% if can? :create, Shop %>
   <div class="pager">
-    <%= link_to 'Create new shop', new_shop_path, class: "btn-info" %>
+    <%= link_to 'Create new shop', new_shop_path, class: "btn btn-info" %>
   </div>
 <% end %>

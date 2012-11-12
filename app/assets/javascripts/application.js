@@ -16,3 +16,6 @@
 //= require jquery_nested_form
 //= require chosen-jquery
 //= require_tree .
+objIDOnly = function(obj_id)  {
+  return obj_id.match(/\d+/)[0];
+}

@@ -3,7 +3,6 @@ class CreateLocales < ActiveRecord::Migration
     create_table :locales do |t|
       t.string :language
       t.string :abbr
-      t.boolean :is_default, default: false
 
       t.timestamps
     end

@@ -32,6 +32,10 @@ class Shop < Describable
   validates       :is_active,
                   :inclusion => { :in => [true, false], :message => I18n.t("shops.form.errors.is_active")}
 
+  #def to_param
+  #  "#{id} #{name}".parameterize
+  #end
+
   #
   # Tags
   #

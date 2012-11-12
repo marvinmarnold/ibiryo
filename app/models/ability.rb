@@ -7,7 +7,7 @@ class Ability
     can :create, Feedback
 
     if user.role? :vendor
-      can :manage, Shop
+      can :update, Shop
     end
 
     if user.role? :marvin

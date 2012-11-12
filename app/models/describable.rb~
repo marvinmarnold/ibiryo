@@ -11,7 +11,7 @@ class Describable < ActiveRecord::Base
 
   def locate(atr)
     if descriptions.present?
-      description = self.descriptions.where(language: I18n.locale.to_s)
+      description = self.descriptions.find_by_locale_id(Locale.find_by_abbr(I18n.locale.to_s))
       (description.blank?) ? descriptions.first.send(atr) : description.first.send(atr)
     else
       "TODO: Options (describable)"

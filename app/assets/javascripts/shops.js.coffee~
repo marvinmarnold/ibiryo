@@ -3,3 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $('#shop_ownership_attributes_user_id').chosen()
+  $('.clickable-shop').click ->
+    shop_id = objIDOnly $(this).attr("id")
+    window.location.href = "http://localhost:3000/shops/" + shop_id

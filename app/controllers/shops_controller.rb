@@ -15,6 +15,8 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     @shop = @browsable_shops.find(params[:id])
+    @stuck_shop = @shop
+    @browsable_shops = @browsable_shops.where(Shop.arel_table[:id].not_eq(@shop.id))
 
     respond_to do |format|
       format.html # show.html.erb
@@ -48,7 +50,7 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to @shop, notice: t("shops.create.notice_success") }
+        format.html { redirect_to new_shop_menu_path(@shop), notice: t("shops.create.notice_success") }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
