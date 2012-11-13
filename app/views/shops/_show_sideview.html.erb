@@ -1,0 +1,22 @@
+<div class="<%=stuck_class(stuck)%>" id="<%= "shop_sideview-#{shop.id}" %>">
+  <span class="lead"> <%= shop.name %></span>
+  <div class="row-fluid">
+    <div class="span5"><%= image_tag shop.thumbnail.usable.url, class: "img-rounded" %></div>
+    <div class="span7">
+
+      <% if shop.is_hotel? %>
+        <h5><%= "#{t("shops.show_sideview.hotel.title")}:" %></h5>
+      <% end %>
+
+      <% if shop.is_restaurant? %>
+        <h5><%= "#{t("shops.show_sideview.restaurant.title")}:" %></h5>
+        <%= delivery_fee(shop) %><br/>
+        <%= shop_time(shop) %><br/>
+      <% end %>
+
+    </div>
+  </div>
+  <br />
+  <p><%= "#{t("simple_form.labels.shop.tag_list")}: #{shop.tag_list}" %></p>
+  <br />
+</div>

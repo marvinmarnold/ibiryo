@@ -4,6 +4,9 @@ class Describable < ActiveRecord::Base
   accepts_nested_attributes_for   :descriptions, :allow_destroy => true
   attr_accessible                 :descriptions_attributes
 
+  validates       :is_active,
+                  :inclusion => { :in => [true, false],
+                                  :message => I18n.t("shops_shared.form.errors.is_active")}
   validate                        :one_description
   validate                        :one_per_language
 
@@ -11,8 +14,8 @@ class Describable < ActiveRecord::Base
 
   def locate(atr)
     if descriptions.present?
-      description = self.descriptions.find_by_locale_id(Locale.find_by_abbr(I18n.locale.to_s))
-      (description.blank?) ? descriptions.first.send(atr) : description.first.send(atr)
+      description = descriptions.find_by_locale_id(Locale.find_by_abbr(I18n.locale.to_s))
+      (description.blank?) ? descriptions.first.send(atr) : description.send(atr)
     else
       "TODO: Options (describable)"
     end

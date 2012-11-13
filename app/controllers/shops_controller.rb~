@@ -15,6 +15,7 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     @shop = @browsable_shops.find(params[:id])
+    @stuck_shop = @shop
     @browsable_shops = @browsable_shops.where(Shop.arel_table[:id].not_eq(@shop.id))
 
     respond_to do |format|
@@ -88,7 +89,6 @@ class ShopsController < ApplicationController
   end
 
 private
-
   def set_shops
     scoped_for_shopper(Shop)
   end

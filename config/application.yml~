@@ -7,7 +7,7 @@ production:
   host: "blog.example.com"
 guest_user:
   default_password: "password"
-locales:
+i18n:
   languages:
     portuguese:
       language: "Português"
@@ -19,7 +19,13 @@ locales:
       language: "Changana"
       abbr: "cg"
   default_abbr: "en"
-currencies:
-  mozambique: "MTN"
-  south_africa: "ZAR"
-  usa: "USD"
+  currencies:
+    metical:
+      locale_abbr: "cg"
+      abbr: "MTN"
+    rand:
+      locale_abbr: "en-za"
+      abbr: "ZAR"
+    dollar:
+      locale_abbr: "en"
+      abbr: "USD"

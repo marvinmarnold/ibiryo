@@ -1,12 +1,18 @@
 Ibiryo::Application.routes.draw do
 
 
+  resources :menu_sections
+
   resources :marketing_strategies
 
   resources :feedbacks
 
   resources :shops do
     resources :menus
+  end
+
+  resources :menus do
+    resources :menu_sections
   end
 
   match 'contact' => 'feedbacks#new'

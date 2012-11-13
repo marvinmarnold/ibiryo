@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_parent_from_nested_route(parent_klass)
+    scoped_for_shopper(parent_klass)
+    klasses = ActiveModel::Naming.plural(klass)
+    @shop = eval("@#{klasses}").find(params["#{parent_klass.downcase}_id"])
+  end
+
 private
   def setup
     set_locale
@@ -25,17 +31,17 @@ private
     @shopper ||= Guest.where(temp_session_id: session_id).first_or_create do |u|
       u.email = "#{session_id}@#{(t "brand.tld")}"
       u.password = CONFIG["guest_user"]["default_password"]
-      u.default_locale_id = Locale.find_by_is_default(true).id
+      u.default_locale_id = Locale.find_by_abbr(I18n.locale.to_s).id
     end
   end
 
   def set_locale
     if user_signed_in?
-      desired_locale = current_user.default_locale
+      desired_locale = current_user.default_locale.abbr
     elsif params[:locale].present?
       desired_locale = params[:locale]
     end
-    I18n.locale = desired_locale
+    I18n.locale = desired_locale if desired_locale.present?
   end
 
   def set_browsable_shops
@@ -51,7 +57,7 @@ private
     if user_signed_in?
       redirect_to root_url
     else
-      redirect_to root_url, notice: t("general.authorization_login_required")
+      redirect_to root_url, alert: t("general.authorization_login_required")
     end
   end
   #=end

@@ -2,9 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <% if current_user.can_administrate?(@shop) %>
-      <%= f.input :is_active, as: :radio_buttons, :required => true  %>
-    <% end %>
+    <%= render 'shops_shared/is_active', obj: @shop, f: f %>
 
     <h2><%= "1. #{t("shops.form.branding.title")}" %></h2>
     <% if current_user.role? :salesperson %>
@@ -19,7 +17,8 @@
                                       skip_body: false %>
     <% end %>
     <p>
-    <%= f.link_to_add t("shops.form.branding.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-info' %></p>
+      <%= f.link_to_add t("shops.form.branding.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-info' %>
+    </p>
     <h3><%= t("shops.form.branding.logos") %></h3>
     <%= image_tag(@shop.thumbnail.usable.url) if @shop.thumbnail? %>
     <%= f.input :thumbnail, as: :file %>
@@ -46,7 +45,7 @@
     <% end %>
 
     <h2><%= "3. #{t("shops.form.financial.title")}" %></h2>
-    <%= f.input :currency, as: :select, collection: CONFIG["currencies"].values %>
+    <%= f.input :currency_id, as: :select, collection: Currency.all.map { |c| [c.abbr, c.id]} %>
     <%= f.input :delivery_minimum %>
     <%= f.input :delivery_fee %>
 
@@ -70,7 +69,6 @@
     <%= f.input :closes_friday_at %>
     <%= f.input :opens_saturday_at %>
     <%= f.input :closes_saturday_at %>
-
 
   </div>
 

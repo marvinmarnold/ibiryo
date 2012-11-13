@@ -1,0 +1,11 @@
+class CreateCurrencies < ActiveRecord::Migration
+  def change
+    create_table :currencies do |t|
+      t.belongs_to :locale
+      t.string :abbr
+
+      t.timestamps
+    end
+    add_index :currencies, :locale_id
+  end
+end

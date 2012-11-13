@@ -86,6 +86,6 @@ class FeedbacksController < ApplicationController
 private
 
   def set_feedbacks
-    set_scoped_for_shopper(Feedback)
+    scoped_for_shopper(Feedback)
   end
 end

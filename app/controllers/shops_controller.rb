@@ -89,7 +89,6 @@ class ShopsController < ApplicationController
   end
 
 private
-
   def set_shops
     scoped_for_shopper(Shop)
   end

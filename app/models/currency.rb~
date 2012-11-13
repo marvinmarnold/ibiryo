@@ -1,0 +1,4 @@
+class Currency < ActiveRecord::Base
+  belongs_to :locale
+  attr_accessible :abbr, :locale_id
+end

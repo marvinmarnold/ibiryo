@@ -3,7 +3,7 @@ class CreateShops < ActiveRecord::Migration
     create_table :shops do |t|
       t.string :thumbnail
       t.string :banner
-      t.string :currency
+      t.belongs_to :currency
       t.float :delivery_minimum
       t.float :delivery_fee
       t.time :opens_sunday_at
@@ -26,5 +26,6 @@ class CreateShops < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :shops, :currency_id
   end
 end

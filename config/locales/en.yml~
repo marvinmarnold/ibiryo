@@ -28,8 +28,19 @@ en:
     new:
       title: "Contact us"
   shops:
+    show_sideview:
+      restaurant:
+        title: "Restaurant details"
+        opens: "Opens at"
+        closes: "Closes at"
+        delivery_free: "Free delivery!"
+        delivery_fee: "Delivery fee"
+      hotel:
+        title: "Hotel details"
     index:
       title: "Your shops"
+    edit:
+      title: "Editing this shop"
     new:
       title: "Create new shop"
     create:
@@ -37,8 +48,6 @@ en:
     update:
       notice_success: 'Shop was successfully updated.'
     form:
-      errors:
-        is_active: "Shop activation must be set"
       ownership:
         title: "Ownership"
       hours:
@@ -61,6 +70,20 @@ en:
           remove: "Remove marketing strategy"
       contact:
         title: "Contact information"
+  menus:
+    create:
+      notice_success: "Menu was successfully created"
+    update:
+      notice_success: "Menu was successfully updated"
+    new:
+      title: "Create new menu"
+    edit:
+      title: "Edit this menu"
+    form:
+      descriptions:
+        title: "Descriptions for this menu"
+        title_each: "Menu description"
+        remove_each: "Remove this description"
   descriptions:
     form:
       errors:
@@ -77,7 +100,13 @@ en:
       notice_success: 'Strategy was successfully created.'
     update:
       notice_success: 'Strategy was successfully updated.'
-
+  shops_shared:
+    form:
+      is_active:
+        label: "Activate?"
+        hint: "It will become immediately visible to the public."
+      errors:
+        is_active: "Activation status must be set"
   simple_form:
     labels:
       user:

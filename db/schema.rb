@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109180003) do
+ActiveRecord::Schema.define(:version => 20121113092845) do
 
   create_table "contacts", :force => true do |t|
     t.string   "type"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20121109180003) do
 
   add_index "contacts", ["contactable_id", "contactable_type"], :name => "index_contacts_on_contactable_id_and_contactable_type"
 
+  create_table "currencies", :force => true do |t|
+    t.string   "locale_abbr"
+    t.string   "abbr"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "descriptions", :force => true do |t|
     t.integer  "locale_id"
     t.string   "name"
@@ -48,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20121109180003) do
   create_table "feedbacks", :force => true do |t|
     t.integer  "user_id"
     t.text     "body"
-    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "subject"
@@ -62,9 +68,8 @@ ActiveRecord::Schema.define(:version => 20121109180003) do
   create_table "locales", :force => true do |t|
     t.string   "language"
     t.string   "abbr"
-    t.boolean  "is_default", :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "managements", :force => true do |t|
@@ -85,6 +90,24 @@ ActiveRecord::Schema.define(:version => 20121109180003) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "menu_sections", :force => true do |t|
+    t.integer  "menu_id"
+    t.boolean  "is_active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "menu_sections", ["menu_id"], :name => "index_menu_sections_on_menu_id"
+
+  create_table "menus", :force => true do |t|
+    t.integer  "shop_id"
+    t.boolean  "is_active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "menus", ["shop_id"], :name => "index_menus_on_shop_id"
+
   create_table "participations", :force => true do |t|
     t.integer  "shop_id"
     t.integer  "marketing_strategy_id"
@@ -98,7 +121,7 @@ ActiveRecord::Schema.define(:version => 20121109180003) do
   create_table "shops", :force => true do |t|
     t.string   "thumbnail"
     t.string   "banner"
-    t.string   "currency"
+    t.integer  "currency_id"
     t.float    "delivery_minimum"
     t.float    "delivery_fee"
     t.time     "opens_sunday_at"
@@ -121,6 +144,8 @@ ActiveRecord::Schema.define(:version => 20121109180003) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
+
+  add_index "shops", ["currency_id"], :name => "index_shops_on_currency_id"
 
   create_table "supervisions", :force => true do |t|
     t.integer  "salesmanager_id"
