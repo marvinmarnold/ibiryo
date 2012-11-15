@@ -1,0 +1,4 @@
+<h1><%= t "pages.index.title" %></h1>
+<p><%= t "pages.index.subtitle" %></p>
+<h3><%= t "pages.index.featured_vendors" %></h3>
+<h3><%= t "pages.index.sign_up" %></h3>

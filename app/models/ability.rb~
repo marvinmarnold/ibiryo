@@ -11,6 +11,10 @@ class Ability
       can :read, Shop
     end
 
+    if user.role? :salesmanager
+      can :manage, Management
+    end
+
     if user.role? :marvin
       can :manage, :all
     end

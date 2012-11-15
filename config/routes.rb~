@@ -21,7 +21,7 @@ Ibiryo::Application.routes.draw do
   match 'legal' => 'pages#legal'
 
 
-  devise_for :customers, :only => :registrations, :skip_helpers => true do
+  devise_for :customers,  :only => :registrations, :skip_helpers => true do
     get '/start' => "devise/registrations#new"
   end
 
@@ -29,7 +29,7 @@ Ibiryo::Application.routes.draw do
     get '/login' => "devise/sessions#new"
   end
 
-  root to: "pages#index"
+  root to: redirect("/start")
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

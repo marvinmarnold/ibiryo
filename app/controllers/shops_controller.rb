@@ -28,7 +28,6 @@ class ShopsController < ApplicationController
   # GET /shops/new.json
   def new
     @shop = Shop.new
-    @shop.build_ownership if @shop.ownership.blank?
     @shop.build_contact if @shop.contact.blank?
 
     respond_to do |format|

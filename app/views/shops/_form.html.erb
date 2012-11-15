@@ -1,13 +1,42 @@
-<%= simple_nested_form_for(@shop) do |f| %>
+<%= simple_nested_form_for(@shop, :html => {:class => "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+
+    <h2><%= "0. #{t("shops.form.management.title")}" %></h2>
     <%= render 'shops_shared/is_active', obj: @shop, f: f %>
+    <% if can?(:manage, Management) %>
+      <h3><%= t "shops.form.management.owners.title" %></h3>
+      <%= render "layouts/custom_errors", errors: @shop.errors[:ownerships] %>
+      <%= f.simple_fields_for :ownerships do |ownership_form| %>
+        <div class="well">
+          <%= ownership_form.input :user_id, as: :select, collection: Vendor.all.map { |u| [u.email, u.id] } %>
+          <%= ownership_form.link_to_remove t("shops.form.management.owners.remove"),
+                                              :class => 'btn btn-mini btn-danger' %>
+        </div>
+      <% end %>
+      <p>
+        <%= f.link_to_add t("shops.form.management.owners.add"), :ownerships,
+                          :class => 'btn btn-mini btn-info' %>
+      </p>
+      <h3><%= t "shops.form.management.salespersons.title" %></h3>
+      <%= render "layouts/custom_errors", errors: @shop.errors[:accountabilities] %>
+      <%= f.simple_fields_for :accountabilities do |accountability_form| %>
+        <div class="well">
+          <%= accountability_form.input :user_id, as: :select, collection: Salesperson.all.map { |u| [u.email, u.id] } %>
+          <%= accountability_form.link_to_remove t("shops.form.management.salespersons.remove"),
+                                              :class => 'btn btn-mini btn-danger' %>
+        </div>
+      <% end %>
+      <p>
+        <%= f.link_to_add t("shops.form.management.salespersons.add"), :accountabilities,
+                          :class => 'btn btn-mini btn-info' %>
+      </p>
+      <div class="clearfix"></div><br/>
+    <% end %>
 
     <h2><%= "1. #{t("shops.form.branding.title")}" %></h2>
-    <% if current_user.role? :salesperson %>
-      <%= f.input :tag_list %>
-    <% end %>
+
     <h3><%= t("shops.form.branding.descriptions.title") %></h3>
     <%= render "layouts/custom_errors", errors: @shop.errors[:descriptions] %>
     <%= f.simple_fields_for :descriptions do |description_form| %>
@@ -27,6 +56,10 @@
     <%= f.input :banner, as: :file %>
     <%= f.hidden_field :banner_cache %>
     <% if current_user.role? :salesperson %>
+      <h3><%= t("shops.form.branding.tags") %></h3>
+      <%= f.input :tag_list %>
+    <% end %>
+    <% if current_user.role? :salesperson %>
       <h3><%= t("shops.form.branding.marketing.title") %></h3>
       <%= f.simple_fields_for :participations do |participation_f| %>
         <div class="well">
@@ -38,16 +71,19 @@
       <% end %>
       <%= f.link_to_add t("shops.form.branding.marketing.add"), :participations, :class => 'btn btn-mini btn-info' %>
     <% end %>
+    <div class="clearfix"></div><br/>
 
     <h2><%= "2. #{t("shops.form.contact.title")}" %></h2>
     <%= f.simple_fields_for :contact do |contact_f| %>
       <%= render "contacts/standard_fields", f: contact_f %>
     <% end %>
+    <div class="clearfix"></div><br/>
 
     <h2><%= "3. #{t("shops.form.financial.title")}" %></h2>
     <%= f.input :currency_id, as: :select, collection: Currency.all.map { |c| [c.abbr, c.id]} %>
     <%= f.input :delivery_minimum %>
     <%= f.input :delivery_fee %>
+    <div class="clearfix"></div><br/>
 
     <h2><%= "4. #{t("shops.form.hours.title")}" %></h2>
     <h3><%= t("shops.form.hours.hotel") %></h3>
