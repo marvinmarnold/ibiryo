@@ -1,6 +1,5 @@
 Ibiryo::Application.routes.draw do
 
-
   resources :menu_sections
 
   resources :marketing_strategies
@@ -21,7 +20,14 @@ Ibiryo::Application.routes.draw do
   match 'help' => 'pages#help'
   match 'legal' => 'pages#legal'
 
-  devise_for :users, :customers, :controllers => { :registrations => "registrations" }
+
+  devise_for :customers, :only => :registrations, :skip_helpers => true do
+    get '/start' => "devise/registrations#new"
+  end
+
+  devise_for :users do
+    get '/login' => "devise/sessions#new"
+  end
 
   root to: "pages#index"
 

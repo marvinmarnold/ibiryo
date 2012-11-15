@@ -1,0 +1,9 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      <li><%= link_to "Legal", legal_path %></li>
+      <li><%= link_to "Press", contact_path %></li>
+      <li><%= link_to "Careers", about_path %></li>
+    </ul>
+  </div>
+</div>

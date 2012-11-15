@@ -9,8 +9,20 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require chosen
  *= require_tree .
  */
 .errors {
   padding-top: 7px;
+}
+
+#maincontainer {
+  height: 100%;
+  min-height: 100%;
+}
+
+#mainrow {
+  height: 100%;
+  min-height: 100%;
+  display: block;
 }

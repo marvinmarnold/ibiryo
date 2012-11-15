@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many        :feedbacks
   devise          :database_authenticatable, :registerable,
                   :recoverable,              :rememberable, :trackable,             :validatable
-  attr_accessor   :wants_to_be_vendor
+  #attr_accessor   :wants_to_be_vendor
   attr_accessible :email,                     :password,    :password_confirmation, :remember_me,
                   :default_locale_id
 

@@ -15,3 +15,39 @@
 .errors {
   padding-top: 7px;
 }
+
+#maincontainer {
+  height: 100%;
+  min-height: 100%;
+}
+
+#mainrow {
+  height: 100%;
+  min-height: 100%;
+  display: block;
+}
+
+#sidebar {
+  overflow: auto;
+  border-left: 3px solid #ccc;
+  border-right: 1px solid #ccc;
+  height: 100%;
+  min-height: 100%;
+  display: table;
+}
+
+#mainrow {
+  height: 100%;
+  min-height: 100%;
+  display: block;
+}
+
+#maincontainer {
+  height: 100%;
+  min-height: 100%;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+}

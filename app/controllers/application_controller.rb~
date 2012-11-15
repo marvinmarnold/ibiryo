@@ -21,9 +21,15 @@ class ApplicationController < ActionController::Base
 
 private
   def setup
+    resignin_customer
     set_locale
     set_shopper
     set_browsable_shops
+  end
+
+  #TODO: This should be done by overriding Devise registration controller
+  def resignin_customer
+    sign_in :user, current_customer if customer_signed_in?
   end
 
   def set_shopper
@@ -37,7 +43,7 @@ private
 
   def set_locale
     if user_signed_in?
-      desired_locale = current_user.default_locale
+      desired_locale = current_user.default_locale.abbr
     elsif params[:locale].present?
       desired_locale = params[:locale]
     end

@@ -29,3 +29,16 @@ i18n:
     dollar:
       locale_abbr: "en"
       abbr: "USD"
+locations:
+  provinces:
+    a: "Cabo Delgado"
+    b: "Gaza"
+    c: "Inhambane"
+    d: "Manica"
+    e: "Maputo City"
+    f: "Maputo (Province)"
+    g: "Nampula"
+    h: "Niassa"
+    i: "Sofala"
+    j: "Tete"
+    k: "Zambezia"

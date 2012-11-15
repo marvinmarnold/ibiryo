@@ -8,6 +8,10 @@ CONFIG["i18n"]["currencies"].each do |currency|
   Currency.create!(locale_abbr: currency[1]["locale_abbr"], abbr: currency[1]["abbr"])
 end
 
+CONFIG["locations"]["provinces"].values.each do |province|
+  Province.create!(name: province)
+end
+
 default_locale = Locale.find_by_abbr(CONFIG["i18n"]["default_abbr"])
 
 u = Marvin.create!(email: "marvinmarnold@gmail.com", password: "marvin", default_locale_id: default_locale.id )

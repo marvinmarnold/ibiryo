@@ -8,6 +8,7 @@ class Ability
 
     if user.role? :vendor
       can :update, Shop
+      can :read, Shop
     end
 
     if user.role? :marvin

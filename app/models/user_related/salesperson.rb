@@ -3,7 +3,7 @@ class Salesperson < User
   has_one         :salesmanager, through: :supervision
   has_many        :accountabilities
   has_many        :shops, through: :accountabilities
-  has_many        :menus, through: shops
+  has_many        :menus, through: :shops
 
   validate        :has_manager?
 

@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to t("brand.company_name"), root_path, class: "brand" %>
+      <%= link_to t("brand.company_name"), root_path_for_shopper, class: "brand" %>
       <div class="nav-collapse">
         <ul class="nav">
           <li class="divider-vertical"></li>
@@ -16,7 +16,7 @@
         <% else %>
           <li><%= render "layouts/navbar/language_links" %></li>
           <li class="divider-vertical"></li>
-          <li><%= link_to t("navbar.sign_in"), new_user_session_path %></li>
+          <li><%= link_to t("navbar.sign_in"), login_path %></li>
         <% end %>
 
       </div>

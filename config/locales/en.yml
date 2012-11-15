@@ -109,11 +109,11 @@ en:
         is_active: "Activation status must be set"
   simple_form:
     labels:
-      user:
+      customer:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirm password"
-        wants_to_be_vendor: "Register as vendor"
+        default_locale_id: "View website in"
       shop:
         tag_list: 'Tags'
         thumbnail: "Thumbnail"
@@ -148,7 +148,6 @@ en:
           directions: "Directions"
     hints:
       user:
-        wants_to_be_vendor: "Click this box if you want to manage your own shop. We will contact you to activate your account."
       shop:
         tag_list: "For example: chinese, pizza, hotel, etc."
         contact:
