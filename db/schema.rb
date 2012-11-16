@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115140832) do
+ActiveRecord::Schema.define(:version => 20121116171951) do
 
   create_table "contacts", :force => true do |t|
     t.string   "type"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(:version => 20121115140832) do
   end
 
   add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
+
+  create_table "items", :force => true do |t|
+    t.integer  "menu_section_id"
+    t.boolean  "is_active"
+    t.float    "price"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "items", ["menu_section_id"], :name => "index_items_on_menu_section_id"
 
   create_table "locales", :force => true do |t|
     t.string   "language"

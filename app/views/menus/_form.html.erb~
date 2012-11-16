@@ -1,4 +1,4 @@
-<%= simple_form_for([@shop, @menu]) do |f| %>
+<%= simple_nested_form_for([@shop, @menu]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

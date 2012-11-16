@@ -7,7 +7,6 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @shops }
     end
   end
 
@@ -20,7 +19,6 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @shop }
     end
   end
 
@@ -32,7 +30,6 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @shop }
     end
   end
 
@@ -50,10 +47,8 @@ class ShopsController < ApplicationController
     respond_to do |format|
       if @shop.save
         format.html { redirect_to new_shop_menu_path(@shop), notice: t("shops.create.notice_success") }
-        format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,10 +62,8 @@ class ShopsController < ApplicationController
     respond_to do |format|
       if @shop.update_attributes(params[:shop])
         format.html { redirect_to @shop, notice: t("shops.update.notice_success") }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -83,7 +76,6 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to shops_url }
-      format.json { head :no_content }
     end
   end
 

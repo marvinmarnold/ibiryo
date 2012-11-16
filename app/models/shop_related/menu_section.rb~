@@ -1,0 +1,4 @@
+class MenuSection < Describable
+  belongs_to :menu
+  attr_accessible :is_active
+end

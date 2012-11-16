@@ -7,7 +7,6 @@ class MarketingStrategiesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @marketing_strategies }
     end
   end
 
@@ -18,7 +17,6 @@ class MarketingStrategiesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @marketing_strategy }
     end
   end
 
@@ -35,10 +33,8 @@ class MarketingStrategiesController < ApplicationController
     respond_to do |format|
       if @marketing_strategy.save
         format.html { redirect_to marketing_strategies_path, notice: t("marketing_strategies.create.notice_success") }
-        format.json { render json: @marketing_strategy, status: :created, location: @marketing_strategy }
       else
         format.html { render action: "new" }
-        format.json { render json: @marketing_strategy.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,10 +47,8 @@ class MarketingStrategiesController < ApplicationController
     respond_to do |format|
       if @marketing_strategy.update_attributes(params[:marketing_strategy])
         format.html { redirect_to marketing_strategies_path, notice: t("marketing_strategies.update.notice_success") }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @marketing_strategy.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,7 +61,6 @@ class MarketingStrategiesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to marketing_strategies_url }
-      format.json { head :no_content }
     end
   end
 end

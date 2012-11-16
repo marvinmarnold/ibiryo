@@ -13,23 +13,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_parent_from_nested_route(parent_klass)
-    scoped_for_shopper(parent_klass)
-    klasses = ActiveModel::Naming.plural(klass)
-    @shop = eval("@#{klasses}").find(params["#{parent_klass.downcase}_id"])
+  def set_parent_from_nested_route(parent)
+    scoped_for_shopper(parent)
+    parent_klasses = ActiveModel::Naming.plural(parent)
+    parent_klass = ActiveModel::Naming.singular(parent)
+    instance_variable_set "@#{parent_klass}", eval("@#{parent_klasses}").find(params["#{parent_klass}_id"])
   end
 
 private
   def setup
-    resignin_customer
     set_locale
     set_shopper
     set_browsable_shops
-  end
-
-  #TODO: This should be done by overriding Devise registration controller
-  def resignin_customer
-    sign_in :user, current_customer if customer_signed_in?
   end
 
   def set_shopper
@@ -51,7 +46,7 @@ private
   end
 
   def set_browsable_shops
-    @browsable_shops = Shop.where(is_active: true)
+    @browsable_shops = Shop.where(is_active: true).paginate(:page => params[Shop.page_param], :per_page => 17)
   end
 
   def session_id

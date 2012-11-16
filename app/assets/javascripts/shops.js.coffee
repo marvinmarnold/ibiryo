@@ -10,3 +10,8 @@ jQuery ->
       @id.match /shop_ownerships_attributes_*/
     ).each (index) ->
       $(this).chosen()
+  $(document).click ->
+    $('select').filter(->
+      @id.match /shop_accountabilities_attributes_*/
+    ).each (index) ->
+      $(this).chosen()

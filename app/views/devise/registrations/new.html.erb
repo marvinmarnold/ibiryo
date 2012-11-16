@@ -1,25 +1,12 @@
 <h1><%= t "pages.index.title" %></h1>
 <p><%= t "pages.index.subtitle" %></p>
-<h3><%= t "pages.index.featured_vendors" %></h3>
-
 <% unless user_signed_in? %>
   <div class="well">
-  <h3><%= t "pages.index.sign_up" %></h3>
-    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
-                                  :html => {:class => "form-horizontal"}) do |f| %>
-      <%= f.error_notification %>
+    <h3><%= t "pages.index.sign_up" %></h3>
+    <%= render "devise/registrations/new_form" %>
 
-      <div class="form-inputs">
-        <%= f.input :email, :required => true, :autofocus => true %>
-        <%= f.input :password, :required => true %>
-        <%= f.input :password_confirmation, :required => true %>
-        <%= f.input :default_locale_id, as: :select, collection: Locale.all.map { |l| [l.language, l.id]} %>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up", class: "btn btn-info" %>
-      </div>
-    <% end %>
   </div>
-  <%= render "devise/shared/links" %>
+
 <% end %>
+<h3><%= t "pages.index.featured_vendors" %></h3>
+<%= render "shops/carousel", shops: MarketingStrategy.find(1).shops.where(is_active:true) %>

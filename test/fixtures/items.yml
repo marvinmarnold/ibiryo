@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  menu_section: 
+  is_active: false
+  price: 1.5
+
+two:
+  menu_section: 
+  is_active: false
+  price: 1.5

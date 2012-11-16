@@ -19,7 +19,7 @@ class Shop < Describable
                   :delivery_minimum,      :is_active,           :opens_friday_at,           :opens_monday_at,
                   :opens_saturday_at,     :opens_sunday_at,     :opens_thursday_at,         :opens_tuesday_at,
                   :opens_wednesday_at,    :thumbnail,           :tag_list,                  :banner_cache,
-                  :thumbnail_cache,       :contact_attributes,  :participations_attributes, :accountabilities_attributes
+                  :thumbnail_cache,       :contact_attributes,  :participations_attributes, :accountabilities_attributes,
                   :ownerships_attributes
 
   accepts_nested_attributes_for           :participations,      :contact,                   :ownerships,

@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .clickable-shop:hover {
-  background-color: #949293;
+  background-color: #B0B0B0;
   cursor: pointer;
+}
+
+.shop-sideview {
+  padding: 0 5px;
+  margin: 0;
 }

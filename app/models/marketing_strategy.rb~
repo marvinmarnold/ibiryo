@@ -1,4 +1,8 @@
 class MarketingStrategy < ActiveRecord::Base
+  has_many        :
+
   attr_accessible :name, :is_active
+
   validates :is_active, :inclusion => { in: [true, false]}
+
 end

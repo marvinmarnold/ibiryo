@@ -6,6 +6,7 @@ en:
     authorization_login_required: "Please login and try again"
     yes: "Yes"
     no: "No"
+    of_pages: "of"
   brand:
     title: "Company.com"
     company_name: "Company"
@@ -85,7 +86,7 @@ en:
       contact:
         title: "Contact information"
       errors:
-        atleast_one_accountable: "Aatleast one salesperson/salesmanager must be assigned"
+        atleast_one_accountable: "Atleast one salesperson/salesmanager must be assigned"
         atleast_one_owner: "Atleast one vendor must be assigned as owner"
   menus:
     create:
@@ -101,6 +102,30 @@ en:
         title: "Descriptions for this menu"
         title_each: "Menu description"
         remove_each: "Remove this description"
+  menu_sections:
+    new:
+      title: "Add new section to menu"
+    form:
+      descriptions:
+        title: "Descriptions for this section of the menu"
+        title_each: "Description of section"
+        remove_each: "Remove this description"
+    create:
+      notice_success: "Section successfully added to menu."
+    update:
+      notice_success: "Section successfully updated!"
+  items:
+    new:
+      title: "Add new section to item"
+    form:
+      descriptions:
+        title: "Descriptions for this item"
+        title_each: "Description for this item"
+        remove_each: "Remove this description"
+    create:
+      notice_success: "Item successfully added."
+    update:
+      notice_success: "Item successfully updated!"
   descriptions:
     form:
       errors:
