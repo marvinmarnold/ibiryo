@@ -1,0 +1,13 @@
+<h1><%= t "pages.index.title" %></h1>
+<p><%= t "pages.index.subtitle" %></p>
+<br/>
+
+<% unless user_signed_in? or on_root_page %>
+  <div class="well">
+    <h3><%= t "pages.index.sign_up" %></h3>
+    <%= render "devise/registrations/new_form" %>
+  </div>
+
+<% end %>
+<h3><%= t "pages.index.featured_vendors" %></h3>
+<%= render "shops/carousel", shops: MarketingStrategy.find(1).shops.where(is_active:true) %>

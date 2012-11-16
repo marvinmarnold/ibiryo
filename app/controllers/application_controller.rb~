@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 
 private
   def setup
+    redirect_to start_path unless user_signed_in?
     set_locale
     set_shopper
     set_browsable_shops

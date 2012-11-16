@@ -22,15 +22,11 @@ Ibiryo::Application.routes.draw do
   match 'help' => 'pages#help'
   match 'legal' => 'pages#legal'
 
-
-  devise_for :customers,  :only => :registrations, :skip_helpers => true do
+  devise_for :users do
+    get '/login' => "devise/sessions#new"
     get '/start' => "devise/registrations#new"
   end
 
-  devise_for :users do
-    get '/login' => "devise/sessions#new"
-  end
-
-  root to: redirect("/start")
+  root to: "pages#index"
 
 end

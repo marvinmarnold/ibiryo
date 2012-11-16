@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   attr_accessible :email,                     :password,    :password_confirmation, :remember_me,
                   :default_locale_id
 
-  validates       :default_locale_id, :type, presence: true
+  validates       :default_locale_id, presence: true
+
+  before_save     :set_to_customer
 
   ROLES = %w[marvin admin salesmanager salesperson vendor customer guest]
 
@@ -20,5 +22,11 @@ class User < ActiveRecord::Base
 
   def can_administrate?(shop)
     false
+  end
+
+private
+
+  def set_to_customer
+    self.type ||= "Customer"
   end
 end

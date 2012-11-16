@@ -15,4 +15,8 @@ class PagesController < ApplicationController
 
   def legal
   end
+
+  def index
+    redirect_to start_path unless user_signed_in?
+  end
 end
