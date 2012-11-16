@@ -81,7 +81,7 @@ def set_time(obj, atr)
 end
 
 def root
-  "app/assets/images/"
+  "#{RAILS_ROOT}/app/assets/images/"
 end
 
 def random_banner
