@@ -4,7 +4,14 @@
       <% carousel_class = "active item" %>
       <% shops.each do |featured_vendor| %>
         <div class="<%= carousel_class %>" id="<%= "featuredvendor-#{featured_vendor.id}" %>">
+<%
+=begin
+%>
           <%= image_tag featured_vendor.banner_url %>
+<%
+=end
+%>
+          <%= image_tag "banner#{rand(5)+1}.jpg" %>
           <div class="carousel-caption">
             <h4><%= featured_vendor.name %></h4>
             <p><%= featured_vendor.description %></p>

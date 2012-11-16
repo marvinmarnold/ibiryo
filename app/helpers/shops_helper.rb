@@ -1,4 +1,5 @@
 module ShopsHelper
+
   def stuck_class(stuck)
     base_class = "well shop-sideview"
     (stuck) ?  "#{base_class}" : "#{base_class} clickable-shop"
