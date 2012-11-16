@@ -6,7 +6,9 @@ en:
     authorization_login_required: "Please login and try again"
     yes: "Yes"
     no: "No"
-    of_pages: "of"
+    pagination:
+      of: "of"
+      page: "Page"
   brand:
     title: "Company.com"
     company_name: "Company"

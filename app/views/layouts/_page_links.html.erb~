@@ -4,7 +4,7 @@
                                         class: "btn btn-warning pull-left" %></div>
   <% end %>
   <div class="lead span6" style="text-align: center;">
-    <%= "#{t("navigation.page")} #{paginatable.current_page} #{t("general.of_pages")} #{paginatable.total_pages}" %>
+    <%= "#{t("general.pagination.page")} #{paginatable.current_page} #{t("general.pagination.of")} #{paginatable.total_pages}" %>
   </div>
   <% if paginatable.next_page %>
     <div class="span3"><%= link_to ">>", params.merge(page_param => paginatable.next_page ),
