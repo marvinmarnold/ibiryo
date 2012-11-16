@@ -28,6 +28,7 @@ end
 
 group :production do
   gem 'therubyracer'
+  gem 'faker'
 end
 
 gem "less-rails"
