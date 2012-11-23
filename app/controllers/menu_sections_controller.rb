@@ -79,6 +79,7 @@ class MenuSectionsController < ApplicationController
 private
   def set_menu_sections
     set_parent_from_nested_route(Menu)
+    set_stuck_shop(@menu.shop)
     @menu_sections = @menu.menu_sections
   end
 

@@ -4,7 +4,7 @@
 
 <% unless user_signed_in? or on_root_page %>
   <div class="well">
-    <h3><%= t "pages.index.sign_up" %></h3>
+
     <%= render "devise/registrations/new_form" %>
   </div>
 

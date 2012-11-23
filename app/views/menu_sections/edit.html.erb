@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @menu_section %> |
-<%= link_to 'Back', menu_sections_path %>
+<%= render 'shops_shared/button_to_shop', shop: @menu.shop %>

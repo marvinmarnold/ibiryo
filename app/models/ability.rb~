@@ -9,10 +9,24 @@ class Ability
     if user.role? :vendor
       can :update, Shop
       can :read, Shop
+      can :manage, Menu
+      can :manage, MenuSection
+      can :manage, Item
+      can :activate, :all
+      cannot :activate, Shop
     end
 
     if user.role? :salesmanager
       can :manage, Management
+      can :activate, :all
+    end
+
+    if user.role? :salesperson
+      can :activate, :all
+    end
+
+    if user.role? :admin
+      can :activate, :all
     end
 
     if user.role? :marvin

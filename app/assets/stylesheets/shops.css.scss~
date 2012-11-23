@@ -10,3 +10,7 @@
   padding: 0 5px;
   margin: 0;
 }
+
+.stuck-shop {
+  border: 4px solid #ccc;
+}

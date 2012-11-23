@@ -1,4 +1,4 @@
-<% if current_user.can_administrate?(obj) %>
+<% if can? :activate, obj %>
       <%= f.input :is_active, as: :radio_buttons, :required => true,
                   label: t("shops_shared.form.is_active.label"),
                   hint:  t("shops_shared.form.is_active.hint") %>

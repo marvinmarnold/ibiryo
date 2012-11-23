@@ -33,6 +33,7 @@ def init
   u.save!
 
   MarketingStrategy.create!(name: "Front page banner", is_active: true)
+  MarketingStrategy.create!(name: "Sells featured products", is_active: false)
 
   30.times do |i|
     u = Vendor.create(email: "vendor#{i}@gmail.com", password: "vendor#{i}", default_locale_id: default_locale.id)

@@ -3,4 +3,8 @@ class Vendor < User
   has_many        :shops, through: :ownerships
   has_many        :menus, through: :shops
   has_many        :menu_sections, through: :menus
+
+  def can_administrate?(obj)
+    (obj.instance_of?(Shop)) ? false : true
+  end
 end

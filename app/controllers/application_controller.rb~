@@ -22,7 +22,6 @@ class ApplicationController < ActionController::Base
 
 private
   def setup
-    redirect_to start_path unless user_signed_in?
     set_locale
     set_shopper
     set_browsable_shops
@@ -47,7 +46,8 @@ private
   end
 
   def set_browsable_shops
-    @browsable_shops = Shop.where(is_active: true).paginate(:page => params[Shop.page_param], :per_page => 17)
+    @browsable_shops = Shop.where(is_active: true)
+    @paginatable_shops = @browsable_shops.paginate(:page => params[Shop.page_param], :per_page => 17)
   end
 
   def session_id

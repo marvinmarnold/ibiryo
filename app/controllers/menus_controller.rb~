@@ -9,7 +9,6 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @menus }
     end
   end
 
@@ -20,7 +19,6 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @menu }
     end
   end
 
@@ -31,7 +29,6 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @menu }
     end
   end
 
@@ -48,10 +45,8 @@ class MenusController < ApplicationController
     respond_to do |format|
       if @menu.save
         format.html { redirect_to new_menu_menu_section_path(@menu), notice: t("menus.create.notice_success") }
-        format.json { render json: @menu, status: :created, location: @menu }
       else
         format.html { render action: "new" }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,10 +59,8 @@ class MenusController < ApplicationController
     respond_to do |format|
       if @menu.update_attributes(params[:menu])
         format.html { redirect_to @shop, notice: t("menus.update.notice_success") }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,7 +73,6 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to menus_url }
-      format.json { head :no_content }
     end
   end
 

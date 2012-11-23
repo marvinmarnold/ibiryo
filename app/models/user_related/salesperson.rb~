@@ -4,10 +4,11 @@ class Salesperson < User
   has_many        :accountabilities, foreign_key: :user_id
   has_many        :shops, through: :accountabilities
   has_many        :menus, through: :shops
+  has_many        :menu_sections, through: :menus
 
   validate        :has_manager?
 
-  def managing?(shop)
+  def can_administrate?(shop)
     shops.include?(shop)
   end
 

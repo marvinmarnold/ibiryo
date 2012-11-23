@@ -79,6 +79,7 @@ private
 
   def set_items
     set_parent_from_nested_route(MenuSection)
+    set_stuck_shop(@menu_section.menu.shop)
     @items = @menu_section.items
   end
 

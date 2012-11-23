@@ -2,9 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <% if can?(:activate, Shop) %>
+      <h2><%= "0. #{t("shops.form.management.title")}" %></h2>
+      <%= render 'shops_shared/is_active', obj: @shop, f: f %>
+    <% end %>
 
-    <h2><%= "0. #{t("shops.form.management.title")}" %></h2>
-    <%= render 'shops_shared/is_active', obj: @shop, f: f %>
     <% if can?(:manage, Management) %>
       <h3><%= t "shops.form.management.owners.title" %></h3>
       <%= render "layouts/custom_errors", errors: @shop.errors[:ownerships] %>

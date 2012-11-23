@@ -5,3 +5,9 @@
     <%= link_to 'Create new shop', new_shop_path, class: "btn btn-info" %>
   </div>
 <% end %>
+
+<% @shops.each do |shop| %>
+  <%= render 'shops/vendor_preview', shop: shop %>
+<% end %>
+
+<%= render "layouts/page_links", paginatable: @shops, page_param: Shop.vendor_page_param %>

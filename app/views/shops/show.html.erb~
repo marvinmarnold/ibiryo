@@ -1,120 +1,50 @@
-<p id="notice"><%= notice %></p>
+<% if can?(:update, Shop) %>
+  <%= link_to url_for(toggle_as_user), class: "btn btn-mini btn-info" do %>
+    <%= content_tag :i, '', :class => 'icon-search' %> <%= t("shops.show.switch_perspective") %>
+  <% end -%>
+  <%= render "layouts/admin_language" %>
+<% end %>
 
-<p>
-  <b>User:</b>
-  <%= @shop.user %>
-</p>
+<div class="pager">
+  <h1><%= @shop.name %></h1>
+  <h5>
+    <%= @shop.contact.street %>, <%= "#{@shop.contact.room}," if @shop.contact.room.present? %>
+    <%= @shop.contact.city %>
+  </h5>
+  <h5><%= "#{t("shops.show.information.telephone")}: #{@shop.contact.phones}" %></h5>
+  <% if can?(:update, Shop) and not pretending_to_be_customer? %>
+    <%= link_to t("shops.show.edit"), edit_shop_path(@shop), class: "btn btn-link" %> or
+    <%= link_to t("shops.show.menus.new"), new_shop_menu_path(@shop), class: "btn btn-link" %>
+    <br/><br/>
+  <% end %>
+  <div class="clearfix"></div>
+  <%= image_tag @shop.banner.usable.url, class: "img-rounded" %>
+</div>
 
-<p>
-  <b>Thumbnail:</b>
-  <%= @shop.thumbnail %>
-</p>
-
-<p>
-  <b>Banner:</b>
-  <%= @shop.banner %>
-</p>
-
-<p>
-  <b>Currency:</b>
-  <%= @shop.currency %>
-</p>
-
-<p>
-  <b>Delivery minimum:</b>
-  <%= @shop.delivery_minimum %>
-</p>
-
-<p>
-  <b>Delivery fee:</b>
-  <%= @shop.delivery_fee %>
-</p>
-
-<p>
-  <b>Opens sunday at:</b>
-  <%= @shop.opens_sunday_at %>
-</p>
-
-<p>
-  <b>Closes sunday at:</b>
-  <%= @shop.closes_sunday_at %>
-</p>
-
-<p>
-  <b>Checkin at:</b>
-  <%= @shop.checkin_at %>
-</p>
-
-<p>
-  <b>Checkout at:</b>
-  <%= @shop.checkout_at %>
-</p>
-
-<p>
-  <b>Is active:</b>
-  <%= @shop.is_active %>
-</p>
-
-<p>
-  <b>Opens monday at:</b>
-  <%= @shop.opens_monday_at %>
-</p>
-
-<p>
-  <b>Closes monday at:</b>
-  <%= @shop.closes_monday_at %>
-</p>
-
-<p>
-  <b>Opens tuesday at:</b>
-  <%= @shop.opens_tuesday_at %>
-</p>
-
-<p>
-  <b>Closes tuesday at:</b>
-  <%= @shop.closes_tuesday_at %>
-</p>
-
-<p>
-  <b>Opens wednesday at:</b>
-  <%= @shop.opens_wednesday_at %>
-</p>
-
-<p>
-  <b>Closes wednesday at:</b>
-  <%= @shop.closes_wednesday_at %>
-</p>
-
-<p>
-  <b>Opens thursday at:</b>
-  <%= @shop.opens_thursday_at %>
-</p>
-
-<p>
-  <b>Closes thursday at:</b>
-  <%= @shop.closes_thursday_at %>
-</p>
-
-<p>
-  <b>Opens friday at:</b>
-  <%= @shop.opens_friday_at %>
-</p>
-
-<p>
-  <b>Closes friday at:</b>
-  <%= @shop.closes_friday_at %>
-</p>
-
-<p>
-  <b>Opens saturday at:</b>
-  <%= @shop.opens_saturday_at %>
-</p>
-
-<p>
-  <b>Closes saturday at:</b>
-  <%= @shop.closes_saturday_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+<h4><%= t("shops.show.menus.title") %></h4>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <% activated = false %>
+    <% @shop.menus.where(is_active: true).each do |menu| %>
+      <li class="<%= append_word("", !activated, "active") %>">
+        <%= link_to menu.name, "\#menu#{menu.id}", data: {toggle: "tab"} %>
+        <% activated = true %>
+      </li>
+    <% end %>
+    <li class="<%= append_word("", !activated, "active") %>">
+      <%= link_to t("shops.show.information.title"), "\#information", data: {toggle: "tab"} %>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <% activated = false %>
+    <% @shop.menus.where(is_active: true).each do |menu| %>
+      <div class="<%= append_word("tab-pane", !activated, "active") %>" id="<%= "menu#{menu.id}" %>">
+        <%= render "menus/show", menu: menu %>
+        <% activated = true %>
+      </div>
+    <% end %>
+    <div class="<%= append_word("tab-pane", !activated, "active") %>" id="information">
+      <%= render "shops/info" %>
+    </div>
+  </div>
+</div>

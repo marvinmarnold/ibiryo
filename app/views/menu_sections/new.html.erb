@@ -1,3 +1,5 @@
-<h1><%= t("menu_sections.new.title") %></h1>
+<h1><%= t("menu_sections.new.title", menu: @menu.name) %></h1>
 
 <%= render 'form' %>
+
+<%= render 'shops_shared/button_to_shop', shop: @menu.shop %>

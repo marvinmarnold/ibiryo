@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
     instance_variable_set "@#{parent_klass}", eval("@#{parent_klasses}").find(params["#{parent_klass}_id"])
   end
 
+  def set_stuck_shop(shop)
+    @stuck_shop = shop
+    @paginatable_shops = @paginatable_shops.where(Shop.arel_table[:id].not_eq(shop.id))
+  end
+
 private
   def setup
     set_locale
@@ -46,7 +51,8 @@ private
   end
 
   def set_browsable_shops
-    @browsable_shops = Shop.where(is_active: true).paginate(:page => params[Shop.page_param], :per_page => 17)
+    @browsable_shops = Shop.where(is_active: true)
+    @paginatable_shops = @browsable_shops.paginate(:page => params[Shop.page_param], :per_page => 17)
   end
 
   def session_id

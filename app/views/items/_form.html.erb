@@ -1,10 +1,20 @@
-<%= simple_form_for(@item) do |f| %>
+<%= simple_nested_form_for([@menu_section, @item]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :menu_section %>
-    <%= f.input :is_active %>
+    <%= render 'shops_shared/is_active', obj: @item, f: f %>
     <%= f.input :price %>
+    <h3><%= t("items.form.descriptions.title") %></h3>
+    <%= render "layouts/custom_errors", errors: @item.errors[:descriptions] %>
+    <%= f.simple_fields_for :descriptions do |description_form| %>
+      <%= render "descriptions/form", f: description_form,
+                                      title: t("items.form.descriptions.title_each"),
+                                      remove: t("items.form.descriptions.remove_each"),
+                                      skip_body: false %>
+    <% end %>
+    <p>
+      <%= f.link_to_add t("items.form.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-info' %>
+    </p>
   </div>
 
   <div class="form-actions">

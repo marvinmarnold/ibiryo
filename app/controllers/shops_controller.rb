@@ -1,9 +1,11 @@
 class ShopsController < ApplicationController
   load_and_authorize_resource
   before_filter :set_shops
+
   # GET /shops
   # GET /shops.json
   def index
+    @shops = @shops.paginate(:page => params[Shop.vendor_page_param], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,8 +16,7 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     @shop = @browsable_shops.find(params[:id])
-    @stuck_shop = @shop
-    @browsable_shops = @browsable_shops.where(Shop.arel_table[:id].not_eq(@shop.id))
+    set_stuck_shop(@shop)
 
     respond_to do |format|
       format.html # show.html.erb

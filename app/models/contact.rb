@@ -7,4 +7,9 @@ class Contact < ActiveRecord::Base
   validates :street, :district, :city, presence: true
   validates :province, :primary_phone, presence: true
   validates :primary_phone, :secondary_phone, :format => {with: /(^$|^\d{9})/}
+
+  def phones
+    addition = (secondary_phone.blank?) ? "" : ", #{secondary_phone}"
+    "#{primary_phone}#{addition}"
+  end
 end

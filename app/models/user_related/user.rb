@@ -20,9 +20,6 @@ class User < ActiveRecord::Base
     ROLES.index(base_role.to_s.downcase) >= ROLES.index(self.type.to_s.downcase)
   end
 
-  def can_administrate?(shop)
-    false
-  end
 
 private
 

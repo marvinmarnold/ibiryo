@@ -1,8 +1,8 @@
 module ShopsHelper
-
+#another change
   def stuck_class(stuck)
     base_class = "well shop-sideview"
-    (stuck) ?  "#{base_class}" : "#{base_class} clickable-shop"
+    (stuck) ?  "#{base_class} stuck-shop" : "#{base_class} clickable-shop"
   end
 
   def shop_time(shop)
@@ -16,13 +16,24 @@ module ShopsHelper
     end
   end
 
+  def toggle_as_user
+    (params[:as_customer] == "true") ? {as_customer: "false"} : {as_customer: "true"}
+  end
+
   def time_friendly(time)
     time.strftime("%H:%M")
   end
 
   def delivery_fee(shop)
-    (shop.delivery_fee > 0) ? "#{t("shops.show_sideview.restaurant.delivery_fee")}: #{number_to_shop_currency(shop.delivery_fee, shop)}" :
-                              t("shop.show_sideview.restaurant.free_delivery")
+    (shop.delivery_fee > 0) ?
+      "#{t("shops.show_sideview.restaurant.delivery_fee")}: #{number_to_shop_currency(shop.delivery_fee, shop)}" :
+      t("shops.show_sideview.restaurant.free_delivery")
+  end
+
+  def delivery_minimum(shop)
+    (shop.delivery_minimum > 0) ?
+    "#{t("shops.show.information.restaurant.delivery_minimum.title")}: #{number_to_shop_currency(shop.delivery_minimum, shop)}" :
+     t("shops.show.information.restaurant.no_minimum")
   end
 
   def number_to_shop_currency(number, shop)
@@ -32,4 +43,9 @@ module ShopsHelper
   def locale_for_currency(currency)
 
   end
+
+  def today
+    Time.now.strftime('%A').downcase
+  end
+
 end

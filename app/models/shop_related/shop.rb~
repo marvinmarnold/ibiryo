@@ -33,8 +33,8 @@ class Shop < Describable
                   presence: true
   validates       :delivery_fee,          :delivery_minimum,
                   :numericality => { greater_than_or_equal_to: 0 }
-  #validate        :one_owner
-  #validate        :one_accountable
+  validate        :one_owner
+  validate        :one_accountable
   #def to_param
   #  "#{id} #{name}".parameterize
   #end
@@ -68,7 +68,13 @@ class Shop < Describable
   def self.page_param
     "spage"
   end
+
+  def self.vendor_page_param
+    "vpage"
+  end
+
 private
+
   def one_owner
     errors[:ownerships] << I18n.t('shops.form.errors.atleast_one_owner') if ownerships.blank?
   end

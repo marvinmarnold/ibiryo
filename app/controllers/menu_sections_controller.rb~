@@ -43,7 +43,7 @@ class MenuSectionsController < ApplicationController
 
     respond_to do |format|
       if @menu_section.save
-        format.html { redirect_to new_menu_section_section_item_path(@menu.shop),
+        format.html { redirect_to new_menu_section_item_path(@menu_section),
                                   notice: t("menu_sections.create.notice_success") }
       else
         format.html { render action: "new" }

@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to new_menu_section_item_path(@menu_section), notice: t("items.create.notice_success") }
       else
         format.html { render action: "new" }
       end
@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @menu_section.menu.shop, notice: t("menu_sections.update.notice_success") }
       else
         format.html { render action: "edit" }
       end

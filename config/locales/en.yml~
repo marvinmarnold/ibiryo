@@ -9,6 +9,17 @@ en:
     pagination:
       of: "of"
       page: "Page"
+    admin_locale:
+      title: "You are currently viewing the website in %{language}"
+      switch_to: "Switch to"
+    days_of_week:
+      monday: "Monday"
+      tuesday: "Tuesday"
+      wednesday: "Wednesday"
+      thursday: "Thursday"
+      friday: "Friday"
+      saturday: "Saturday"
+      sunday: "Sunday"
   brand:
     title: "Company.com"
     company_name: "Company"
@@ -47,14 +58,35 @@ en:
         title: "Hotel details"
     index:
       title: "Your shops"
+      view: "Visit/edit shop"
     edit:
-      title: "Editing this shop"
+      title: "Editing shop %{shop}"
     new:
       title: "Create new shop"
     create:
       notice_success: 'Shop was successfully created.'
     update:
       notice_success: 'Shop was successfully updated.'
+    show:
+      is_active:
+        yes: "Shop is active"
+        no: "Shop is not active"
+      switch_perspective: "Switch perspective"
+      edit: "Edit shop"
+      menus:
+        title: "Browse the menus for this shop below."
+        new: "Add a menu"
+      information:
+        title: "Shop info."
+        telephone: "Tel"
+        contact:
+          title: "Contact information"
+        restaurant:
+          title: "Restaurant information"
+          delivery_minimum:
+            title: "Delivery minimum"
+          hours:
+            title: "Hours of operation"
     form:
       management:
         title: "Account management"
@@ -98,7 +130,7 @@ en:
     new:
       title: "Create new menu"
     edit:
-      title: "Edit this menu"
+      title: "Edit this menu (%(menu))"
     form:
       descriptions:
         title: "Descriptions for this menu"
@@ -106,7 +138,7 @@ en:
         remove_each: "Remove this description"
   menu_sections:
     new:
-      title: "Add new section to menu"
+      title: "Add new section to %{menu}"
     form:
       descriptions:
         title: "Descriptions for this section of the menu"
@@ -118,12 +150,13 @@ en:
       notice_success: "Section successfully updated!"
   items:
     new:
-      title: "Add new section to item"
+      title: "Add new item to %{section}"
     form:
       descriptions:
         title: "Descriptions for this item"
         title_each: "Description for this item"
         remove_each: "Remove this description"
+        add: "Add description"
     create:
       notice_success: "Item successfully added."
     update:
@@ -151,6 +184,7 @@ en:
         hint: "It will become immediately visible to the public."
       errors:
         is_active: "Activation status must be set"
+    button_to_shop: "I\'m done, preview shop"
   simple_form:
     labels:
       customer:

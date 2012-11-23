@@ -1,3 +1,3 @@
-<h1><%= t("shops.edit.title") %></h1>
+<h1><%= t("shops.edit.title", shop: @shop.name)%></h1>
 
 <%= render 'form' %>

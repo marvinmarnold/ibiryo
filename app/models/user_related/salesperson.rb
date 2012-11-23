@@ -8,9 +8,6 @@ class Salesperson < User
 
   validate        :has_manager?
 
-  def managing?(shop)
-    shops.include?(shop)
-  end
 
 private
 
