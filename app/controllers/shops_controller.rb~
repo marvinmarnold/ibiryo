@@ -15,9 +15,9 @@ class ShopsController < ApplicationController
   # GET /shops/1
   # GET /shops/1.json
   def show
+    authorize! :show, Shop
     @shop = @browsable_shops.find(params[:id])
-    @stuck_shop = @shop
-    @paginatable_shops = @paginatable_shops.where(Shop.arel_table[:id].not_eq(@shop.id))
+    set_stuck_shop(@shop)
 
     respond_to do |format|
       format.html # show.html.erb

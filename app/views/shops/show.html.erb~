@@ -12,7 +12,7 @@
     <%= @shop.contact.city %>
   </h5>
   <h5><%= "#{t("shops.show.information.telephone")}: #{@shop.contact.phones}" %></h5>
-  <% if can?(:update, Shop) and not pretending_to_be_customer? %>
+  <% if can_and_want_see_everything? %>
     <%= link_to t("shops.show.edit"), edit_shop_path(@shop), class: "btn btn-link" %> or
     <%= link_to t("shops.show.menus.new"), new_shop_menu_path(@shop), class: "btn btn-link" %>
     <br/><br/>
@@ -25,7 +25,7 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <% activated = false %>
-    <% @shop.menus.where(is_active: true).each do |menu| %>
+    <% menus.each do |menu| %>
       <li class="<%= append_word("", !activated, "active") %>">
         <%= link_to menu.name, "\#menu#{menu.id}", data: {toggle: "tab"} %>
         <% activated = true %>
@@ -37,7 +37,7 @@
   </ul>
   <div class="tab-content">
     <% activated = false %>
-    <% @shop.menus.where(is_active: true).each do |menu| %>
+    <% menus.each do |menu| %>
       <div class="<%= append_word("tab-pane", !activated, "active") %>" id="<%= "menu#{menu.id}" %>">
         <%= render "menus/show", menu: menu %>
         <% activated = true %>

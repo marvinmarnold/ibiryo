@@ -69,5 +69,10 @@ module Ibiryo
     config.action_mailer.default_url_options = {host: CONFIG["host"]}
     config.assets.initialize_on_precompile = false
 
+    CURRENCIES_TO_LOCALES = {}
+    CONFIG["i18n"]["currencies"].each do |currency|
+      CURRENCIES_TO_LOCALES[currency[0]["abbr"]] = currency[0]["locale_abbr"]
+    end
+
   end
 end

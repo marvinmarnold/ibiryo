@@ -123,6 +123,9 @@ en:
         atleast_one_accountable: "Atleast one salesperson/salesmanager must be assigned"
         atleast_one_owner: "Atleast one vendor must be assigned as owner"
   menus:
+    show:
+      edit: "Edit this menu"
+      add_section: "Add section to menu"
     create:
       notice_success: "Menu was successfully created"
     update:
@@ -137,6 +140,9 @@ en:
         title_each: "Menu description"
         remove_each: "Remove this description"
   menu_sections:
+    show:
+      edit: "Edit %{name}"
+      add_section: "Add section to %{menu}"
     new:
       title: "Add new section to %{menu}"
     form:

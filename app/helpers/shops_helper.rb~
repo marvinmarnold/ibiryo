@@ -37,15 +37,24 @@ module ShopsHelper
   end
 
   def number_to_shop_currency(number, shop)
-    "#{number_to_currency(number, locale: locale_for_currency(shop.currency))}"
+    "#{number_to_currency(number, locale: shop.currency.locale_abbr)}"
   end
 
-  def locale_for_currency(currency)
-
-  end
 
   def today
     Time.now.strftime('%A').downcase
+  end
+
+  def menus
+    (can_and_want_see_everything?) ? @shop.menus : @shop.menus.where(is_active: true)
+  end
+
+  def menu_sections(menu)
+    (can_and_want_see_everything?) ? menu.menu_sections : menu.menu_sections.where(is_active: true)
+  end
+
+  def items(menu_section)
+    (can_and_want_see_everything?) ? menu_section.items : menu_section.items.where(is_active: true)
   end
 
 end

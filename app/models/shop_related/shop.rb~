@@ -24,7 +24,6 @@ class Shop < Describable
 
   accepts_nested_attributes_for           :participations,      :contact,                   :ownerships,
                                           :accountabilities
-
   validates       :banner,                :closes_friday_at,    :closes_monday_at,          :closes_saturday_at,
                   :closes_sunday_at,      :closes_thursday_at,  :closes_tuesday_at,         :closes_wednesday_at,
                   :currency_id,           :delivery_fee,        :delivery_minimum,          :opens_friday_at,
@@ -33,7 +32,7 @@ class Shop < Describable
                   presence: true
   validates       :delivery_fee,          :delivery_minimum,
                   :numericality => { greater_than_or_equal_to: 0 }
-  validate        :one_owner
+  #validate        :one_owner
   validate        :one_accountable
   #def to_param
   #  "#{id} #{name}".parameterize

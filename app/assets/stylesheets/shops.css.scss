@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .clickable-shop:hover {
-  background-color: #B0B0B0;
+  background-color: $main-color-highlight;
   cursor: pointer;
 }
 
@@ -12,5 +12,5 @@
 }
 
 .stuck-shop {
-  border: 5px solid #ccc;
+  background-color: $main-color-highlight;
 }

@@ -22,9 +22,9 @@ def init
                           default_locale_id: default_locale.id)
   m.save!
 
-  u = Salesperson.new(email: "salesperson@gmail.com", password: "salesperson", default_locale_id: default_locale.id)
-  u.build_supervision(salesmanager_id: m.id)
-  u.save!
+  s = Salesperson.new(email: "salesperson@gmail.com", password: "salesperson", default_locale_id: default_locale.id)
+  s.build_supervision(salesmanager_id: m.id)
+  s.save!
 
   u = Customer.create!(email: "customer@gmail.com", password: "customer", default_locale_id: default_locale.id)
   u.save!
@@ -38,7 +38,8 @@ def init
   30.times do |i|
     u = Vendor.create(email: "vendor#{i}@gmail.com", password: "vendor#{i}", default_locale_id: default_locale.id)
     (rand(2)+1).times do
-      create_shop(u)
+      shop = create_shop(u)
+      shop.accountabilities.build(user_id: s.id)
     end
     u.save!
   end
@@ -57,6 +58,8 @@ def create_shop(user)
   add_contact(shop)
   add_descriptions(shop)
   shop.participations.build(marketing_strategy_id: 1) if rand > 0.8
+  add_menus(shop)
+  return shop
 end
 
 def add_descriptions(obj)
@@ -91,6 +94,29 @@ end
 
 def random_thumbnail
   "#{root}logo#{rand(14)+1}.jpg"
+end
+
+def add_menus(shop)
+  (rand(3)+1).times do
+    menu = shop.menus.build(is_active: true)
+    add_descriptions(menu)
+    add_menu_sections(menu)
+  end
+end
+
+def add_menu_sections(menu)
+  (rand(7)+1).times do
+    section = menu.menu_sections.build(is_active: true)
+    add_descriptions(section)
+    add_items(section)
+  end
+end
+
+def add_items(section, can_have_options = false)
+  (rand(20)+1).times do
+    item = section.items.build(price: rand(2000) + 1, is_active: true)
+    add_descriptions(item)
+  end
 end
 
 init
