@@ -1,0 +1,37 @@
+<%= simple_form_for(@cart) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :shop %>
+    <%= f.association :user %>
+    <%= f.input :special_instructins %>
+    <%= f.input :currency_at_checkout %>
+    <%= f.input :shop_name_at_checkout %>
+    <%= f.input :shipping_fee %>
+    <%= f.input :tax %>
+    <%= f.input :service_fee %>
+    <%= f.input :order_submitted_at %>
+    <%= f.input :shop_notified_at %>
+    <%= f.input :shop_acknowledged_at %>
+    <%= f.input :payment_settled_at %>
+    <%= f.input :shipped_street %>
+    <%= f.input :shipped_room %>
+    <%= f.input :shipped_province %>
+    <%= f.input :shipped_city %>
+    <%= f.input :shipped_primary_phone %>
+    <%= f.input :shipped_secondary_phone %>
+    <%= f.input :shipped_directions %>
+    <%= f.input :billed_method %>
+    <%= f.input :billed_card_last_four %>
+    <%= f.input :billed_card_expiration %>
+    <%= f.input :billed_card_type %>
+    <%= f.input :billed_street %>
+    <%= f.input :billed_room %>
+    <%= f.input :billed_province %>
+    <%= f.input :billed_city %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

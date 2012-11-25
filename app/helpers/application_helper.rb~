@@ -9,7 +9,6 @@ module ApplicationHelper
       Locale.find_by_abbr(I18n.locale)
   end
 
-
   def pretending_to_be_customer?
     params[:as_customer].present? and params[:as_customer] == "true"
   end

@@ -1,0 +1,4 @@
+<h5><%= contact.street %></h5>
+<h5><%= contact.room %></h5>
+<h5><%= "#{contact.province}, #{contact.district}, #{contact.city}" %></h5>
+<h5><%= "#{t("shops.show.information.telephone")}: #{contact.phones}" %></h5>

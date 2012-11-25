@@ -46,6 +46,11 @@ en:
   feedbacks:
     new:
       title: "Contact us"
+  line_items:
+    create:
+      notice_success: "Item added to cart."
+    edit:
+      notice_success: "Item successfully edited."
   shops:
     show_sideview:
       restaurant:

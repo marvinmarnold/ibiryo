@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shop: 
+  user: 
+  special_instructins: MyText
+  currency_at_checkout: MyString
+  shop_name_at_checkout: MyString
+  shipping_fee: 1.5
+  tax: 1.5
+  service_fee: 1.5
+  order_submitted_at: 2012-11-24 23:01:34
+  shop_notified_at: 2012-11-24 23:01:34
+  shop_acknowledged_at: 2012-11-24 23:01:34
+  payment_settled_at: 2012-11-24 23:01:34
+  shipped_street: MyString
+  shipped_room: MyString
+  shipped_province: MyString
+  shipped_city: MyString
+  shipped_primary_phone: MyString
+  shipped_secondary_phone: MyString
+  shipped_directions: MyText
+  billed_method: MyString
+  billed_card_last_four: MyString
+  billed_card_expiration: MyString
+  billed_card_type: MyString
+  billed_street: MyString
+  billed_room: MyString
+  billed_province: MyString
+  billed_city: MyString
+
+two:
+  shop: 
+  user: 
+  special_instructins: MyText
+  currency_at_checkout: MyString
+  shop_name_at_checkout: MyString
+  shipping_fee: 1.5
+  tax: 1.5
+  service_fee: 1.5
+  order_submitted_at: 2012-11-24 23:01:34
+  shop_notified_at: 2012-11-24 23:01:34
+  shop_acknowledged_at: 2012-11-24 23:01:34
+  payment_settled_at: 2012-11-24 23:01:34
+  shipped_street: MyString
+  shipped_room: MyString
+  shipped_province: MyString
+  shipped_city: MyString
+  shipped_primary_phone: MyString
+  shipped_secondary_phone: MyString
+  shipped_directions: MyText
+  billed_method: MyString
+  billed_card_last_four: MyString
+  billed_card_expiration: MyString
+  billed_card_type: MyString
+  billed_street: MyString
+  billed_room: MyString
+  billed_province: MyString
+  billed_city: MyString

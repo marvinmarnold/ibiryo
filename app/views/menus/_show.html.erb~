@@ -1,0 +1,14 @@
+<% unless menu.description.blank? %>
+  <h5><%= menu.description %></h5>
+<% end %>
+
+<% if can_and_want_see_everything? %>
+  <div class="row-fluid pager">
+    <%= link_to t("menus.show.edit"), edit_shop_menu_path(@shop, menu), class: "btn btn-link" %> or
+    <%= link_to t("menus.show.add_section"), new_menu_menu_section_path(menu), class: "btn btn-link" %>
+  </div>
+<% end %>
+
+<% menu_sections(menu).each do |section| %>
+  <%= render "menu_sections/show", menu_section: section %>
+<% end %>

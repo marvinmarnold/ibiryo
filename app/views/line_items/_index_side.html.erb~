@@ -1,0 +1,7 @@
+<span class="pull-left" style="width: 30px; text-align: center;">Qty</span>
+<span class="pull-left" style="padding-left: 15px;">Item</span>
+<span class="pull-right" style="text-align: right; padding-right: 15px;">Price</span>
+<div class="clearfix"></div>
+<% line_items.each do |line| %>
+  <%= render "line_items/show_side", line_item: line %>
+<% end %>

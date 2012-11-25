@@ -71,7 +71,7 @@ def add_descriptions(obj)
 end
 
 def add_contact(obj)
-  obj.build_contact(street: "938 Julius Nyerere", province: "Maputo", district: "Maputo",
+  obj.build_contact(street: "938 Julius Nyerere", province: "Maputo",
                     city: "Maputo", primary_phone: "825077787")
 end
 

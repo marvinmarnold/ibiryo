@@ -6,6 +6,7 @@ class Ability
     user ||= Guest.new
     can :create, Feedback
     can :show, Shop
+    can :manage, LineItem
 
     if user.role? :vendor
       can :update, Shop

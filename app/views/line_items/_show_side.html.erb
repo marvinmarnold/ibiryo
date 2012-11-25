@@ -1,0 +1,6 @@
+<div class="alert alert-info line_item-side">
+  <span class="pull-left" style="width: 20px; text-align: center;"><%= line_item.quantity %></span>
+  <span class="pull-left" style="padding-left: 15px;"><%= truncate(line_item.item.name, length: 17) %></span>
+  <span class="pull-right" style="text-align: right;"><%= number_to_shop_currency(line_item.subtotal, line_item.cart.shop) %></span>
+  <div class="clearfix"></div>
+</div>

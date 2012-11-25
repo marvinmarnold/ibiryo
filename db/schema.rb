@@ -11,7 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116171951) do
+ActiveRecord::Schema.define(:version => 20121125161024) do
+
+  create_table "carts", :force => true do |t|
+    t.integer  "shop_id"
+    t.integer  "user_id"
+    t.text     "special_instructins"
+    t.string   "currency_at_checkout"
+    t.string   "shop_name_at_checkout"
+    t.float    "shipping_fee"
+    t.float    "tax"
+    t.float    "service_fee"
+    t.datetime "order_submitted_at"
+    t.datetime "shop_notified_at"
+    t.datetime "shop_acknowledged_at"
+    t.datetime "payment_settled_at"
+    t.string   "shipped_street"
+    t.string   "shipped_room"
+    t.string   "shipped_province"
+    t.string   "shipped_city"
+    t.string   "shipped_primary_phone"
+    t.string   "shipped_secondary_phone"
+    t.text     "shipped_directions"
+    t.string   "billed_method"
+    t.string   "billed_card_last_four"
+    t.string   "billed_card_expiration"
+    t.string   "billed_card_type"
+    t.string   "billed_street"
+    t.string   "billed_room"
+    t.string   "billed_province"
+    t.string   "billed_city"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "carts", ["shop_id"], :name => "index_carts_on_shop_id"
+  add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "type"
@@ -74,6 +109,22 @@ ActiveRecord::Schema.define(:version => 20121116171951) do
   end
 
   add_index "items", ["menu_section_id"], :name => "index_items_on_menu_section_id"
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "cart_id"
+    t.integer  "item_id"
+    t.text     "special_instructions"
+    t.integer  "quantity"
+    t.float    "unit_price_at_checkout"
+    t.string   "name_at_checkout"
+    t.text     "description_at_checkout"
+    t.datetime "booked_for"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "line_items", ["cart_id"], :name => "index_line_items_on_cart_id"
+  add_index "line_items", ["item_id"], :name => "index_line_items_on_item_id"
 
   create_table "locales", :force => true do |t|
     t.string   "language"

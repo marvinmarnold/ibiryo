@@ -1,0 +1,9 @@
+  <div class="row-fluid well">
+      <div class="span3"><%= image_tag shop.thumbnail.usable.url %></div>
+      <div class="span3"><strong><%= "#{shop.name}" %></strong></div>
+      <div class="span4"><%= shop.description %></div>
+      <div class="span2">
+        <%= link_to t("shops.index.view"), shop, class: "btn" %>
+      </div>
+      <div class="clearfix"></div>
+  </div>

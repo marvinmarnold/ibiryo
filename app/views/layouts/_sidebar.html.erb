@@ -1,2 +1,6 @@
 <%= render "shops/show_sideview", shop: @stuck_shop, stuck: true if @stuck_shop %>
+
+<% if shopping? %>
+  <%= render 'carts/edit_side' %>
+<% end %>
 <%= render 'shops/index_sideview' %>

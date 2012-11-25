@@ -18,6 +18,10 @@
   text-decoration: none;
 }
 
-.item {
+.item-main {
   @include selectable($main-color, $main-color-highlight)
+}
+
+.item-secondary {
+  @include selectable(darken(white, 5%), $main-color-highlight)
 }

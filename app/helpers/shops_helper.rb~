@@ -40,7 +40,6 @@ module ShopsHelper
     "#{number_to_currency(number, locale: shop.currency.locale_abbr)}"
   end
 
-
   def today
     Time.now.strftime('%A').downcase
   end

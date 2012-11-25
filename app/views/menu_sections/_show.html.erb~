@@ -1,0 +1,16 @@
+<h4><%= menu_section.name %></h4>
+<% unless menu_section.description.blank? %>
+  <h6><%= menu_section.description %></h6>
+<% end %>
+
+<% if can_and_want_see_everything? %>
+    <div class="row-fluid pager">
+      <%= link_to t("menu_sections.show.edit", name: menu_section.name),
+                  edit_menu_menu_section_path(menu_section.menu, menu_section), class: "btn btn-link" %> or
+      <%= link_to t("menu_sections.show.add_item", menu: menu_section.menu.name),
+                  new_menu_section_item_path(menu_section), class: "btn btn-link" %>
+    </div>
+<% end %>
+
+
+<%= render 'items/index', items: items(menu_section)%>

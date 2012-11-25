@@ -1,10 +1,10 @@
 class Contact < ActiveRecord::Base
   belongs_to :contactable, polymorphic: true
 
-  attr_accessible :city,      :directions,    :district,    :nickname,    :primary_phone,
-                  :province,  :room,          :secondary_phone,           :street,          :type
+  attr_accessible :directions,  :city,      :nickname,              :primary_phone,
+                  :province,    :room,          :secondary_phone,       :street,          :type
 
-  validates :street, :district, :city, presence: true
+  validates :street, :city, presence: true
   validates :province, :primary_phone, presence: true
   validates :primary_phone, :secondary_phone, :format => {with: /(^$|^\d{9})/}
 

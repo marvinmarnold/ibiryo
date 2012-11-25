@@ -17,6 +17,9 @@ class ShopsController < ApplicationController
   def show
     authorize! :show, Shop
     @shop = @browsable_shops.find(params[:id])
+    @cart = @shopper.current_cart_for(@shop)
+    @line_item = LineItem.new
+
     set_stuck_shop(@shop)
 
     respond_to do |format|

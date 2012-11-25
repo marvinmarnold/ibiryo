@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_shops
+  before_filter :set_shops, except: [:show, :new]
 
   # GET /shops
   # GET /shops.json
@@ -17,6 +17,9 @@ class ShopsController < ApplicationController
   def show
     authorize! :show, Shop
     @shop = @browsable_shops.find(params[:id])
+    @cart = @shopper.current_cart_for(@shop)
+    @line_item = LineItem.new
+
     set_stuck_shop(@shop)
 
     respond_to do |format|

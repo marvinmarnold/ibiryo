@@ -1,0 +1,24 @@
+<h3><%= t("shops.show.information.contact.title") %></h3>
+<%= render "contacts/show_shop", contact: @shop.contact %>
+<br/>
+
+<h3><%= t("shops.show.information.restaurant.title") %></h3>
+<h5><%= delivery_fee(@shop) %></h5>
+<h5><%= delivery_minimum(@shop) %></h5>
+<br/>
+
+<h4><%= t("shops.show.information.restaurant.hours.title") %></h4>
+<% %w[monday tuesday wednesday thursday friday saturday].each do |day| %>
+    <% if today == day %>
+      <% cl = "well" %>
+    <% else %>
+      <% cl = "" %>
+    <% end %>
+  <div class="<%= cl %>">
+    <h5><%= t("general.days_of_week.#{day}") %></h5>
+    <p>
+      <%= "#{@shop.send("opens_#{day}_at").strftime("%H:%M")} - #{@shop.send("closes_#{day}_at").strftime("%H:%M")}" %>
+    </p>
+  </div>
+  <div class="clearfix"></div>
+<% end %>

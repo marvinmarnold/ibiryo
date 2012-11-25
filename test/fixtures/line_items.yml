@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cart: 
+  item: 
+  special_instructions: MyText
+  quantity: 1
+  unit_price_at_checkout: 1.5
+  name_at_checkout: MyString
+  description_at_checkout: MyText
+  booked_for: 2012-11-25 18:10:24
+
+two:
+  cart: 
+  item: 
+  special_instructions: MyText
+  quantity: 1
+  unit_price_at_checkout: 1.5
+  name_at_checkout: MyString
+  description_at_checkout: MyText
+  booked_for: 2012-11-25 18:10:24

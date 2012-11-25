@@ -1,5 +1,11 @@
 Ibiryo::Application.routes.draw do
 
+
+
+  resources :carts do
+    resources :line_items
+  end
+
   resources :marketing_strategies
 
   resources :feedbacks

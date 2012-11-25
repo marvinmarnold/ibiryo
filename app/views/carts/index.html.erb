@@ -1,0 +1,75 @@
+<h1>Listing carts</h1>
+
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>User</th>
+    <th>Special instructins</th>
+    <th>Currency at checkout</th>
+    <th>Shop name at checkout</th>
+    <th>Shipping fee</th>
+    <th>Tax</th>
+    <th>Service fee</th>
+    <th>Order submitted at</th>
+    <th>Shop notified at</th>
+    <th>Shop acknowledged at</th>
+    <th>Payment settled at</th>
+    <th>Shipped street</th>
+    <th>Shipped room</th>
+    <th>Shipped province</th>
+    <th>Shipped city</th>
+    <th>Shipped primary phone</th>
+    <th>Shipped secondary phone</th>
+    <th>Shipped directions</th>
+    <th>Billed method</th>
+    <th>Billed card last four</th>
+    <th>Billed card expiration</th>
+    <th>Billed card type</th>
+    <th>Billed street</th>
+    <th>Billed room</th>
+    <th>Billed province</th>
+    <th>Billed city</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @carts.each do |cart| %>
+  <tr>
+    <td><%= cart.shop %></td>
+    <td><%= cart.user %></td>
+    <td><%= cart.special_instructins %></td>
+    <td><%= cart.currency_at_checkout %></td>
+    <td><%= cart.shop_name_at_checkout %></td>
+    <td><%= cart.shipping_fee %></td>
+    <td><%= cart.tax %></td>
+    <td><%= cart.service_fee %></td>
+    <td><%= cart.order_submitted_at %></td>
+    <td><%= cart.shop_notified_at %></td>
+    <td><%= cart.shop_acknowledged_at %></td>
+    <td><%= cart.payment_settled_at %></td>
+    <td><%= cart.shipped_street %></td>
+    <td><%= cart.shipped_room %></td>
+    <td><%= cart.shipped_province %></td>
+    <td><%= cart.shipped_city %></td>
+    <td><%= cart.shipped_primary_phone %></td>
+    <td><%= cart.shipped_secondary_phone %></td>
+    <td><%= cart.shipped_directions %></td>
+    <td><%= cart.billed_method %></td>
+    <td><%= cart.billed_card_last_four %></td>
+    <td><%= cart.billed_card_expiration %></td>
+    <td><%= cart.billed_card_type %></td>
+    <td><%= cart.billed_street %></td>
+    <td><%= cart.billed_room %></td>
+    <td><%= cart.billed_province %></td>
+    <td><%= cart.billed_city %></td>
+    <td><%= link_to 'Show', cart %></td>
+    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
+    <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cart', new_cart_path %>

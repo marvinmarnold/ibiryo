@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cart:</b>
+  <%= @line_item.cart %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%= @line_item.item %>
+</p>
+
+<p>
+  <b>Special instructions:</b>
+  <%= @line_item.special_instructions %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @line_item.quantity %>
+</p>
+
+<p>
+  <b>Unit price at checkout:</b>
+  <%= @line_item.unit_price_at_checkout %>
+</p>
+
+<p>
+  <b>Name at checkout:</b>
+  <%= @line_item.name_at_checkout %>
+</p>
+
+<p>
+  <b>Description at checkout:</b>
+  <%= @line_item.description_at_checkout %>
+</p>
+
+<p>
+  <b>Booked for:</b>
+  <%= @line_item.booked_for %>
+</p>
+
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>

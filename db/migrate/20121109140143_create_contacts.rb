@@ -7,7 +7,6 @@ class CreateContacts < ActiveRecord::Migration
       t.string :street
       t.string :room
       t.string :province
-      t.string :district
       t.string :city
       t.string :primary_phone
       t.string :secondary_phone

@@ -1,0 +1,140 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shop:</b>
+  <%= @cart.shop %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @cart.user %>
+</p>
+
+<p>
+  <b>Special instructins:</b>
+  <%= @cart.special_instructins %>
+</p>
+
+<p>
+  <b>Currency at checkout:</b>
+  <%= @cart.currency_at_checkout %>
+</p>
+
+<p>
+  <b>Shop name at checkout:</b>
+  <%= @cart.shop_name_at_checkout %>
+</p>
+
+<p>
+  <b>Shipping fee:</b>
+  <%= @cart.shipping_fee %>
+</p>
+
+<p>
+  <b>Tax:</b>
+  <%= @cart.tax %>
+</p>
+
+<p>
+  <b>Service fee:</b>
+  <%= @cart.service_fee %>
+</p>
+
+<p>
+  <b>Order submitted at:</b>
+  <%= @cart.order_submitted_at %>
+</p>
+
+<p>
+  <b>Shop notified at:</b>
+  <%= @cart.shop_notified_at %>
+</p>
+
+<p>
+  <b>Shop acknowledged at:</b>
+  <%= @cart.shop_acknowledged_at %>
+</p>
+
+<p>
+  <b>Payment settled at:</b>
+  <%= @cart.payment_settled_at %>
+</p>
+
+<p>
+  <b>Shipped street:</b>
+  <%= @cart.shipped_street %>
+</p>
+
+<p>
+  <b>Shipped room:</b>
+  <%= @cart.shipped_room %>
+</p>
+
+<p>
+  <b>Shipped province:</b>
+  <%= @cart.shipped_province %>
+</p>
+
+<p>
+  <b>Shipped city:</b>
+  <%= @cart.shipped_city %>
+</p>
+
+<p>
+  <b>Shipped primary phone:</b>
+  <%= @cart.shipped_primary_phone %>
+</p>
+
+<p>
+  <b>Shipped secondary phone:</b>
+  <%= @cart.shipped_secondary_phone %>
+</p>
+
+<p>
+  <b>Shipped directions:</b>
+  <%= @cart.shipped_directions %>
+</p>
+
+<p>
+  <b>Billed method:</b>
+  <%= @cart.billed_method %>
+</p>
+
+<p>
+  <b>Billed card last four:</b>
+  <%= @cart.billed_card_last_four %>
+</p>
+
+<p>
+  <b>Billed card expiration:</b>
+  <%= @cart.billed_card_expiration %>
+</p>
+
+<p>
+  <b>Billed card type:</b>
+  <%= @cart.billed_card_type %>
+</p>
+
+<p>
+  <b>Billed street:</b>
+  <%= @cart.billed_street %>
+</p>
+
+<p>
+  <b>Billed room:</b>
+  <%= @cart.billed_room %>
+</p>
+
+<p>
+  <b>Billed province:</b>
+  <%= @cart.billed_province %>
+</p>
+
+<p>
+  <b>Billed city:</b>
+  <%= @cart.billed_city %>
+</p>
+
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

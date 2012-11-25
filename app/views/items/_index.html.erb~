@@ -1,0 +1,11 @@
+<% row_count = 0 %>
+<% items.each_slice(2) do |item_slice| -%>
+  <div class="row-fluid">
+    <% item_in_row = 0 -%>
+    <% item_slice.each do |item| -%>
+      <%= render "items/show", { item: item, placement: placement(item_in_row), item_class: row_class(row_count) } %>
+      <% item_in_row += 1 -%>
+    <% end -%>
+  </div>
+  <% row_count += 1 %>
+<% end -%>
