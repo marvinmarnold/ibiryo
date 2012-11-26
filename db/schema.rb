@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126121326) do
+ActiveRecord::Schema.define(:version => 20121126183118) do
 
   create_table "carts", :force => true do |t|
     t.integer  "shop_id"
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(:version => 20121126121326) do
 
   add_index "carts", ["shop_id"], :name => "index_carts_on_shop_id"
   add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
+
+  create_table "choice_selections", :force => true do |t|
+    t.integer  "option_selection_id"
+    t.integer  "choice_id"
+    t.float    "price_at_checkout"
+    t.string   "name_at_checkout"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "choice_selections", ["choice_id"], :name => "index_choice_selections_on_choice_id"
+  add_index "choice_selections", ["option_selection_id"], :name => "index_choice_selections_on_option_selection_id"
 
   create_table "choices", :force => true do |t|
     t.integer  "shop_id"
@@ -186,6 +198,17 @@ ActiveRecord::Schema.define(:version => 20121126121326) do
   end
 
   add_index "menus", ["shop_id"], :name => "index_menus_on_shop_id"
+
+  create_table "option_selections", :force => true do |t|
+    t.integer  "line_item_id"
+    t.integer  "option_id"
+    t.string   "name_at_checkout"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "option_selections", ["line_item_id"], :name => "index_option_selections_on_line_item_id"
+  add_index "option_selections", ["option_id"], :name => "index_option_selections_on_option_id"
 
   create_table "options", :force => true do |t|
     t.integer  "shop_id"

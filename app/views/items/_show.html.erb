@@ -2,6 +2,6 @@
         data-title="<%= popup_title(item, @shop) %>" data-content="<%= item.description %>"
         rel="popover" data-placement="<%=placement%>" data-trigger="hover", data-html=true data-toggle="modal">
     <span class="pull-left"><%= truncate(item.name, length: 30) %></span>
-    <span class="pull-right"><%= number_to_shop_currency(item.price, item.menu_section.menu.shop) %></span>
+    <span class="pull-right"><%= shop_price(item) %></span>
 </a>
 <%= render "line_items/form", item: item %>

@@ -85,6 +85,10 @@ en:
       menus:
         title: "Browse the menus for this shop below."
         new: "Add a menu"
+        items:
+          edit: "Edit %{item}"
+          confirm_remove: "Are you sure you want to delete this item?"
+          remove: "Delete item"
       information:
         title: "Shop info."
         telephone: "Tel"
@@ -96,6 +100,10 @@ en:
             title: "Delivery minimum"
           hours:
             title: "Hours of operation"
+      options:
+        title: "Optional items"
+        choices:
+          title: "All choices"
     form:
       management:
         title: "Account management"
@@ -185,6 +193,8 @@ en:
       notice_success: "Item successfully added."
     update:
       notice_success: "Item successfully updated!"
+    show:
+      price_explanation: "price may vary depending on options"
   descriptions:
     form:
       errors:

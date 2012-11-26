@@ -35,7 +35,7 @@ def init
   MarketingStrategy.create!(name: "Front page banner", is_active: true)
   MarketingStrategy.create!(name: "Sells featured products", is_active: false)
 
-  30.times do |i|
+  20+.times do |i|
     u = Vendor.create(email: "vendor#{i}@gmail.com", password: "vendor#{i}", default_locale_id: default_locale.id)
     (rand(2)+1).times do
       shop = create_shop(u)
@@ -105,7 +105,7 @@ def add_menus(shop)
 end
 
 def add_menu_sections(menu)
-  (rand(7)+1).times do
+  (rand(5)+1).times do
     section = menu.menu_sections.build(is_active: true)
     add_descriptions(section)
     add_items(section)

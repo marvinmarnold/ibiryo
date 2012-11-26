@@ -1,0 +1,26 @@
+<h2><%= t("shops.show.options.title") %></h2>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Min required</th>
+    <th>Max allowed</th>
+    <th>Possibilities</th>
+    <th></th>
+
+  </tr>
+
+<% options.each do |option| %>
+  <tr>
+    <td><%= option.name %></td>
+    <td><%= option.min_required %></td>
+    <td><%= option.max_allowed %></td>
+    <td><%= option.choices.map { |i| [i.name] }.join(", ") %></td>
+    <td><%= link_to 'Edit', edit_shop_option_path(option.shop, option), class: "btn btn-info btn-mini" %>
+    <%= link_to 'Remove', shop_option_path(option.shop, option), class: "btn btn-danger btn-mini",
+                              method: :delete, confirm: "ya sure?" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Option', new_shop_option_path(@shop), class: "btn" %>

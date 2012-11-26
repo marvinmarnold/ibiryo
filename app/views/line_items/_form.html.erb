@@ -12,8 +12,12 @@
         <%= f.hidden_field :cart_id, { :value => @cart.id } %>
         <%= f.hidden_field :item_id, { :value => item.id } %>
         <%= f.input :quantity, :input_html => { value: 1 } %>
-
-
+        <% @line_item.options(item) %>
+        <%= f.simple_fields_for :option_selections do |option_form| %>
+          <%= option_form.simple_fields_for :choice_selections do |choice_form| %>
+            <%= choice_form.input :choice_id %>
+          <% end %>
+        <% end %>
         <%= f.input :special_instructions,
                     :input_html => { rows: 10, placeholder: "For example: \"no onions or peppers\"" } %>
       </div>

@@ -56,4 +56,9 @@ module ShopsHelper
     (can_and_want_see_everything?) ? menu_section.items : menu_section.items.where(is_active: true)
   end
 
+  def shop_price(item)
+    modifier = (item.fixed_price?) ? "" : "+"
+    "#{number_to_shop_currency(item.price, item.menu_section.menu.shop)}#{modifier}"
+  end
+
 end

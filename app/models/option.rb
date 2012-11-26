@@ -2,7 +2,7 @@ class Option < Describable
   belongs_to      :shop
   has_many        :possibilities
   has_many        :choices, through: :possibilities
-  attr_accessible :max_allowed,   :min_required
+  attr_accessible :max_allowed,   :min_required, :possibilities_attributes
   accepts_nested_attributes_for :possibilities
   validates       :min_required, :max_allowed, presence: true
   validates       :min_required,

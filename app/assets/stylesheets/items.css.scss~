@@ -3,25 +3,40 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-@mixin selectable($default-color, $highlight-color) {
+@mixin selectable($default-color, $highlight-color, $text-color: black) {
   background-color: $default-color;
   border: 1px solid $default-color;
   &:hover {
     background-color: $highlight-color;
     text-decoration: none;
-    color: black;
+    color: $text-color;
   }
 }
 
-.item-base {
-  color: black;
+@mixin base($text-color) {
+  color: $text-color;
   text-decoration: none;
 }
 
 .item-main {
-  @include selectable($main-color, $main-color-highlight)
+  @include base(black);
+  @include selectable($main-color, $main-color-highlight);
 }
 
 .item-secondary {
-  @include selectable(darken(white, 5%), $main-color-highlight)
+  @include base(black);
+  @include selectable(darken(white, 5%), $main-color-highlight);
+}
+
+
+.item-edit {
+  $general-color: #FFBF00;
+  @include base(black);
+  @include selectable($general-color, darken($general-color, 5%));
+}
+
+.item-remove {
+  $general-color: #FF0000[]
+  @include base(black);
+  @include selectable($general-color, darken($general-color, 5%));
 }

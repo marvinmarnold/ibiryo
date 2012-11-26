@@ -8,4 +8,18 @@
     <% end -%>
   </div>
   <% row_count += 1 %>
+
+  <% if can_and_want_see_everything? %>
+    <div class="row-fluid">
+      <% item_slice.each do |item| -%>
+        <%= link_to t("shops.show.menus.items.edit", item: item.name),
+            edit_menu_section_item_path(item.menu_section, item), class: "alert span3 item-edit" %>
+        <%= link_to t("shop.show.menus.items.remove", item: item.name),
+            menu_section_item_path(item.menu_section, item),
+            class: "alert span3 item-remove",
+            method: :delete %>
+      <% end -%>
+    </div>
+    <br/>
+  <% end %>
 <% end -%>

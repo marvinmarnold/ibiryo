@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  option_selection: 
+  choice: 
+  price_at_checkout: 1.5
+  name_at_checkout: MyString
+
+two:
+  option_selection: 
+  choice: 
+  price_at_checkout: 1.5
+  name_at_checkout: MyString

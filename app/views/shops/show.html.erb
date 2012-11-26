@@ -31,6 +31,12 @@
         <% activated = true %>
       </li>
     <% end %>
+    <% if can_and_want_see_everything? %>
+      <li class="<%= append_word("", !activated, "active") %>">
+        <%= link_to t("shops.show.options.title"), "\#options", data: {toggle: "tab"} %>
+      </li>
+      <% activated = true %>
+    <% end %>
     <li class="<%= append_word("", !activated, "active") %>">
       <%= link_to t("shops.show.information.title"), "\#information", data: {toggle: "tab"} %>
     </li>
@@ -42,6 +48,13 @@
         <%= render "menus/show", menu: menu %>
         <% activated = true %>
       </div>
+    <% end %>
+    <% if can_and_want_see_everything? %>
+      <div class="<%= append_word("tab-pane", !activated, "active") %>" id="options">
+        <%= render "options/index", options: @shop.options %><div class="clearfix"></div><br/>
+        <%= render "choices/index", choices: @shop.choices %>
+      </div>
+      <% activated = true %>
     <% end %>
     <div class="<%= append_word("tab-pane", !activated, "active") %>" id="information">
       <%= render "shops/info" %>

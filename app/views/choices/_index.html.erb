@@ -1,0 +1,27 @@
+<h2><%= t("shops.show.options.choices.title") %></h2>
+
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Is active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% choices.each do |choice| %>
+  <tr>
+    <td><%= choice.name %></td>
+    <td><%= choice.price %></td>
+    <td><%= choice.is_active %></td>
+    <td><%= link_to 'Edit', edit_shop_choice_path(choice.shop), class: "btn btn-info btn-mini" %></td>
+    <td><%= link_to 'Destroy', shop_choice_path(choice.shop, choice), method: :delete,
+                                data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Choice', new_shop_choice_path(@shop), class: "btn" %>
