@@ -3,17 +3,7 @@
 
   <div class="form-inputs">
     <%= render 'shops_shared/is_active', obj: @menu, f: f %>
-    <h3><%= t("menus.form.descriptions.title") %></h3>
-    <%= render "layouts/custom_errors", errors: @menu.errors[:descriptions] %>
-    <%= f.simple_fields_for :descriptions do |description_form| %>
-      <%= render "descriptions/form", f: description_form,
-                                      title: t("menus.form.descriptions.title_each"),
-                                      remove: t("menus.form.descriptions.remove_each"),
-                                      skip_body: false %>
-    <% end %>
-    <p>
-      <%= f.link_to_add t("shops.form.branding.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-info' %>
-    </p>
+    <%= render 'descriptions/section', f: f, klasses: "menus", klass_instance: @menu %>
   </div>
 
   <div class="form-actions">

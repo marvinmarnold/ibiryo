@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_menus, except: [:new]
+  before_filter :set_menus
 
   # GET /menus
   # GET /menus.json

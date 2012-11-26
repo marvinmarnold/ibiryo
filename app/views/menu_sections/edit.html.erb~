@@ -1,6 +1,3 @@
-<h1>Editing menu_section</h1>
+<h1><%= t("menu_sections.edit.title", menu: @menu_section.name) %></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @menu_section %> |
-<%= link_to 'Back', menu_sections_path %>

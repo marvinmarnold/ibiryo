@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_carts, except: [:update]
+  before_filter :set_carts
 
   # GET /carts
   # GET /carts.json

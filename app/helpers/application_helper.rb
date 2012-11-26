@@ -21,4 +21,11 @@ module ApplicationHelper
     can?(:update, Shop) and not pretending_to_be_customer?
   end
 
+  def has_option_to_preview_shop?(shop)
+    can_and_want_see_everything? and
+    @stuck_shop.present? and
+    shop.id == @stuck_shop.id and
+    controller.controller_name != "shops" and
+    controller.action_name != "show"
+  end
 end

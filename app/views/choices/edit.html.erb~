@@ -1,0 +1,3 @@
+<h1><%= t("choices.edit.title", choice: @choice.name) %></h1>
+
+<%= render 'form' %>

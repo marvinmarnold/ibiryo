@@ -1,7 +1,4 @@
 Ibiryo::Application.routes.draw do
-
-
-
   resources :carts do
     resources :line_items
   end
@@ -12,6 +9,8 @@ Ibiryo::Application.routes.draw do
 
   resources :shops do
     resources :menus
+    resources :options
+    resources :choices
   end
 
   resources :menus do

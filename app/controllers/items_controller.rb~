@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_items, except: [:new]
+  before_filter :set_items
   # GET /items
   # GET /items.json
   def index

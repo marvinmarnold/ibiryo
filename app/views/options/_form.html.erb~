@@ -1,0 +1,24 @@
+<%= simple_nested_form_for([@shop, @option]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :min_required %>
+    <%= f.input :max_allowed %>
+    <%= render 'descriptions/section', f: f, klasses: "options", klass_instance: @option %>
+
+    <h3><%= t("options.form.possibilities.title") %></h3>
+    <%= f.simple_fields_for :possibilities do |possibility_form| %>
+      <div class="well">
+        <%= possibility_form.association :choice %>
+        <%= possibility_form.link_to_remove t("options.form.possibilities.remove"), :class => 'btn btn-mini btn-danger' %>
+      </div>
+    <% end %>
+    <%= f.link_to_add t("options.form.possibilities.add"), :possibilities, :class => 'btn btn-mini btn-info' %>
+    <%= t("general.or") %>
+    <%= link_to t("options.form.possibilities.new"), new_shop_choice_path(@shop), :class => 'btn btn-mini btn-primary' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shop: 
+  min_required: 1
+  max_allowed: 1
+
+two:
+  shop: 
+  min_required: 1
+  max_allowed: 1

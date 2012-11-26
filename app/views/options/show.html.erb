@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shop:</b>
+  <%= @option.shop %>
+</p>
+
+<p>
+  <b>Min required:</b>
+  <%= @option.min_required %>
+</p>
+
+<p>
+  <b>Max allowed:</b>
+  <%= @option.max_allowed %>
+</p>
+
+
+<%= link_to 'Edit', edit_option_path(@option) %> |
+<%= link_to 'Back', options_path %>

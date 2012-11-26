@@ -16,6 +16,7 @@ class Ability
       can :manage, Item
       can :activate, :all
       cannot :activate, Shop
+      can :manage, Option
     end
 
     if user.role? :salesmanager

@@ -4,9 +4,6 @@ class Describable < ActiveRecord::Base
   accepts_nested_attributes_for   :descriptions, :allow_destroy => true
   attr_accessible                 :descriptions_attributes
 
-  validates       :is_active,
-                  :inclusion => { :in => [true, false],
-                                  :message => I18n.t("shops_shared.form.errors.is_active")}
   validate                        :one_description
   validate                        :one_per_language
 

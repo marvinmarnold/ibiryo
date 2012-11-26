@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125161024) do
+ActiveRecord::Schema.define(:version => 20121126121326) do
 
   create_table "carts", :force => true do |t|
     t.integer  "shop_id"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(:version => 20121125161024) do
   add_index "carts", ["shop_id"], :name => "index_carts_on_shop_id"
   add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
 
+  create_table "choices", :force => true do |t|
+    t.integer  "shop_id"
+    t.float    "price"
+    t.boolean  "is_active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "choices", ["shop_id"], :name => "index_choices_on_shop_id"
+
   create_table "contacts", :force => true do |t|
     t.string   "type"
     t.integer  "contactable_id"
@@ -71,6 +81,16 @@ ActiveRecord::Schema.define(:version => 20121125161024) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "customizations", :force => true do |t|
+    t.integer  "option_id"
+    t.integer  "item_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "customizations", ["item_id"], :name => "index_customizations_on_item_id"
+  add_index "customizations", ["option_id"], :name => "index_customizations_on_option_id"
 
   create_table "descriptions", :force => true do |t|
     t.integer  "locale_id"
@@ -167,6 +187,16 @@ ActiveRecord::Schema.define(:version => 20121125161024) do
 
   add_index "menus", ["shop_id"], :name => "index_menus_on_shop_id"
 
+  create_table "options", :force => true do |t|
+    t.integer  "shop_id"
+    t.integer  "min_required"
+    t.integer  "max_allowed"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "options", ["shop_id"], :name => "index_options_on_shop_id"
+
   create_table "participations", :force => true do |t|
     t.integer  "shop_id"
     t.integer  "marketing_strategy_id"
@@ -176,6 +206,16 @@ ActiveRecord::Schema.define(:version => 20121125161024) do
 
   add_index "participations", ["marketing_strategy_id"], :name => "index_participations_on_marketing_strategy_id"
   add_index "participations", ["shop_id"], :name => "index_participations_on_shop_id"
+
+  create_table "possibilities", :force => true do |t|
+    t.integer  "option_id"
+    t.integer  "choice_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "possibilities", ["choice_id"], :name => "index_possibilities_on_choice_id"
+  add_index "possibilities", ["option_id"], :name => "index_possibilities_on_option_id"
 
   create_table "provinces", :force => true do |t|
     t.string   "name"

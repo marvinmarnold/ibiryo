@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<%= render 'shops_shared/button_to_shop', shop: @menu.shop %>
+<%= render 'shops_shared/button_to_shop', shop: @shop %>

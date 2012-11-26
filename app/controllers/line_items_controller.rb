@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_line_items, except: [:new]
+  before_filter :set_line_items
 
   # GET /line_items/new
   # GET /line_items/new.json

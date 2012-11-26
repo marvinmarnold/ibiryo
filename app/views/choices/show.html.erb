@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shop:</b>
+  <%= @choice.shop %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @choice.price %>
+</p>
+
+<p>
+  <b>Is active:</b>
+  <%= @choice.is_active %>
+</p>
+
+
+<%= link_to 'Edit', edit_choice_path(@choice) %> |
+<%= link_to 'Back', choices_path %>

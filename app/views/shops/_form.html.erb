@@ -40,15 +40,8 @@
     <h2><%= "1. #{t("shops.form.branding.title")}" %></h2>
 
     <h3><%= t("shops.form.branding.descriptions.title") %></h3>
-    <%= render "layouts/custom_errors", errors: @shop.errors[:descriptions] %>
-    <%= f.simple_fields_for :descriptions do |description_form| %>
-      <%= render "descriptions/form", f: description_form,
-                                      title: t("shops.form.branding.descriptions.title_each"),
-                                      remove: t("shops.form.branding.descriptions.remove_each"),
-                                      skip_body: false %>
-    <% end %>
-    <p>
-      <%= f.link_to_add t("shops.form.branding.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-info' %>
+    <%= render 'descriptions/section', f: f, klasses: "shops", klass_instance: @shop %>
+
     </p>
     <h3><%= t("shops.form.branding.logos") %></h3>
     <%= image_tag(@shop.thumbnail.usable.url) if @shop.thumbnail? %>

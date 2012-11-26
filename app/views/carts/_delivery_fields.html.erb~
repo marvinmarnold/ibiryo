@@ -1,0 +1,5 @@
+<%= f.collection_radio_buttons(:ship,
+                                [[true, 'Delivery'] ,[false, 'Pickup']],
+                                :first, :last) do |delivery_method| %>
+                                  <% delivery_label_for(delivery_method) %>
+                                 <% end %>

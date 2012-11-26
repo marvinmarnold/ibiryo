@@ -42,6 +42,7 @@ class ShopsController < ApplicationController
   # GET /shops/1/edit
   def edit
     @shop = @shops.find(params[:id])
+    set_stuck_shop(@shop)
   end
 
   # POST /shops

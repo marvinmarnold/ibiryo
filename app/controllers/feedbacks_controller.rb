@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_feedbacks, except: [:new]
+  before_filter :set_feedbacks
 
   # GET /feedbacks
   # GET /feedbacks.json

@@ -11,6 +11,8 @@ class Shop < Describable
   has_many        :marketing_strategies, through: :participations
   belongs_to      :currency
   has_many        :menus
+  has_many        :options
+  has_many        :choices
   mount_uploader  :banner, RestaurantBannerUploader
   mount_uploader  :thumbnail, RestaurantThumbnailUploader
   attr_accessible :banner,                :checkin_at,          :checkout_at,               :closes_friday_at,
@@ -32,6 +34,9 @@ class Shop < Describable
                   presence: true
   validates       :delivery_fee,          :delivery_minimum,
                   :numericality => { greater_than_or_equal_to: 0 }
+  validates       :is_active,
+                  :inclusion => { :in => [true, false],
+                                  :message => I18n.t("shops_shared.form.errors.is_active")}
   #validate        :one_owner
   validate        :one_accountable
   #def to_param

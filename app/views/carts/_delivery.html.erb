@@ -1,0 +1,18 @@
+<br/>
+<div class="row-fluid">
+  <div class="span1">
+    <%= button %>
+  </div>
+  <div class="span11">
+    <span class="lead">Delivery</span>
+    <br/>
+    <span><%= "Subtotal: #{number_to_shop_currency(@cart.subtotal, @shop)}" %></span>
+    <br/>
+    <span><%= "Service fee: #{number_to_shop_currency(@cart.service_fee, @shop)}" %></span>
+    <br/>
+    <span><%= delivery_fee(@shop) %></span>
+    <br/>
+    <span><strong><%= "Total: #{number_to_shop_currency(@cart.total, @shop)}" %></strong></span>
+  </div>
+</div>
+<br/>

@@ -1,3 +1,3 @@
 <div class="pager">
-  <%= link_to t("shops_shared.button_to_shop"), shop, class: "btn btn-success" %>
+  <%= link_to t("shops_shared.button_to_shop"), shop, class: "btn btn-success btn-mini" %>
 </div>

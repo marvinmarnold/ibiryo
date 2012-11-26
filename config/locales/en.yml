@@ -6,6 +6,7 @@ en:
     authorization_login_required: "Please login and try again"
     yes: "Yes"
     no: "No"
+    or: "or"
     pagination:
       of: "of"
       page: "Page"
@@ -114,17 +115,17 @@ en:
         title: "Financial information"
       branding:
         title: "Branding"
-        descriptions:
-          title: "Name & description"
-          add: "Customize for another language"
-          title_each: "Shop description"
-          remove_each: "Remove this description"
         logos: "Logos"
         tags: "Tags"
         marketing:
           title: "Marketing strategies"
           add: "Add new marketing strategy"
           remove: "Remove marketing strategy"
+      descriptions:
+        title: "Name & description"
+        add: "Customize for another language"
+        title_each: "Shop description"
+        remove_each: "Remove this description"
       contact:
         title: "Contact information"
       errors:
@@ -141,23 +142,27 @@ en:
     new:
       title: "Create new menu"
     edit:
-      title: "Edit this menu (%(menu))"
+      title: "Edit this menu (%{menu})"
     form:
       descriptions:
         title: "Descriptions for this menu"
         title_each: "Menu description"
         remove_each: "Remove this description"
+        add: "Add description"
   menu_sections:
     show:
       edit: "Edit %{name}"
       add_section: "Add section to %{menu}"
     new:
       title: "Add new section to %{menu}"
+    edit:
+      title: "Edit section to %{menu}"
     form:
       descriptions:
         title: "Descriptions for this section of the menu"
         title_each: "Description of section"
         remove_each: "Remove this description"
+        add: "Add description"
     create:
       notice_success: "Section successfully added to menu."
     update:
@@ -171,6 +176,11 @@ en:
         title_each: "Description for this item"
         remove_each: "Remove this description"
         add: "Add description"
+      customizations:
+        title: "Item options"
+        remove: "Remove option"
+        add: "Add an existing option"
+        new: "Add a new option"
     create:
       notice_success: "Item successfully added."
     update:
@@ -191,6 +201,43 @@ en:
       notice_success: 'Strategy was successfully created.'
     update:
       notice_success: 'Strategy was successfully updated.'
+  options:
+    new:
+      title: "Create new option"
+    edit:
+      title: "Edit %{option}"
+    create:
+      notice_success: 'Option was successfully created.'
+    update:
+      notice_success: 'Option was successfully updated.'
+    form:
+      descriptions:
+        title: "Option descriptions"
+        title_each: "Description of this option"
+        remove_each: "Remove description"
+        add: "Add description"
+      errors:
+        max_allowed: "must be greater than or equal to min required"
+      possibilities:
+        title: "Possibilities for this item"
+        add: "Add existing possibility"
+        new: "Create new possibility"
+        remove: "Remove this possibility"
+  choices:
+    new:
+      title: "Create new choice"
+    edit:
+      title: "Edit %{choice}"
+    create:
+      notice_success: 'Choice was successfully created.'
+    update:
+      notice_success: 'Choice was successfully updated.'
+    form:
+      descriptions:
+        title: "Choice descriptions"
+        title_each: "Description of this choice"
+        remove_each: "Remove description"
+        add: "Add description"
   shops_shared:
     form:
       is_active:
