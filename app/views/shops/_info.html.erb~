@@ -5,8 +5,10 @@
 <h3><%= t("shops.show.information.restaurant.title") %></h3>
 <h5><%= delivery_fee(@shop) %></h5>
 <h5><%= delivery_minimum(@shop) %></h5>
+<br/>
+
 <h4><%= t("shops.show.information.restaurant.hours.title") %></h4>
-<% %w[monday tuesday wednesday thursday friday saturday].each do |day| %>
+<% %w[monday tuesday wednesday thursday friday saturday sunday].each do |day| %>
     <% if today == day %>
       <% cl = "well" %>
     <% else %>

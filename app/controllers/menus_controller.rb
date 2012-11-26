@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_menus
+  before_filter :set_menus, except: [:new]
 
   # GET /menus
   # GET /menus.json
@@ -34,7 +34,7 @@ class MenusController < ApplicationController
 
   # GET /menus/1/edit
   def edit
-    @menu = Menu.find(params[:id])
+    @menu = @menus.find(params[:id])
   end
 
   # POST /menus

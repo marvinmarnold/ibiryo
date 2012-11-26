@@ -42,3 +42,7 @@ locations:
     i: "Sofala"
     j: "Tete"
     k: "Zambezia"
+fees:
+  delivery: 100
+  service: 100
+  currency_abbr: "MTN"

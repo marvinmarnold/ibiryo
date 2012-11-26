@@ -2,5 +2,18 @@
 <h4><%= "Your order" %></h4>
 <%= render "line_items/index_side", line_items: @cart.line_items %>
 
+<%= simple_nested_form_for(@cart) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= render "carts/delivery_fields", f: f %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t("carts.edit_side.submit"), class: "btn btn-success" %>
+  </div>
+
+<% end %>
+
 <%= link_to "<< Clear cart", root_path, class: "btn btn-link btn-mini" %>
 </div>

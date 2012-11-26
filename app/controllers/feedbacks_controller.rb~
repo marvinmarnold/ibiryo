@@ -9,7 +9,6 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @feedbacks }
     end
   end
 
@@ -20,7 +19,6 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @feedback }
     end
   end
 
@@ -31,7 +29,6 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @feedback }
     end
   end
 
@@ -48,10 +45,8 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
-        format.json { render json: @feedback, status: :created, location: @feedback }
       else
         format.html { render action: "new" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,10 +59,8 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
         format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,7 +73,6 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to feedbacks_url }
-      format.json { head :no_content }
     end
   end
 private

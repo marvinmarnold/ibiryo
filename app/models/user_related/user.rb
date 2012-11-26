@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def current_cart_for(shop)
-    self.carts.where("order_submitted_at is NULL").where("updated_at > ?", 3.hours.ago).where(shop_id: shop.id).first_or_create
+    self.carts.where("settled_at is NULL").where("updated_at > ?", 3.hours.ago).where(shop_id: shop.id).first_or_create
   end
 
 private

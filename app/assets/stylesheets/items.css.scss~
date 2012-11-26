@@ -23,5 +23,5 @@
 }
 
 .item-secondary {
-  @include selectable(darken(white, 5%), $main-color)
+  @include selectable(darken(white, 5%), $main-color-highlight)
 }

@@ -18,6 +18,7 @@ class ShopsController < ApplicationController
     authorize! :show, Shop
     @shop = @browsable_shops.find(params[:id])
     @cart = @shopper.current_cart_for(@shop)
+    #raise @shopper.to_yaml
     @line_item = LineItem.new
 
     set_stuck_shop(@shop)

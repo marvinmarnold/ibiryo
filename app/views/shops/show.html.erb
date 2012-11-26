@@ -18,7 +18,7 @@
     <br/><br/>
   <% end %>
   <div class="clearfix"></div>
-  <%= image_tag @shop.banner.usable.url, class: "img-rounded" %>
+  <%= image_tag "banner#{rand(5)+1}.jpg", class: "img-rounded" %>
 </div>
 
 <h4><%= t("shops.show.menus.title") %></h4>

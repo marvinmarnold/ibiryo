@@ -80,6 +80,7 @@ private
 
   def set_menus
     set_parent_from_nested_route(Shop)
+    set_stuck_shop(@shop)
     @menus = @shop.menus
   end
 end

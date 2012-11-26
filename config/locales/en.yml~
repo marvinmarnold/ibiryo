@@ -51,6 +51,9 @@ en:
       notice_success: "Item added to cart."
     edit:
       notice_success: "Item successfully edited."
+  carts:
+    edit_side:
+      submit: "Continue to checkout"
   shops:
     show_sideview:
       restaurant:

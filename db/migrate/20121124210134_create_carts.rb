@@ -3,16 +3,15 @@ class CreateCarts < ActiveRecord::Migration
     create_table :carts do |t|
       t.belongs_to :shop
       t.belongs_to :user
+      t.boolean :ship
       t.text :special_instructins
       t.string :currency_at_checkout
       t.string :shop_name_at_checkout
       t.float :shipping_fee
       t.float :tax
       t.float :service_fee
-      t.datetime :order_submitted_at
-      t.datetime :shop_notified_at
-      t.datetime :shop_acknowledged_at
-      t.datetime :payment_settled_at
+      t.datetime :initiated_at
+      t.datetime :settled_at
       t.string :shipped_street
       t.string :shipped_room
       t.string :shipped_province
