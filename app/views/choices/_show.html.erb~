@@ -1,0 +1,8 @@
+<div class="row-fluid">
+<div class="span1"><%= button %></div>
+<div class="span11"><%= name %></div>
+</div>
+<div class="row-fluid">
+<div class="span1"></div>
+<div class="span11"><%= price %></div>
+</div>

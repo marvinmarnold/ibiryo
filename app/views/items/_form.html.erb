@@ -20,7 +20,7 @@
     <h3><%= t("items.form.customizations.title") %></h3>
     <%= f.simple_fields_for :customizations do |customization_form| %>
       <div class="well">
-        <%= customization_form.association :option %>
+        <%= customization_form.association :option, collection: @menu_section.menu.shop.options %>
         <%= customization_form.link_to_remove t("item.form.customizations.remove"), :class => 'btn btn-mini btn-danger' %>
       </div>
     <% end %>

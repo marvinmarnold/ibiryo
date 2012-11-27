@@ -9,7 +9,7 @@
     <h3><%= t("options.form.possibilities.title") %></h3>
     <%= f.simple_fields_for :possibilities do |possibility_form| %>
       <div class="well">
-        <%= possibility_form.association :choice %>
+        <%= possibility_form.association :choice, collection: @shop.choices %>
         <%= possibility_form.link_to_remove t("options.form.possibilities.remove"), :class => 'btn btn-mini btn-danger' %>
       </div>
     <% end %>

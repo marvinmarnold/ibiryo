@@ -20,10 +20,13 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+    #raise params.to_yaml
     @line_item = @line_items.build(params[:line_item])
+    option_selection = params[:line_item].delete(:option_selections_attributes)
 
     respond_to do |format|
       if @line_item.save
+        @line_item.update_options(option_selection) #if option_selection.present?
         format.html { redirect_to @cart.shop, notice: t("line_items.create.notice_success") }
       else
         format.html { render action: "new" }

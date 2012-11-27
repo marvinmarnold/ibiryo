@@ -11,6 +11,8 @@ class Shop < Describable
   has_many        :marketing_strategies, through: :participations
   belongs_to      :currency
   has_many        :menus
+  has_many        :menu_sections, through: :menus
+  has_many        :items, through: :menu_sections
   has_many        :options
   has_many        :choices
   mount_uploader  :banner, RestaurantBannerUploader

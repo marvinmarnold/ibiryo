@@ -3,5 +3,14 @@ class OptionSelection < ActiveRecord::Base
   belongs_to        :option
   has_many          :choice_selections
   accepts_nested_attributes_for :choice_selections
-  attr_accessible   :name_at_checkout, :choice_selections_attributes
+  attr_accessible   :name_at_checkout, :choice_selections_attributes, :option_id
+
+
+  def choice_ids=(ids)
+
+  end
+
+  def choice_ids
+    choice_selections.pluck(:id)
+  end
 end

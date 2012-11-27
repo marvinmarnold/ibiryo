@@ -7,6 +7,7 @@ en:
     yes: "Yes"
     no: "No"
     or: "or"
+    free: "Free!"
     pagination:
       of: "of"
       page: "Page"

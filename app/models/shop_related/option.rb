@@ -10,4 +10,8 @@ class Option < Describable
   validates       :max_allowed,
                   :numericality => { greater_than_or_equal_to: :min_required,
                   :message => I18n.t("options.form.errors.max_allowed") }
+
+  def one_choice?
+    min_required == 1 and max_allowed == 1
+  end
 end

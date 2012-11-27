@@ -35,13 +35,14 @@ def init
   MarketingStrategy.create!(name: "Front page banner", is_active: true)
   MarketingStrategy.create!(name: "Sells featured products", is_active: false)
 
-  20+.times do |i|
+  (rand(20)+1).times do |i|
     u = Vendor.create(email: "vendor#{i}@gmail.com", password: "vendor#{i}", default_locale_id: default_locale.id)
     (rand(2)+1).times do
       shop = create_shop(u)
       shop.accountabilities.build(user_id: s.id)
     end
     u.save!
+    add_options(u)
   end
 end
 
@@ -58,6 +59,7 @@ def create_shop(user)
   add_contact(shop)
   add_descriptions(shop)
   shop.participations.build(marketing_strategy_id: 1) if rand > 0.8
+  add_choices(shop)
   add_menus(shop)
   return shop
 end
@@ -68,6 +70,39 @@ def add_descriptions(obj)
                             body: Faker::Lorem.sentences(rand(3)+1).join(" ")
     )
   end
+end
+
+def add_choices(shop)
+  (rand(20)+1).times do
+    choice = shop.choices.build(is_active: true, price: rand(500) + 1)
+    add_descriptions(choice)
+  end
+end
+
+def add_options(user)
+  user.shops.each do |shop|
+    zrand(10).times do
+      min = rand(4)
+      option = shop.options.build(min_required: min, max_allowed: min + rand(3))
+      add_descriptions(option)
+      option.save!
+      zrand(5).times do
+        option.possibilities.create!(choice_id: shop.choices.all.sample.id)
+      end
+    end
+
+    shop.items.each do |item|
+      if rand > 0.9
+        zrand(4).times do
+          item.customizations.create!(option_id: shop.options.all.sample.id)
+        end
+      end
+    end
+  end
+end
+
+def zrand(n)
+  rand(n) + 1
 end
 
 def add_contact(obj)

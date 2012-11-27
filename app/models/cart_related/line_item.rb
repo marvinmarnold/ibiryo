@@ -7,15 +7,22 @@ class LineItem < ActiveRecord::Base
                     :special_instructions,        :unit_price_at_checkout,      :item_id,               :cart_id,
                     :option_selections_attributes
 
-  def options(item)
-    item.options.each do |option|
-      o = self.option_selections.where(option_id: option.id).first_or_initialize
-      o.choice_selections.build
+
+  def update_options(option_selections)
+    option_selections.each do |key, attributes|
+      Rails.logger.info "BULLSHIT #{attributes}"
+      choice_ids = attributes.delete(:choice_ids)
+      option = self.option_selections.create!(attributes)
+      option.update_attributes(choice_ids: choice_ids)
     end
-    self.option_selections
   end
 
   def subtotal
-    item.price * quantity
+    total = item.price * quantity
+    option_selections.each do |option_selection|
+      total += option_selection.subtotal
+    end
+    total
   end
+
 end
