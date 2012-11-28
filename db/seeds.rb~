@@ -35,6 +35,25 @@ def init
   MarketingStrategy.create!(name: "Front page banner", is_active: true)
   MarketingStrategy.create!(name: "Sells featured products", is_active: false)
 
+  f = Frequency.new
+  f.descriptions.build(name: "Annually", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Monthly", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Daily", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Hourly", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Every 30 minutes", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Every 15 minutes", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+
   (rand(20)+1).times do |i|
     u = Vendor.create(email: "vendor#{i}@gmail.com", password: "vendor#{i}", default_locale_id: default_locale.id)
     (rand(2)+1).times do
@@ -92,8 +111,10 @@ def add_options(user)
     end
 
     shop.items.each do |item|
-      zrand(4).times do
-        item.customizations.create!(option_id: shop.options.all.sample.id) if rand > 0.7
+      if rand > 0.9
+        zrand(4).times do
+          item.customizations.create!(option_id: shop.options.all.sample.id)
+        end
       end
     end
   end

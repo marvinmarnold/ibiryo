@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item: 
+  quantity: 1
+  offer_starts_at: 2012-11-28 22:20:14
+  offer_ends_at: 2012-11-28 22:20:14
+  price: 1.5
+  frequency: 
+  frequency_starts_at: 2012-11-28 22:20:14
+  frequency_ends_at: 2012-11-28 22:20:14
+
+two:
+  item: 
+  quantity: 1
+  offer_starts_at: 2012-11-28 22:20:14
+  offer_ends_at: 2012-11-28 22:20:14
+  price: 1.5
+  frequency: 
+  frequency_starts_at: 2012-11-28 22:20:14
+  frequency_ends_at: 2012-11-28 22:20:14

@@ -1,5 +1,6 @@
 class Item < Describable
   belongs_to        :menu_section
+  has_many          :limits
   has_many          :line_items
   has_many          :customizations
   has_many          :options, through: :customizations

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126183118) do
+ActiveRecord::Schema.define(:version => 20121128202014) do
 
   create_table "carts", :force => true do |t|
     t.integer  "shop_id"
@@ -130,6 +130,11 @@ ActiveRecord::Schema.define(:version => 20121126183118) do
 
   add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
 
+  create_table "frequencies", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "items", :force => true do |t|
     t.integer  "menu_section_id"
     t.boolean  "is_active"
@@ -139,6 +144,22 @@ ActiveRecord::Schema.define(:version => 20121126183118) do
   end
 
   add_index "items", ["menu_section_id"], :name => "index_items_on_menu_section_id"
+
+  create_table "limits", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.datetime "offer_starts_at"
+    t.datetime "offer_ends_at"
+    t.float    "price"
+    t.integer  "frequency_id"
+    t.datetime "frequency_starts_at"
+    t.datetime "frequency_ends_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "limits", ["frequency_id"], :name => "index_limits_on_frequency_id"
+  add_index "limits", ["item_id"], :name => "index_limits_on_item_id"
 
   create_table "line_items", :force => true do |t|
     t.integer  "cart_id"

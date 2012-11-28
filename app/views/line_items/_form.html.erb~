@@ -2,8 +2,9 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3>Add item to shopping cart</h3>
-    <h4><%= item.name %></h4>
+
   </div>
+  <h4><%= "#{item.name} - #{shop_price(item)}" %></h4>
   <%= simple_form_for([@cart, @line_item]) do |f| %>
     <div class="modal-body">
       <%= f.error_notification %>
@@ -11,19 +12,8 @@
       <div class="form-inputs">
         <%= f.hidden_field :cart_id, { :value => @cart.id } %>
         <%= f.hidden_field :item_id, { :value => item.id } %>
+        <%= render "option_selections/form", f: f, options: item.options %>
 
-        <% item.options.each do |option| %>
-          <h5><%= option.name %></h5>
-          <% option_selection = @line_item.option_selections.build %>
-          <%= f.simple_fields_for :option_selections, option_selection do |option_form| %>
-            <div class="well">
-              <%= option_form.hidden_field :option_id, { :value => option.id } %>
-              <%= option_form.send(choice_select_type(option), :choice_ids, option.choices, :id, :name ) do |choice| %>
-                <% choice_label(choice, option.one_choice?) %>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
         <%= f.input :quantity, :input_html => { value: 1 } %>
         <%= f.input :special_instructions,
                     :input_html => { rows: 10, placeholder: "For example: \"no onions or peppers\"" } %>

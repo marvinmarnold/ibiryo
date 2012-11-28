@@ -35,7 +35,26 @@ def init
   MarketingStrategy.create!(name: "Front page banner", is_active: true)
   MarketingStrategy.create!(name: "Sells featured products", is_active: false)
 
-  (rand(20)+1).times do |i|
+  f = Frequency.new
+  f.descriptions.build(name: "Annually", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Monthly", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Daily", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Hourly", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Every 30 minutes", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+  f = Frequency.new
+  f.descriptions.build(name: "Every 15 minutes", locale_id: Locale.find_by_abbr("en"))
+  f.save!
+
+  20.times do |i|
     u = Vendor.create(email: "vendor#{i}@gmail.com", password: "vendor#{i}", default_locale_id: default_locale.id)
     (rand(2)+1).times do
       shop = create_shop(u)

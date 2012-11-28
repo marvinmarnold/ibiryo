@@ -1,0 +1,14 @@
+<% options.each do |option| %>
+  <h5><%= option.name %></h5>
+  <% option_selection = @line_item.option_selections.build %>
+  <% count = -1 %>
+  <%= f.simple_fields_for :option_selections, option_selection do |option_form| %>
+    <div class="well">
+      <%= option_form.hidden_field :option_id, { :value => option.id } %>
+      <%= option_form.send(choice_select_type(option), :choice_ids, option.choices, :id, :name ) do |choice| %>
+        <% count += 1 %>
+        <% choice_label(choice, option.one_choice?, count, option.choices.size) %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
