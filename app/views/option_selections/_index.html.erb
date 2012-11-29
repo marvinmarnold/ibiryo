@@ -1,0 +1,3 @@
+<% option_selections.each do |option_selection| %>
+  <%= render "option_selections/show", option_selection: option_selection unless option_selection.empty? %>
+<% end %>

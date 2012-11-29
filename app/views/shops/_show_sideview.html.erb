@@ -1,4 +1,5 @@
-<div class="<%=stuck_class(stuck)%>" id="<%= "shop_sideview-#{shop.id}" %>">
+<%= content_tag "div", class: stuck_class(stuck),
+                        id: "shop_sideview-#{shop.id}" do %>
   <span class="lead"> <%= shop.name %></span>
   <div class="row-fluid">
 <%
@@ -31,4 +32,4 @@
   <% else %>
     <br />
   <% end %>
-</div>
+<% end %>

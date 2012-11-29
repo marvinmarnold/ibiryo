@@ -35,6 +35,16 @@ def init
   MarketingStrategy.create!(name: "Front page banner", is_active: true)
   MarketingStrategy.create!(name: "Sells featured products", is_active: false)
 
+  p = PaymentMethod.new(database_name: "Cash")
+  p.descriptions.build(name: "Cash", locale_id: Locale.find_by_abbr("en"))
+  p.save!
+  p = PaymentMethod.new(database_name: "Credit Card")
+  p.descriptions.build(name: "Credit Card", locale_id: Locale.find_by_abbr("en"))
+  p.save!
+  p = PaymentMethod.new(database_name: "PayPal Express")
+  p.descriptions.build(name: "PayPal", locale_id: Locale.find_by_abbr("en"))
+  p.save!
+
   f = Frequency.new
   f.descriptions.build(name: "Annually", locale_id: Locale.find_by_abbr("en"))
   f.save!

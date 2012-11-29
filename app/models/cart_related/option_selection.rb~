@@ -17,7 +17,7 @@ class OptionSelection < ActiveRecord::Base
   end
 
   def choice_ids
-    self.choice_selections.pluck(:id)
+    self.choice_selections.pluck(:id) unless id.blank?
   end
 
   def subtotal
@@ -26,6 +26,14 @@ class OptionSelection < ActiveRecord::Base
       total += choice_selection.choice.price
     end
     total
+  end
+
+  def choices_description
+    choice_selections.map(&:description).join(", ")
+  end
+
+  def empty?
+    choice_selections.blank?
   end
 
 private

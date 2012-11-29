@@ -4,7 +4,7 @@
 jQuery ->
   $('.clickable-shop').click ->
     shop_id = objIDOnly $(this).attr("id")
-    window.location.href = "http://localhost:5000/shops/" + shop_id
+    window.location.href = $("#sidebar").data("shopurl") + shop_id
   $(document).click ->
     $('select').filter(->
       @id.match /shop_ownerships_attributes_*/

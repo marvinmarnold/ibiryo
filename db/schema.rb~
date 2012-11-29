@@ -253,9 +253,9 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
   add_index "participations", ["shop_id"], :name => "index_participations_on_shop_id"
 
   create_table "payment_methods", :force => true do |t|
-    t.string   "database_name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "possibilities", :force => true do |t|

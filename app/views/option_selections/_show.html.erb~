@@ -1,0 +1,1 @@
+<br/><b><%= option_selection.option.name %>: </b><%= option_selection.choices_description %>

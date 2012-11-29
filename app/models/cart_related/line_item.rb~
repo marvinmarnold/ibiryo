@@ -9,11 +9,12 @@ class LineItem < ActiveRecord::Base
 
 
   def update_options(option_selections)
-    option_selections.each do |key, attributes|
-      Rails.logger.info "BULLSHIT #{attributes}"
-      choice_ids = attributes.delete(:choice_ids)
-      option = self.option_selections.create!(attributes)
-      option.update_attributes(choice_ids: choice_ids)
+    unless option_selections.blank?
+      option_selections.each do |key, attributes|
+        choice_ids = attributes.delete(:choice_ids)
+        option = self.option_selections.create!(attributes)
+        option.update_attributes(choice_ids: choice_ids)
+      end
     end
   end
 
@@ -24,5 +25,6 @@ class LineItem < ActiveRecord::Base
     end
     total
   end
+
 
 end

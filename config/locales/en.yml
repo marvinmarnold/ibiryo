@@ -56,6 +56,15 @@ en:
   carts:
     edit_side:
       submit: "Continue to checkout"
+    edit:
+      title: "Shopping cart"
+      continue_shopping: "<< Continue shopping"
+      remove_item: "Remove"
+      order: "Order details"
+      billing:
+        title: "Billing options"
+    shared:
+      subtotal: "Subtotal"
   shops:
     show_sideview:
       restaurant:

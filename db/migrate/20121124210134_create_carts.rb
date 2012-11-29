@@ -4,7 +4,7 @@ class CreateCarts < ActiveRecord::Migration
       t.belongs_to :shop
       t.belongs_to :user
       t.boolean :ship
-      t.text :special_instructins
+      t.text :special_instructions
       t.string :currency_at_checkout
       t.string :shop_name_at_checkout
       t.float :shipping_fee

@@ -12,9 +12,9 @@
 <%= render "layouts/navbar/navbar" %>
 <div class="container-fluid" id="maincontainer">
   <div class="row-fluid" id="mainrow">
-    <div class="span3 offset1" id="sidebar">
+    <%= content_tag "div", class: "span3 offset1", id: "sidebar", data: { shop_url: shops_path } do %>
       <%= render "layouts/sidebar" %>
-    </div>
+    <% end %>
     <div class="span7" id="mainbar">
       <%= render "layouts/errors" %>
       <%= yield %>

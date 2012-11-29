@@ -28,6 +28,14 @@ class OptionSelection < ActiveRecord::Base
     total
   end
 
+  def choices_description
+    choice_selections.map(&:description).join(", ")
+  end
+
+  def empty?
+    choice_selections.blank?
+  end
+
 private
 
   def add_choice(choice_id)

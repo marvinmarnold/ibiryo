@@ -16,4 +16,23 @@ module CartsHelper
                                                         button: delivery_method.radio_button ) }
     end
   end
+
+  def payment_label_for(payment_method)
+    case payment_method.value
+      when "Credit Card"
+        payment_method.label { render("carts/payment_method", button: payment_method.radio_button,
+                                                                  image: credit_buttons, text: "Cash" ) }
+      when "Cash"
+        payment_method.label { render("carts/payment_method", button: payment_method.radio_button,
+                                                                  image: image_tag("cash.png"), text: "Credit Card" )}
+      when "PayPal Express"
+        payment_method.label { render("carts/payment_method", button: payment_method.radio_button,
+                                                                  image: image_tag("paypal.png"), text: "PayPal" ) }
+    end
+  end
+
+  def credit_buttons
+    image_tag("visa.png") + image_tag("mastercard.png") + image_tag("discover.png") + image_tag("american_express.png") + image_tag("jcb.png")
+  end
+
 end

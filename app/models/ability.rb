@@ -7,6 +7,7 @@ class Ability
     can :create, Feedback
     can :show, Shop
     can :manage, LineItem
+    can :manage, Cart
 
     if user.role? :vendor
       can :update, Shop
