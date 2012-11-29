@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20121128202014) do
     t.integer  "item_id"
     t.integer  "quantity"
     t.datetime "offer_starts_at"
+    t.boolean  "offer_ends"
     t.datetime "offer_ends_at"
     t.float    "price"
     t.integer  "frequency_id"

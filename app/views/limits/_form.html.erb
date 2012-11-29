@@ -1,0 +1,10 @@
+<h4><%= t("items.form.limits.title_each") %></h4>
+<%= f.input :price %>
+<%= f.input :quantity %>
+<%= f.input :offer_starts_at, include_blank: true %>
+<%= f.input :offer_ends, as: :radio_buttons, required: true %>
+<%= f.input :offer_ends_at, include_blank: true %>
+<%= f.association :frequency %>
+<%= f.input :frequency_starts_at, include_blank: true %>
+<%= f.input :frequency_ends_at, include_blank: true %>
+<%= f.link_to_remove t("items.form.limits.remove_each"), :class => 'btn btn-mini btn-danger' %>

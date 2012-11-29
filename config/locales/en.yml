@@ -190,6 +190,11 @@ en:
         remove: "Remove option"
         add: "Add an existing option"
         new: "Add a new option"
+      limits:
+        title: "Restrictions"
+        add: "Add a restriction to item"
+        remove_each: "Remove this restriction"
+        title_each: "Item restriction"
     create:
       notice_success: "Item successfully added."
     update:
@@ -257,6 +262,10 @@ en:
       errors:
         is_active: "Activation status must be set"
     button_to_shop: "I\'m done, preview shop"
+  limits:
+    form:
+      errors:
+        offer_ends: "must be set"
   simple_form:
     labels:
       customer:

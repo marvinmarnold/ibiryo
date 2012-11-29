@@ -4,6 +4,7 @@ class CreateLimits < ActiveRecord::Migration
       t.belongs_to :item
       t.integer :quantity
       t.datetime :offer_starts_at
+      t.boolean :offer_ends
       t.datetime :offer_ends_at
       t.float :price
       t.belongs_to :frequency

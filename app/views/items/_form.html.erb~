@@ -1,33 +1,34 @@
-<%= simple_nested_form_for([@menu_section, @item]) do |f| %>
+<%= simple_nested_form_for([@menu_section, @item], :html => {:class => "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= render 'shops_shared/is_active', obj: @item, f: f %>
 
-    <h3><%= t("items.form.descriptions.title") %></h3>
-    <%= render "layouts/custom_errors", errors: @item.errors[:descriptions] %>
-    <%= f.simple_fields_for :descriptions do |description_form| %>
-      <%= render "descriptions/form", f: description_form,
-                                      title: t("items.form.descriptions.title_each"),
-                                      remove: t("items.form.descriptions.remove_each"),
-                                      skip_body: false %>
-    <% end %>
-    <p>
-      <%= f.link_to_add t("items.form.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-info' %>
-    </p>
+    <%= render 'descriptions/section', f: f, klasses: "items", klass_instance: @item %>
+
     <%= f.input :price %>
 
     <h3><%= t("items.form.customizations.title") %></h3>
     <%= f.simple_fields_for :customizations do |customization_form| %>
       <div class="well">
         <%= customization_form.association :option, collection: @menu_section.menu.shop.options %>
-        <%= customization_form.link_to_remove t("item.form.customizations.remove"), :class => 'btn btn-mini btn-danger' %>
+        <%= customization_form.link_to_remove t("items.form.customizations.remove"), :class => 'btn btn-mini btn-danger' %>
       </div>
     <% end %>
     <p>
       <%= f.link_to_add t("items.form.customizations.add"), :customizations, :class => 'btn btn-mini btn-info' %>
       <%= t("general.or") %>
       <%= link_to t("items.form.customizations.new"), new_shop_option_path(@menu_section.menu.shop), :class => 'btn btn-mini btn-primary' %>
+    </p>
+
+    <h3><%= t("items.form.limits.title") %></h3>
+    <%= f.simple_fields_for :limits do |limit_form| %>
+      <div class="well">
+        <%= render "limits/form", f: limit_form %>
+      </div>
+    <% end %>
+    <p>
+      <%= f.link_to_add t("items.form.limits.add"), :limits, :class => 'btn btn-mini btn-info' %>
     </p>
   </div>
 
