@@ -1,1 +1,2 @@
-<br/><b><%= option_selection.option.name %>: </b><%= option_selection.choices_description %>
+<br/><b><%= option_selection.option.name %>: </b>
+<%= "#{t("option_selections.add") #{option_selection.choices_description}" %>

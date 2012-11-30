@@ -8,22 +8,30 @@
     <%= f.input :special_instructions, :input_html => { rows: 10 } %>
 
     <h3><%= t("carts.edit.billing.title") %></h3>
-    <%= f.collection_radio_buttons(:billed_method, PaymentMethod.all, :database_name, :database_name) do |payment_method| %>
+    <%= f.collection_radio_buttons(:billed_method, PaymentMethod.all, :database_name, :database_name, checked: "Cash") do |payment_method| %>
                                       <% payment_label_for(payment_method) %>
                                     <% end %>
-    <div id="credit-card">
-      <h4>Credit card information</h4>
+    <div id="credit-card" style="display:none">
+      <h3><%= t("carts.edit.card") %></h3>
       <%= f.input :card_number %>
-      <%= f.input :billed_card_expiration, :discard_day => true,                 :start_year => Date.today.year,
+      <%= f.input :billed_card_expiration, :discard_day => true,          :start_year => Date.today.year,
                                     :end_year => (Date.today.year + 10),  :use_month_numbers => true %>
-      <div class="row-fluid">
-        <div class="span2"><%= f.input :card_cvv %></div>
-        <div class="span10"><%= image_tag 'cvv.png' %></div>
-      </div>
+
+      <%= f.input :card_cvv do %>
+        <%= f.input_field :card_cvv %>
+        <%= image_tag 'cvv.png' %>
+      <% end %>
+
+
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <div id="standard-checkout">
+      <%= f.button :submit %>
+    </div>
+    <div id="paypal-checkout" style="display:none">
+      <%= image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif") %>
+    </div>
   </div>
 <% end %>

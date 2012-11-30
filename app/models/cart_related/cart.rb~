@@ -2,7 +2,7 @@ class Cart < ActiveRecord::Base
   belongs_to        :shop
   belongs_to        :user
   has_many          :line_items
-  attr_accessible   :special_instructions,  :ship, :billed_method, :billed_card_expiration
+  attr_accessible   :special_instructions,  :ship,    :billed_method, :billed_card_expiration
   attr_accessor     :card_number,            :card_cvv
 
   SERVICE_FEE = CONFIG["fees"]["service"]

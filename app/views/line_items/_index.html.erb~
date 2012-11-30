@@ -4,31 +4,28 @@
     <th>Description</th>
     <th>Quantity</th>
     <th>Price</th>
-    <th>Special instructions</th>
     <th></th>
   </tr>
 
-<% line_items.each do |line_item| %>
-  <tr>
-    <td><%= line_item.item.name %></td>
-    <td>
-      <%= line_item.item.description %>
-      <small><%= render "option_selections/index", option_selections: line_item.option_selections %></small>
-    </td>
-    <td><%= line_item.quantity %></td>
-    <td><%= line_item.subtotal %></td>
-    <td><%= line_item.special_instructions %></td>
-    <td><%= link_to t("carts.edit.remove_item"), cart_line_item_path(@cart),
-                                method: :delete, data: { confirm: 'Are you sure?' },
-                                class: "btn btn-danger btn-mini" %></td>
-  </tr>
-<% end %>
-  <tr>
-    <td colspan=3>Taxes</td>
-    <td colspan=2>Todo</td>
-  </tr>
+  <% line_items.each do |line_item| %>
+    <tr>
+      <td><%= line_item.item.name %></td>
+      <td>
+        <%= line_item.item.description %>
+        <small><%= render "option_selections/index", option_selections: line_item.option_selections %></small>
+        <br/>
+        <strong><%= t("carts.shared.special_instructions") %>: </strong>
+        <%= line_item.special_instructions%>
+      </td>
+      <td><%= line_item.quantity %></td>
+      <td><%= number_to_shop_currency(line_item.subtotal, @shop) %></td>
+      <td><%= link_to t("carts.edit.remove_item"), cart_line_item_path(@cart),
+                                  method: :delete, data: { confirm: 'Are you sure?' },
+                                  class: "btn btn-danger btn-mini" %></td>
+    </tr>
+  <% end %>
   <tr class="info">
-    <td colspan=3><strong>Total</strong></td>
+    <td colspan=3><strong><%= t("shops.shared.subtotal") %></strong></td>
     <td colspan=2><strong><%= number_to_shop_currency(@cart.subtotal, @shop) %></strong></td>
   </tr>
 </table>

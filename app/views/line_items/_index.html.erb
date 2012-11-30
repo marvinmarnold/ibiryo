@@ -4,7 +4,6 @@
     <th>Description</th>
     <th>Quantity</th>
     <th>Price</th>
-    <th>Special instructions</th>
     <th></th>
   </tr>
 
@@ -14,10 +13,14 @@
       <td>
         <%= line_item.item.description %>
         <small><%= render "option_selections/index", option_selections: line_item.option_selections %></small>
+        <% unless line_item.special_instructions.blank? %>
+          <br/>
+          <strong><%= t("carts.shared.special_instructions") %>: </strong>
+          <%= line_item.special_instructions %>
+        <% end %>
       </td>
       <td><%= line_item.quantity %></td>
-      <td><%= line_item.subtotal %></td>
-      <td><%= line_item.special_instructions %></td>
+      <td><%= number_to_shop_currency(line_item.subtotal, @shop) %></td>
       <td><%= link_to t("carts.edit.remove_item"), cart_line_item_path(@cart),
                                   method: :delete, data: { confirm: 'Are you sure?' },
                                   class: "btn btn-danger btn-mini" %></td>

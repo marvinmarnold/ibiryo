@@ -61,10 +61,12 @@ en:
       continue_shopping: "<< Continue shopping"
       remove_item: "Remove"
       order: "Order details"
+      card: "Credit card information"
       billing:
         title: "Billing options"
     shared:
       subtotal: "Subtotal"
+      special_instructions: "Instructions"
   shops:
     show_sideview:
       restaurant:
@@ -185,6 +187,8 @@ en:
       notice_success: "Section successfully added to menu."
     update:
       notice_success: "Section successfully updated!"
+  option_selections:
+    add: "Add"
   items:
     new:
       title: "Add new item to %{section}"
