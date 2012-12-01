@@ -1,0 +1,13 @@
+<%= form_tag(root_path, method: :get, class: "hotel-search-form") do %>
+  <div class="row-fluid">
+    <div class="span4">
+      <%= render "layouts/searchbar/hotels/where" %>
+    </div>
+    <div class="span4">
+      <%= render "layouts/searchbar/hotels/wwhen" %>
+    </div>
+    <div class="span4">
+      <%= render "layouts/searchbar/hotels/who" %>
+	  </div>
+  </div>
+<% end %>

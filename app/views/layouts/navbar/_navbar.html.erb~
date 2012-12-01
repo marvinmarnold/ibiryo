@@ -20,9 +20,6 @@
         <% end %>
 
       </div>
-      <%= form_tag(root_path, method: :get, class: "navbar-search pull-right") do %>
-			  <%= text_field_tag :q, nil, class: "search-query", placeholder: t("navbar.search.placeholder") %>
-			<% end %>
        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>

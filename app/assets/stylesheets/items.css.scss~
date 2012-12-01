@@ -36,7 +36,7 @@
 }
 
 .item-remove {
-  $general-color: #FF0000[]
+  $general-color: #FF0000;
   @include base(black);
   @include selectable($general-color, darken($general-color, 5%));
 }

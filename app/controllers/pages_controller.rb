@@ -17,6 +17,6 @@ class PagesController < ApplicationController
   end
 
   def index
-    redirect_to start_path unless user_signed_in?
+    redirect_to start_path(scope: params[:scope]) unless user_signed_in?
   end
 end

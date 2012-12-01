@@ -1,0 +1,28 @@
+<div class="row-fluid">
+  <div id="searchbar" class="span10 offset1">
+    <div class="row-fluid">
+
+      <div class="span4 scopes">
+        <ul class="nav nav-pills nav-stacked">
+          <%= content_tag "li", class: append_word("", food_scope?, "active") do %>
+            <%= link_to t("general.scopes.food"), root_path(scope: "food"),
+                        class: append_word("scope", !food_scope?, "inactive-scope") %>
+          <% end %>
+          <%= content_tag "li", class: append_word("", hotels_scope?, "active") do %>
+            <%= link_to t("general.scopes.hotels"), root_path(scope: "hotels"),
+                        class: append_word("scope", !hotels_scope?, "inactive-scope") %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="span8">
+        <% if hotels_scope? %>
+          <%= render 'layouts/searchbar/hotels/hotels' %>
+        <% else %>
+          <%= render 'layouts/searchbar/food/food' %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+  <div class="span1"></div>
+</div>

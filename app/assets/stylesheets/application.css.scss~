@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require chosen
+ *= require bootstrap-datepicker
  */
 $main-color: #ddd;
 $main-color-highlight: darken($main-color, 10%);
@@ -60,4 +61,46 @@ $main-color-highlight: darken($main-color, 10%);
 html, body {
   height: 100%;
   min-height: 100%;
+}
+
+#searchbar {
+  height: 80px;
+  background: $main-color-highlight;
+  padding-left:20px;
+}
+
+.food-tag {
+
+}
+
+.scopes {
+  margin-top: 5px;
+}
+
+li .inactive-scope {
+  color: black;
+}
+
+.scope {
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
+.searchbar-title {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.search-date {
+  width: 60px;
+}
+
+.search-number {
+  width: 20px;
+}
+
+label.label-hotels {
+  font-size: 12px;
+  text-align: center;
 }

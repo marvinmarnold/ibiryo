@@ -1,0 +1,41 @@
+.hotel-search-form {
+  padding-top: 7px;
+}
+
+#searchbar {
+  height: 80px;
+  background: $main-color-highlight;
+  padding-left:20px;
+}
+
+.scopes {
+  margin-top: 5px;
+}
+
+li .inactive-scope {
+  color: black;
+}
+
+.scope {
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
+.searchbar-title {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.search-date {
+  width: 60px;
+}
+
+.search-number {
+  width: 20px;
+}
+
+label.label-hotels {
+  font-size: 12px;
+  text-align: center;
+}

@@ -13,4 +13,5 @@
 
 .stuck-shop {
   padding-bottom: 7px;
+  background-color: $main-color-highlight;
 }

@@ -28,4 +28,5 @@ module ApplicationHelper
     controller.controller_name != "shops" and
     controller.action_name != "show"
   end
+
 end

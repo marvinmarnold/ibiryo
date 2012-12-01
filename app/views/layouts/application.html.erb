@@ -10,7 +10,9 @@
 <body>
 
 <%= render "layouts/navbar/navbar" %>
+
 <div class="container-fluid" id="maincontainer">
+  <%= render "layouts/searchbar/searchbar" %>
   <div class="row-fluid" id="mainrow">
     <%= content_tag "div", class: "span3 offset1", id: "sidebar", data: { shopurl: shops_path } do %>
       <%= render "layouts/sidebar" %>

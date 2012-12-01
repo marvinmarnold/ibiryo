@@ -10,12 +10,14 @@
  *
  *= require_self
  *= require chosen
+ *= require bootstrap-datepicker
  */
 $main-color: #ddd;
 $main-color-highlight: darken($main-color, 10%);
 
 @import "bootstrap_and_overrides.css.less";
 @import "scaffolds.css.scss";
+@import "searchbar.css.scss";
 @import "items.css.scss";
 @import "shops.css.scss";
 @import "line_items.css.scss";

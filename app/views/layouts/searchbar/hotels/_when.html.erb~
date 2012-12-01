@@ -1,0 +1,14 @@
+<span class="searchbar-title">2. <%= t('searchbar.hotels.when.title') %></span><br/>
+<div class="row-fluid">
+  <div class="span4">
+    <%= text_field_tag :arrival, nil, class: "search-query search-date arrival-date",
+	                                placeholder: hotel_date(Time.now) %>
+	  <%= label_tag :arrival, "Arrival", class: "label-hotels" %>
+  </div>
+  <div class="span1"></div>
+	<div class="span4">
+	  <%= text_field_tag :departure, nil, class: "search-query search-date departure-date",
+	                              placeholder: hotel_date(Time.now) %>
+	  <%= label_tag :departure, "Departure", class: "label-hotels" %>
+	</div>
+</div>

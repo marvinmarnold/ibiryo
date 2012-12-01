@@ -1,0 +1,14 @@
+<div class="row-fluid">
+  <div class="span6">
+    <span class="searchbar-title"><%= t('searchbar.food.browse.title') %></span><br/>
+      <%= form_tag(root_path, method: :get, class: "navbar-search") do %>
+			  <%= text_field_tag :q, nil, class: "search-query", placeholder: t("navbar.search.placeholder") %>
+			<% end %>
+  </div>
+  <div class="span6">
+    <span class="searchbar-title pull-right"><%= t('searchbar.food.search.title') %></span><br/>
+      <%= form_tag(root_path, method: :get, class: "navbar-search pull-right") do %>
+			  <%= text_field_tag :q, nil, class: "search-query", placeholder: t("navbar.search.placeholder") %>
+			<% end %>
+  </div>
+</div>

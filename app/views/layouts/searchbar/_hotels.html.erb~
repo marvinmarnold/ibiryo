@@ -1,0 +1,46 @@
+<div class="row-fluid">
+  <%= form_tag(root_path, method: :get, class: "navbar-search") do %>
+  <div class="span4">
+    <span class="searchbar-title">1. <%= t('searchbar.hotels.where.title') %></span><br/>
+
+	    <%= text_field_tag :where, nil, class: "search-query",
+	                        placeholder: t("searchbar.hotels.where.placeholder") %>
+  </div>
+  <div class="span4">
+    <span class="searchbar-title">2. <%= t('searchbar.hotels.when.title') %></span><br/>
+      <div class="row-fluid">
+        <div class="span4">
+	          <%= text_field_tag :arrival, nil, class: "search-query search-date arrival-date",
+	                              placeholder: hotel_date(Time.now) %>
+	          <%= label_tag :arrival, "Arrival", class: "label-hotels" %>
+		    </div>
+		    <div class="span1"></div>
+		    <div class="span4">
+	          <%= text_field_tag :departure, nil, class: "search-query search-date departure-date",
+	                              placeholder: hotel_date(Time.now) %>
+	          <%= label_tag :departure, "Departure", class: "label-hotels" %>
+		    </div>
+		</div>
+  </div>
+  <div class="span4">
+    <span class="searchbar-title">3. <%= t('searchbar.hotels.who.title') %></span><br/>
+    <div class="row-fluid">
+      <div class="span3">
+	        <%= text_field_tag :rooms, nil, class: "search-query search-number", placeholder: 1 %>
+	        <%= label_tag :rooms, "Rooms", class: "label-hotels" %>
+		  </div>
+		  <div class="span1"></div>
+		  <div class="span3">
+	        <%= text_field_tag :adults, nil, class: "search-query search-number", placeholder: 2 %>
+	        <%= label_tag :rooms, "Adults", class: "label-hotels" %>
+		  </div>
+		  <div class="span1"></div>
+		  <div class="span3">
+	        <%= text_field_tag :children, nil, class: "search-query search-number", placeholder: 0 %>
+	        <%= label_tag :rooms, "Children", class: "label-hotels" %>
+
+		  </div>
+		</div>
+  </div>
+  <% end %>
+</div>

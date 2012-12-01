@@ -1,0 +1,18 @@
+    <span class="searchbar-title">3. <%= t('searchbar.hotels.who.title') %></span><br/>
+    <div class="row-fluid">
+      <div class="span3">
+	        <%= select_tag :rooms, nil, class: "search-query search-number", value: 1 %>
+	        <%= label_tag :rooms, "Rooms", class: "label-hotels multiple", multiple: "multiple" %>
+		  </div>
+		  <div class="span1"></div>
+		  <div class="span3">
+	        <%= text_field_tag :adults, nil, class: "search-query search-number", value: 2 %>
+	        <%= label_tag :rooms, "Adults", class: "label-hotels" %>
+		  </div>
+		  <div class="span1"></div>
+		  <div class="span3">
+	        <%= text_field_tag :children, nil, class: "search-query search-number", value: 0 %>
+	        <%= label_tag :rooms, "Children", class: "label-hotels" %>
+
+		  </div>
+		</div>

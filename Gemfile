@@ -43,3 +43,4 @@ gem 'chosen-rails'
 gem 'carrierwave'
 gem "mini_magick"
 gem "nested_form"
+gem 'bootstrap-datepicker-rails'

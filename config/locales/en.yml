@@ -22,6 +22,9 @@ en:
       friday: "Friday"
       saturday: "Saturday"
       sunday: "Sunday"
+    scopes:
+      food: "Food"
+      hotels: "Hotels"
   brand:
     title: "Company.com"
     company_name: "Company"
@@ -40,6 +43,20 @@ en:
       account_history: "Account history"
       sign_out: "Sign out"
       manage_shops: "Manage your shops"
+  searchbar:
+    food:
+      browse:
+        title: "Browse"
+      search:
+        title: "Search"
+    hotels:
+      where:
+        title: "Where?"
+        placeholder: "City, hotel name, etc."
+      when:
+        title: "When?"
+      who:
+        title: "Who?"
   pages:
     index:
       title: "Welcome to Company"
