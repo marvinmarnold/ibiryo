@@ -1,7 +1,9 @@
-<a href="<%="#item-#{item.id}"%>" class="<%="alert alert-info span6 #{item_class} item-base"%>"
-        data-title="<%= popup_title(item, @shop) %>" data-content="<%= item.description %>"
-        rel="popover" data-placement="<%=placement%>" data-trigger="hover", data-html=true data-toggle="modal">
+<%= content_tag "a",  href: "#item-#{item.id}",
+                      class: "alert alert-info span6 item-base #{item_class}",
+                      data: { title: popup_title(item, @shop), content: item.description,
+                              trigger: "hover", html: true, toggle: "modal", placement: placement },
+                      rel: "popover" do %>
     <span class="pull-left"><%= truncate(item.name, length: 30) %></span>
     <span class="pull-right"><%= shop_price(item) %></span>
-</a>
+<% end %>
 <%= render "line_items/form", item: item %>

@@ -46,3 +46,158 @@ fees:
   delivery: 100
   service: 100
   currency_abbr: "MTN"
+item_types:
+  food:
+    descriptions:
+      english:
+        locale_abbr: "en"
+        name: "Food"
+    tag_groups:
+      meal_time:
+        descriptions:
+          english:
+            locale_abbr: "en"
+            name: "Meal Time"
+        tags:
+          breakfast:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Breakfast"
+          lunch:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Lunch"
+          dinner:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Dinner"
+      dietary:
+        descriptions:
+          english:
+            locale_abbr: "en"
+            name: "Dietary options"
+        tags:
+          halal:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Halal"
+          kosher:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Kosher"
+          vegetarian:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Vegetarian"
+          vegan:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Vegan"
+          healthy:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Healthy"
+      cuisine_type:
+        descriptions:
+          english:
+            locale_abbr: "en"
+            name: "Cuisine type"
+        tags:
+          mozambican:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Mozambican"
+          american:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "American"
+          chinese:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Chinese"
+          hamburgers:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Hamburgers"
+          mexican:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Mexican"
+          pizza:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Pizza"
+          sandwiches:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Sandwiches"
+          sushi:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Sushi"
+          thai:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Thai"
+          african:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "African"
+          south_african:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "South African"
+          brazilian:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Brazilian"
+          portugues:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Portuguese"
+          dessert:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Dessert"
+          indian:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Indian"
+          ice_cream:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Ice Cream"
+          juice:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Juice"
+          steak:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Steak"

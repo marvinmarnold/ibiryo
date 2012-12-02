@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SynonymTest < ActiveSupport::TestCase
+class TagGroupTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

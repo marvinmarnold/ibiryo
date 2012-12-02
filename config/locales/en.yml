@@ -47,8 +47,17 @@ en:
     food:
       browse:
         title: "Browse"
+        button_label: "Select cuisines"
+        popup:
+          title: "Select cuisines"
       search:
         title: "Search"
+      sort:
+        title: "Sort by"
+        newest: "Newest"
+        popular: "Most popular"
+        name: "Name (A-Z)"
+        name_reverse: "Name (Z-A)"
     hotels:
       where:
         title: "Where?"

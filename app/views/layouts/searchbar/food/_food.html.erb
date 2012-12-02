@@ -1,13 +1,20 @@
 <div class="row-fluid hotel-search-form">
-  <div class="span6">
-    <span class="searchbar-title"><%= t('searchbar.food.browse.title') %></span><br/>
+  <div class="span3">
+    <span class="searchbar-title">1. <%= t('searchbar.food.browse.title') %></span><br/>
+    <%= content_tag "a", href: "#browse-food", class: "btn navbar-search", data: { toggle: "modal" } do %>
+      <%= t('searchbar.food.browse.button_label') %>
+    <% end %>
+    <%= render "layouts/searchbar/food/browse" %>
+  </div>
+  <div class="span4">
+    <span class="searchbar-title">2. <%= t('searchbar.food.sort.title') %></span><br/>
       <%= form_tag(root_path, method: :get, class: "navbar-search") do %>
-			  <%= text_field_tag :q, nil, class: "search-query", placeholder: t("navbar.search.placeholder") %>
+			  <%= select_tag(:sort_by, options_for_select(food_sort_options, 1)) %>
 			<% end %>
   </div>
-  <div class="span6">
-    <span class="searchbar-title pull-right"><%= t('searchbar.food.search.title') %></span><br/>
-      <%= form_tag(root_path, method: :get, class: "navbar-search pull-right") do %>
+  <div class="span4">
+    <span class="searchbar-title">3. <%= t('searchbar.food.search.title') %></span><br/>
+      <%= form_tag(root_path, method: :get, class: "navbar-search") do %>
 			  <%= text_field_tag :q, nil, class: "search-query", placeholder: t("navbar.search.placeholder") %>
 			<% end %>
   </div>

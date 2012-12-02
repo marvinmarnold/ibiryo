@@ -5,11 +5,11 @@
       <div class="span4 scopes">
         <ul class="nav nav-pills nav-stacked">
           <%= content_tag "li", class: append_word("", food_scope?, "active") do %>
-            <%= link_to t("general.scopes.food"), root_path(scope: "food"),
+            <%= link_to t("general.scopes.food"), url_for(scope: "food"),
                         class: append_word("scope", !food_scope?, "inactive-scope") %>
           <% end %>
           <%= content_tag "li", class: append_word("", hotels_scope?, "active") do %>
-            <%= link_to t("general.scopes.hotels"), root_path(scope: "hotels"),
+            <%= link_to t("general.scopes.hotels"), url_for(scope: "hotels"),
                         class: append_word("scope", !hotels_scope?, "inactive-scope") %>
           <% end %>
         </ul>

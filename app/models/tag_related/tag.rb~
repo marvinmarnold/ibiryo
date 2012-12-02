@@ -1,4 +1,4 @@
-class Tag < ActiveRecord::Base
-  belongs_to :synonym
-  attr_accessible :name
+class Tag < Describable
+  belongs_to      :tag_group
+  has_many        :taggings
 end

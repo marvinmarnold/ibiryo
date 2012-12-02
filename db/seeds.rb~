@@ -64,6 +64,8 @@ def init
   f.descriptions.build(name: "Every 15 minutes", locale_id: Locale.find_by_abbr("en"))
   f.save!
 
+  build_item_types
+
   20.times do |i|
     u = Vendor.create(email: "vendor#{i}@gmail.com", password: "vendor#{i}", default_locale_id: default_locale.id)
     (rand(2)+1).times do
@@ -75,9 +77,37 @@ def init
   end
 end
 
+def build_item_types
+  CONFIG["item_types"].each do |k, v|
+    i = ItemType.new
+    add_descriptions_to_describable_hash(v, i)
+    v["tag_groups"].each do |k, v|
+      g = i.tag_groups.build
+      add_descriptions_to_describable_hash(v, g)
+      v["tags"].each do |k, v|
+        t = g.tags.build
+        add_descriptions_to_describable_hash(v, t)
+      end
+    end
+    i.save!
+  end
+end
+
+def add_descriptions_to_describable_hash(h, describable)
+    h["descriptions"].each do |k, v|
+      #puts "key: #{k}"
+      #puts "value: #{v}"
+      add_description(describable, v["name"], Locale.find_by_abbr(v["locale_abbr"]))
+    end
+end
+
+def add_description(describable, name, locale = Locale.find_by_abbr("en"))
+  describable.descriptions.build(name: name, locale_id: locale.id)
+end
+
 def create_shop(user)
   shop = user.shops.build(delivery_minimum: random_zero(1000, 0.1), currency_id: Currency.all.sample.id,
-                          delivery_fee: random_zero(1000, 0.4), tag_list: Faker::Lorem.words(rand(4)+1).join(","),
+                          delivery_fee: random_zero(1000, 0.4),
                           banner: File.open(random_banner), thumbnail: File.open(random_thumbnail),
                           is_active: true )
 

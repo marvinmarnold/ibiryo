@@ -2,6 +2,6 @@
 <h5>
   <%= t("general.admin_locale.switch_to") %>:
   <% Locale.all.each do |locale| %>
-    <%= link_to locale.language, url_for(admin_preview_locale: locale.abbr), class: "btn btn-mini" unless locale.abbr == admin_preview_locale %>
+    <%= link_to locale.language, url_for(admin_preview_locale: locale.abbr), class: "btn btn-mini" unless locale.abbr == admin_preview_locale.abbr %>
   <% end %>
 </h5>

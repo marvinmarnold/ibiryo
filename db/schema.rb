@@ -135,6 +135,11 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "item_types", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "items", :force => true do |t|
     t.integer  "menu_section_id"
     t.boolean  "is_active"
@@ -214,11 +219,13 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
 
   create_table "menus", :force => true do |t|
     t.integer  "shop_id"
+    t.integer  "item_type_id"
     t.boolean  "is_active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
+  add_index "menus", ["item_type_id"], :name => "index_menus_on_item_type_id"
   add_index "menus", ["shop_id"], :name => "index_menus_on_shop_id"
 
   create_table "option_selections", :force => true do |t|
@@ -318,6 +325,14 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "tag_groups", :force => true do |t|
+    t.integer  "item_type_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "tag_groups", ["item_type_id"], :name => "index_tag_groups_on_item_type_id"
+
   create_table "taggings", :force => true do |t|
     t.integer  "shop_id"
     t.integer  "tag_id"
@@ -329,13 +344,12 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
 
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.integer  "synonym_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "tag_group_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "tags", ["synonym_id"], :name => "index_tags_on_synonym_id"
+  add_index "tags", ["tag_group_id"], :name => "index_tags_on_tag_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

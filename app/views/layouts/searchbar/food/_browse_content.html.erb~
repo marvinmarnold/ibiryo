@@ -1,0 +1,6 @@
+<%= form_tag(root_path, method: :get, type: 'text') do %>
+  <% Tag.all.each do |tag| %>
+    <%= check_box_tag(:cuisine, tag.id) %>
+    <%= label_tag(:cuisine, tag.name) %>
+  <% end %>
+<% end %>
