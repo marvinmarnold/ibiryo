@@ -1,14 +1,35 @@
+<% count = 0 %>
 <% options.each do |option| %>
   <h5><%= option.name %></h5>
-  <% option_selection = @line_item.option_selections.build %>
-  <% count = -1 %>
-  <%= f.simple_fields_for :option_selections, option_selection do |option_form| %>
-    <div class="well">
-      <%= option_form.hidden_field :option_id, { :value => option.id } %>
-      <%= option_form.send(choice_select_type(option), :choice_ids, option.choices, :id, :name ) do |choice| %>
-        <% count += 1 %>
-        <% choice_label(choice, option.one_choice?, count, option.choices.size) %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="well">
+    <% option.choices.each_slice(num_cols) do |choice_slice| %>
+      <div class="row-fluid">
+        <% choice_slice.each do |choice| %>
+          <%= content_tag "div", class: "span#{12/num_cols}" do %>
+            <% id = "line_item_option_selections_attributes_#{count}_choice_ids_#{choice.id}" %>
+            <% name = "line_item[option_selections_attributes][#{count}][choice_ids][]" %>
+            <%= content_tag "label", for: id do %>
+              <div class="row-fluid">
+                <% if option.one_choice? %>
+                  <div class="span2"><%= radio_button_tag name, choice.id, false, id: id %></div>
+                <% else %>
+                  <div class="span2"><%= check_box_tag name, choice.id, false, id: id %></div>
+                <% end %>
+                <div class="span10 choice"><%= choice.name %></div>
+              </div>
+                <div class="row-fluid">
+                  <div class="span2"></div>
+                  <div class="span10 muted">
+                    <small>
+                      <%= "#{t("option_selections.add")} #{choice_price(choice)}" %>
+                    </small>
+                  </div>
+                </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% count += 1 %>
 <% end %>

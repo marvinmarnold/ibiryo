@@ -11,7 +11,7 @@
       <div class="form-inputs">
         <%= f.hidden_field :cart_id, { :value => @cart.id } %>
         <%= f.hidden_field :item_id, { :value => item.id } %>
-        <%= render "option_selections/form", f: f, options: item.options %>
+        <%= render "option_selections/form", num_cols: 3, options: item.options, f: f %>
 
         <%= f.input :quantity, :input_html => { value: 1 } %>
         <%= f.input :special_instructions,

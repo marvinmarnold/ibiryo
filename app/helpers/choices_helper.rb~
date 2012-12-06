@@ -13,7 +13,7 @@ module ChoicesHelper
   end
 
   def choice_select_type(option)
-    (option.one_choice?) ?  :collection_radio_buttons : :collection_check_boxes
+    (option.one_choice?) ?  :radio_button_tag : :check_box_tag
   end
 
   def choice_button(one_button)
