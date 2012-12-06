@@ -40,7 +40,7 @@
     <h2><%= "1. #{t("shops.form.branding.title")}" %></h2>
 
     <h3><%= t("shops.form.branding.descriptions.title") %></h3>
-    <%= render 'descriptions/section', f: f, klasses: "menus", klass_instance: @menu %>
+    <%= render 'descriptions/section', f: f, klasses: "shops", klass_instance: @shop %>
 
     </p>
     <h3><%= t("shops.form.branding.logos") %></h3>

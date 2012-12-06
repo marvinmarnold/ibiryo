@@ -1,4 +1,4 @@
-    <% @paginatable_shops.each do |shop| %>
-        <%= render "shops/show_sideview", shop: shop, stuck: false %>
-    <% end %>
-    <%= render "layouts/page_links", paginatable: @paginatable_shops, page_param: Shop.page_param %>
+<% @paginatable_shops.each do |shop| %>
+  <%= render "shops/show_sideview", shop: shop, stuck: false %>
+<% end %>
+<%= render "layouts/page_links", paginatable: @paginatable_shops, page_param: Shop.page_param %>

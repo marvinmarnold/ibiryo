@@ -1,4 +1,6 @@
 Ibiryo::Application.routes.draw do
+  resources :food_searches
+
   resources :carts do
     resources :line_items
   end

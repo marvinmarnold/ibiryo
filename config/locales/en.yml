@@ -43,6 +43,9 @@ en:
       account_history: "Account history"
       sign_out: "Sign out"
       manage_shops: "Manage your shops"
+  food_searches:
+    edit:
+      title: "Search results"
   searchbar:
     food:
       browse:

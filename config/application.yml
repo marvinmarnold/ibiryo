@@ -105,6 +105,11 @@ item_types:
               english:
                 locale_abbr: "en"
                 name: "Healthy"
+          gluten:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Gluten free"
       cuisine_type:
         descriptions:
           english:

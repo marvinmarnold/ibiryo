@@ -8,6 +8,7 @@ class Ability
     can :show, Shop
     can :manage, LineItem
     can :manage, Cart
+    can :manage, FoodSearch
 
     if user.role? :vendor
       can :update, Shop

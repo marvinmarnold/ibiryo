@@ -61,4 +61,9 @@ module ShopsHelper
     "#{number_to_shop_currency(item.price, item.menu_section.menu.shop)}#{modifier}"
   end
 
+  def shop_thumbnail(shop)
+    #image_tag shop.thumbnail.usable.url, class: "img-rounded"
+    image_tag "logo#{rand(15)+1}.jpg", class: "img-rounded"
+  end
+
 end

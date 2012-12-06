@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   belongs_to      :default_locale, class_name: "Locale"
   has_many        :feedbacks
   has_many        :carts
+  has_many        :food_searches
   devise          :database_authenticatable, :registerable,
                   :recoverable,              :rememberable, :trackable,             :validatable
   #attr_accessor   :wants_to_be_vendor

@@ -1,3 +1,5 @@
 set instance varbiables for nested routing eg @shop, @shop/@menu, @shop/@menu/@menu_section
 does not make sense for a shop to require exactly one choice for an option that only has one choice
 option selection validations
+
+add rankings and price metrics to shops

@@ -9,6 +9,6 @@ class CreateDescriptions < ActiveRecord::Migration
       t.timestamps
     end
     add_index :descriptions, :locale_id
-    add_index :descriptions, :describable_id
+    add_index :descriptions, [:describable_id, :describable_type]
   end
 end

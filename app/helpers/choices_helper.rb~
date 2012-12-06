@@ -8,7 +8,8 @@ module ChoicesHelper
     choice = Choice.find(choice_form.value)
     button_method = choice_button(one_button)
     choice_form.label { render("choices/show", button: choice_form.send(button_method),
-                        name: choice.name, price: choice_price(choice), count: count, num_options: num_options) }
+                        name: choice.name, price: choice_price(choice),
+                        count: count, num_options: num_options) }
   end
 
   def choice_select_type(option)

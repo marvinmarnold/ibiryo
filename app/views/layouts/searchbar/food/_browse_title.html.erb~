@@ -1,1 +1,0 @@
-<h3><%= t("searchbar.food.browse.popup.title") %></h3>

@@ -2,14 +2,7 @@
                         id: "shop_sideview-#{shop.id}" do %>
   <span class="lead"> <%= shop.name %></span>
   <div class="row-fluid">
-<%
-=begin
-%>
-    <div class="span5"><%= image_tag shop.thumbnail.usable.url, class: "img-rounded" %></div>
-<%
-=end
-%>
-    <div class="span5"><%= image_tag "logo#{rand(15)+1}.jpg", class: "img-rounded" %></div>
+    <div class="span5"><%= shop_thumbnail(shop) %></div>
     <div class="span7">
 
       <% if shop.is_hotel? %>

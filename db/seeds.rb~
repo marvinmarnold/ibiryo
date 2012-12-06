@@ -1,4 +1,5 @@
 def init
+  #Rake::Task['db:reset'].invoke
   Rake::Task['db:reset'].invoke
 
   CONFIG["i18n"]["languages"].each do |locale|
@@ -74,12 +75,13 @@ def init
     end
     u.save!
     add_options(u)
+    add_tags(u)
   end
 end
 
 def build_item_types
   CONFIG["item_types"].each do |k, v|
-    i = ItemType.new
+    i = FoodItemType.new
     add_descriptions_to_describable_hash(v, i)
     v["tag_groups"].each do |k, v|
       g = i.tag_groups.build
@@ -101,6 +103,10 @@ def add_descriptions_to_describable_hash(h, describable)
     end
 end
 
+def add_tags(u)
+  u.shops.each { |s| s.update_attributes tag_ids: tag_ids }
+end
+
 def add_description(describable, name, locale = Locale.find_by_abbr("en"))
   describable.descriptions.build(name: name, locale_id: locale.id)
 end
@@ -110,7 +116,6 @@ def create_shop(user)
                           delivery_fee: random_zero(1000, 0.4),
                           banner: File.open(random_banner), thumbnail: File.open(random_thumbnail),
                           is_active: true )
-
   %w[monday tuesday wednesday thursday friday saturday sunday].each do |d|
     set_time(shop, "closes_#{d}_at")
     set_time(shop, "opens_#{d}_at")
@@ -136,6 +141,11 @@ def add_choices(shop)
     choice = shop.choices.build(is_active: true, price: rand(500) + 1)
     add_descriptions(choice)
   end
+end
+
+def tag_ids
+  ts = Tag.scoped.pluck(:id)
+  ts.sample(rand(8))
 end
 
 def add_options(user)

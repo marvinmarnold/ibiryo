@@ -22,7 +22,7 @@ class Shop < Describable
                   :closes_tuesday_at,     :closes_wednesday_at, :currency_id,               :delivery_fee,
                   :delivery_minimum,      :is_active,           :opens_friday_at,           :opens_monday_at,
                   :opens_saturday_at,     :opens_sunday_at,     :opens_thursday_at,         :opens_tuesday_at,
-                  :opens_wednesday_at,    :thumbnail,           :tag_list,                  :banner_cache,
+                  :opens_wednesday_at,    :thumbnail,           :tag_ids,                   :banner_cache,
                   :thumbnail_cache,       :contact_attributes,  :participations_attributes, :accountabilities_attributes,
                   :ownerships_attributes
 
@@ -56,19 +56,19 @@ class Shop < Describable
   #
   # Tags
   #
+  def tag_ids
+    taggings.map(&:tag_id)
+  end
 
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).vendors
+  def tag_ids=(ids)
+    taggings.delete_all
+    ids.each do |tag_id|
+      taggings.where(tag_id: tag_id).first_or_create unless tag_id.blank?
+    end
   end
 
   def tag_list
     tags.map(&:name).join(", ")
-  end
-
-  def tag_list=(names)
-    self.tags = names.split(",").map do |n|
-      Tag.find_or_create_by_name(n.strip)
-    end
   end
 
   def self.page_param

@@ -18,7 +18,7 @@
         <% if hotels_scope? %>
           <%= render 'layouts/searchbar/hotels/hotels' %>
         <% else %>
-          <%= render 'layouts/searchbar/food/food' %>
+          <%= render 'food_searches/form' %>
         <% end %>
       </div>
 

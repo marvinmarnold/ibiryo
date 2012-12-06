@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129171946) do
+ActiveRecord::Schema.define(:version => 20121203095746) do
 
   create_table "carts", :force => true do |t|
     t.integer  "shop_id"
@@ -130,15 +130,31 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
 
   add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
 
+  create_table "food_searches", :force => true do |t|
+    t.string   "keyword"
+    t.integer  "search_result_ordering_id"
+    t.integer  "item_type_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "food_searches", ["item_type_id"], :name => "index_food_searches_on_item_type_id"
+  add_index "food_searches", ["search_result_ordering_id"], :name => "index_food_searches_on_search_result_ordering_id"
+  add_index "food_searches", ["user_id"], :name => "index_food_searches_on_user_id"
+
   create_table "frequencies", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "item_types", :force => true do |t|
+    t.string   "type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "item_types", ["type"], :name => "index_item_types_on_type"
 
   create_table "items", :force => true do |t|
     t.integer  "menu_section_id"
@@ -281,6 +297,14 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "search_result_orderings", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "search_result_orderings", ["type"], :name => "index_search_result_orderings_on_type"
+
   create_table "shops", :force => true do |t|
     t.string   "thumbnail"
     t.string   "banner"
@@ -324,6 +348,17 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "tag_filtrations", :force => true do |t|
+    t.integer  "filterable_id"
+    t.string   "filterable_type"
+    t.integer  "tag_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "tag_filtrations", ["filterable_id", "filterable_type"], :name => "index_tag_filtrations_on_filterable_id_and_filterable_type"
+  add_index "tag_filtrations", ["tag_id"], :name => "index_tag_filtrations_on_tag_id"
 
   create_table "tag_groups", :force => true do |t|
     t.integer  "item_type_id"
@@ -372,5 +407,6 @@ ActiveRecord::Schema.define(:version => 20121129171946) do
   add_index "users", ["default_locale_id"], :name => "index_users_on_default_locale_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["type"], :name => "index_users_on_type"
 
 end

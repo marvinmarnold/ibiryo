@@ -1,6 +1,11 @@
-<%= render "shops/show_sideview", shop: @stuck_shop, stuck: true if @stuck_shop %>
+<% if searching? %>
+  <%= render "#{search_view_path}/edit_side" %>
+<% else %>
+  <%= render "shops/show_sideview", shop: @stuck_shop, stuck: true if @stuck_shop %>
 
-<% if shopping? %>
-  <%= render 'carts/edit_side' %>
+  <% if shopping? %>
+    <%= render 'carts/edit_side' %>
+  <% end %>
+
+  <%= render 'shops/index_sideview' %>
 <% end %>
-<%= render 'shops/index_sideview' %>

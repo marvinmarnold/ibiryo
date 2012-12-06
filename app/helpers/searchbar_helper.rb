@@ -1,12 +1,4 @@
 module SearchbarHelper
-  def food_scope?
-    not hotels_scope?
-  end
-
-  def hotels_scope?
-    params[:scope] == "hotels"
-  end
-
   def hotel_date(time)
     time.strftime("%m/%d/%y")
   end
@@ -26,5 +18,15 @@ module SearchbarHelper
       [t("searchbar.food.sort.name"), 3],
       [t("searchbar.food.sort.name_reverse"), 4]
     ]
+  end
+
+  def search_view_path
+    if food_scope?
+      return "food_searches"
+    end
+  end
+
+  def searching?
+    controller.controller_name == "food_searches"
   end
 end
