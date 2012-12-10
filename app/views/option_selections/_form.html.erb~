@@ -1,5 +1,3 @@
-
-
 <% count = 0 %>
 <% options.each do |option| %>
   <h5><%= option.name %></h5>

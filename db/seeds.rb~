@@ -81,7 +81,7 @@ end
 
 def build_item_types
   CONFIG["item_types"].each do |k, v|
-    i = FoodItemType.new
+    i = v["klass"].constantize.new
     add_descriptions_to_describable_hash(v, i)
     v["tag_groups"].each do |k, v|
       g = i.tag_groups.build
@@ -119,6 +119,8 @@ def create_shop(user)
   %w[monday tuesday wednesday thursday friday saturday sunday].each do |d|
     set_time(shop, "closes_#{d}_at")
     set_time(shop, "opens_#{d}_at")
+    set_time(shop, "checkin_at")
+    set_time(shop, "checkout_at")
   end
   add_contact(shop)
   add_descriptions(shop)
@@ -202,7 +204,7 @@ end
 
 def add_menus(shop)
   (rand(3)+1).times do
-    menu = shop.menus.build(is_active: true)
+    menu = shop.menus.build(is_active: true, item_type_id: ItemType.all.sample.id)
     add_descriptions(menu)
     add_menu_sections(menu)
   end

@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   check_authorization unless: :devise_controller?
-  before_filter :setup
+  before_filter :set_locale
+  before_filter :set_shopper
+  before_filter :set_browsable_shops
   before_filter :set_search
 
   def scoped_for_shopper(klass)
@@ -23,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def set_stuck_shop(shop)
     @stuck_shop = shop
-    @paginatable_shops = @paginatable_shops.where(Shop.arel_table[:id].not_eq(shop.id))
+    @paginatable_shops = @paginatable_shops.keep_if { |s| s.id != shop.id }
   end
 
   def food_scope?
@@ -36,15 +38,11 @@ class ApplicationController < ActionController::Base
   helper_method :food_scope?, :hotels_scope?
 
 private
-  def setup
-    set_locale
-    set_shopper
-    set_browsable_shops
-  end
 
   def set_search
     if hotels_scope?
-
+      klass = FoodSearch
+      search_name = ActiveModel::Naming.singular(klass)
     elsif food_scope?
       klass = FoodSearch
       search_name = ActiveModel::Naming.singular(klass)
@@ -71,7 +69,13 @@ private
   end
 
   def set_browsable_shops
-    @browsable_shops = Shop.where(is_active: true)
+    @browsable_shops = Shop.scoped
+    filter_and_paginate_browsable_shops
+  end
+
+  def filter_and_paginate_browsable_shops
+    @browsable_shops = @browsable_shops.hotel if hotels_scope?
+    @browsable_shops = @browsable_shops.restaurant if food_scope?
     @paginatable_shops = @browsable_shops.paginate(:page => params[Shop.page_param], :per_page => 18)
   end
 

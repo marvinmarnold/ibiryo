@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = @items.new(params[:item])
+    @item.item_type_id = @menu_section.menu.item_type_id
 
     respond_to do |format|
       if @item.save

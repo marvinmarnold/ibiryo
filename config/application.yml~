@@ -48,6 +48,7 @@ fees:
   currency_abbr: "MTN"
 item_types:
   food:
+    klass: "FoodItemType"
     descriptions:
       english:
         locale_abbr: "en"
@@ -105,6 +106,11 @@ item_types:
               english:
                 locale_abbr: "en"
                 name: "Healthy"
+          gluten:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Gluten free"
       cuisine_type:
         descriptions:
           english:
@@ -201,3 +207,67 @@ item_types:
               english:
                 locale_abbr: "en"
                 name: "Steak"
+  hotels:
+    klass: "HotelItemType"
+    descriptions:
+      english:
+        locale_abbr: "en"
+        name: "Hotels"
+    tag_groups:
+      accommodation:
+        descriptions:
+          english:
+            locale_abbr: "en"
+            name: "Accommodation type"
+        tags:
+          bed:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Bed and breakfast"
+          hotel:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Hotel"
+          resort:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Resort"
+      amenities:
+        descriptions:
+          english:
+            locale_abbr: "en"
+            name: "Amenities"
+        tags:
+          gym:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Gym"
+          internet:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Internet access"
+          meeting:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Meeting Facilities"
+          pet:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Pet friendly"
+          pool:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Pool"
+          restaurant:
+            descriptions:
+              english:
+                locale_abbr: "en"
+                name: "Restaurant"

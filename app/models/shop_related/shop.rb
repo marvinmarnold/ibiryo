@@ -11,8 +11,11 @@ class Shop < Describable
   has_many        :marketing_strategies, through: :participations
   belongs_to      :currency
   has_many        :menus
+  has_many        :menu_descriptions, through: :menus, source: :descriptions
   has_many        :menu_sections, through: :menus
+  has_many        :menu_section_descriptions, through: :menu_sections, source: :descriptions
   has_many        :items, through: :menu_sections
+  has_many        :item_descriptions, through: :items, source: :descriptions
   has_many        :options
   has_many        :choices
   mount_uploader  :banner, RestaurantBannerUploader
@@ -41,16 +44,41 @@ class Shop < Describable
                                   :message => I18n.t("shops_shared.form.errors.is_active")}
   #validate        :one_owner
   validate        :one_accountable
-  #def to_param
-  #  "#{id} #{name}".parameterize
+
+  scope           :hotel, joins(:menus).where("menus.item_type_id" => 2)
+  scope           :restaurant, joins(:menus).where("menus.item_type_id" => 1)
+  scope           :not_shop, lambda { |shop| where(Shop.arel_table[:id].not_eq(shop.id)) }
+
+  default_scope   { where(:is_active => true) }
+
+  include PgSearch
+  pg_search_scope :search, :associated_against => {
+    :descriptions               => [:name, :body],
+    :menu_descriptions          => [:name, :body],
+    :menu_section_descriptions  => [:name, :body],
+    :item_descriptions          => [:name, :body]
+  }
+  #pg_search_scope :search_by_classification, lambda do |classification_operator, query|
+  #  raise ArgumentError unless [:is_hotel?, :is_restaurant?].include?(classification_operator)
+  #  {
+  #    :query => query,
+  #    :if => classification_operator,
+  #    :associated_against => {
+  #      :descriptions               => [:name, :body],
+  #      :menu_descriptions          => [:name, :body],
+  #      :menu_section_descriptions  => [:name, :body],
+  #      :item_descriptions          => [:name, :body],
+  #
+  #    }
+  #  }
   #end
 
   def is_hotel?
-    false
+    menus.where(item_type_id: 2).present?
   end
 
   def is_restaurant?
-    true
+    menus.where(item_type_id: 1).present?
   end
 
   #

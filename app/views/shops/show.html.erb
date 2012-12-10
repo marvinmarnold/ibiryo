@@ -27,7 +27,7 @@
     <% activated = false %>
     <% menus.each do |menu| %>
       <li class="<%= append_word("", !activated, "active") %>">
-        <%= link_to menu.name, "\#menu#{menu.id}", data: {toggle: "tab"} %>
+        <%= link_to "#{menu.name} (#{menu.item_type.name})", "\#menu#{menu.id}", data: {toggle: "tab"} %>
         <% activated = true %>
       </li>
     <% end %>

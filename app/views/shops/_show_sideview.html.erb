@@ -1,12 +1,15 @@
 <%= content_tag "div", class: stuck_class(stuck),
                         id: "shop_sideview-#{shop.id}" do %>
-  <span class="lead"> <%= shop.name %></span>
-  <div class="row-fluid">
-    <div class="span5"><%= shop_thumbnail(shop) %></div>
-    <div class="span7">
 
-      <% if shop.is_hotel? %>
+  <div class="pager side-shop-title">
+  <div class="lead side-shop-title"> <%= shop.name %></div>
+<%= shop_thumbnail(shop) %>
+
+
+        <% if shop.is_hotel? %>
         <h5><%= "#{t("shops.show_sideview.hotel.title")}:" %></h5>
+        <%= "#{t("shops.show_sideview.hotel.checkin_at")}: #{shop.checkin_at.strftime("%H:%M")}" %><br/>
+        <%= "#{t("shops.show_sideview.hotel.checkout_at")}: #{shop.checkout_at.strftime("%H:%M")}" %><br/>
       <% end %>
 
       <% if shop.is_restaurant? %>
@@ -15,14 +18,9 @@
         <%= shop_time(shop) %><br/>
       <% end %>
 
-    </div>
-  </div>
-  <br />
-  <p><%= "#{t("simple_form.labels.shop.tag_list")}: #{shop.tag_list}" %></p>
-
   <% if has_option_to_preview_shop?(shop) %>
     <%= render 'shops_shared/button_to_shop', shop: shop %>
-  <% else %>
-    <br />
   <% end %>
+  <br/>
+  </div>
 <% end %>

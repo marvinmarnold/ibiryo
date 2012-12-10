@@ -106,6 +106,8 @@ en:
         delivery_fee: "Delivery fee"
       hotel:
         title: "Hotel details"
+        checkin_at: 'Check-in'
+        checkout_at: 'Check-out'
     index:
       title: "Your shops"
       view: "Visit/edit shop"

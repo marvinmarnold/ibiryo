@@ -1,8 +1,9 @@
-<%= simple_nested_form_for([@shop, @menu]) do |f| %>
+<%= simple_nested_form_for([@shop, @menu], :html => {:class => "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= render 'shops_shared/is_active', obj: @menu, f: f %>
+    <%= f.association :item_type_id %>
     <%= render 'descriptions/section', f: f, klasses: "menus", klass_instance: @menu %>
   </div>
 

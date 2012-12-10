@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_shops, except: [:show, :new]
+  before_filter       :set_shops, except: [:show, :new]
+  skip_before_filter  :set_browsable_shops, only: [:show]
 
   # GET /shops
   # GET /shops.json
@@ -16,9 +17,10 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     authorize! :show, Shop
+    @browsable_shops = Shop.where(is_active: true)
     @shop = @browsable_shops.find(params[:id])
+    filter_and_paginate_browsable_shops
     @cart = @shopper.current_cart_for(@shop)
-    #raise @shopper.to_yaml
     @line_item = LineItem.new
 
     set_stuck_shop(@shop)
