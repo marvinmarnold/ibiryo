@@ -77,6 +77,10 @@ def init
     add_options(u)
     add_tags(u)
   end
+
+  s = NewestSearchResultOrdering.new
+  s.descriptions.build(name: "Newest", locale_id: 1)
+  s.save!
 end
 
 def build_item_types

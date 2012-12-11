@@ -45,8 +45,10 @@ class Shop < Describable
   #validate        :one_owner
   validate        :one_accountable
 
-  scope           :hotel, joins(:menus).where("menus.item_type_id" => 2)
-  scope           :restaurant, joins(:menus).where("menus.item_type_id" => 1)
+  scope           :hotel, joins(:menus).where("menus.item_type_id" => 2).uniq
+  scope           :restaurant, joins(:menus).where("menus.item_type_id" => 1).uniq
+  scope           :not_shop, lambda { |shop| where(Shop.arel_table[:id].not_eq(shop.id)) }
+
   default_scope   { where(:is_active => true) }
 
   include PgSearch
